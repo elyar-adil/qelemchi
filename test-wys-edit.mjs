@@ -27,7 +27,7 @@ const paraCountBefore = await page.locator('#wysiwyg .wys-para').count();
 
 // Place the caret at the true end of the first paragraph, then type.
 await page.evaluate(() => {
-  const el = document.querySelector('#wysiwyg .wys-para .wys-text');
+  const el = document.querySelector('#wysiwyg .wys-para[data-path="sections/intro.tex"] .wys-text');
   el.focus();
   const range = document.createRange();
   range.selectNodeContents(el);

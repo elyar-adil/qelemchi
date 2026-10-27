@@ -3666,39 +3666,167 @@ li.CodeMirror-hint-active { background: var(--accent-tint); color: var(--accent-
   background-size: 16px 16px;
   background-position: -8px -8px;
   scrollbar-gutter: stable;
+
+  /* Page profiles. Widths are CSS pixels at 96 dpi; padding is expressed as
+     a share of the page width so the sheet keeps the template's margin
+     proportions when the editor pane is narrower than the paper. */
+  --wys-page-width: 794px;
+  --wys-page-height: 1123px;
+  --wys-page-font: var(--serif);
+  --wys-page-size: 11pt;
+  --wys-page-leading: 1.6;
+  --wys-pad-top: 11.9%;
+  --wys-pad-x: 11.9%;
+  --wys-pad-bottom: 11.9%;
+  --wys-indent: 2em;
+  --wys-para-gap: 0px;
+  --wys-link: var(--accent);
+  --wys-caption-size: .9em;
+  --wys-caption-align: center;
+  --wys-caption-sep: "";
+}
+.wysiwyg-host[data-profile="article"],
+.wysiwyg-host[data-profile="letter"] {
+  --wys-page-width: 816px;
+  --wys-page-height: 1056px;
+  --wys-page-size: 10pt;
+  --wys-page-leading: 1.2;
+  --wys-pad-top: 11.76%;
+  --wys-pad-x: 11.76%;
+  --wys-pad-bottom: 11.76%;
+  --wys-indent: 1.2em;
+}
+.wysiwyg-host[data-profile="ctex"] {
+  --wys-page-width: 794px;
+  --wys-page-height: 1123px;
+  --wys-page-font: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "SimSun", "Iowan Old Style", Palatino, Georgia, serif;
+  --wys-page-size: 11pt;
+  --wys-page-leading: 1.61;
+  --wys-pad-top: 11.9%;
+  --wys-pad-x: 11.9%;
+  --wys-pad-bottom: 11.9%;
+  --wys-indent: 2em;
+  --wys-link: #1c1b18;
+  --wys-caption-size: .9em;
+  --wys-caption-sep: "：";
+}
+.wysiwyg-host[data-profile="cvpr"] {
+  --wys-page-width: 816px;
+  --wys-page-height: 1056px;
+  --wys-page-font: "Times New Roman", "Nimbus Roman", "Liberation Serif", Times, serif;
+  --wys-page-size: 10pt;
+  --wys-page-leading: 1.2;
+  --wys-pad-top: 11.76%;
+  --wys-pad-x: 9.56%;
+  --wys-pad-bottom: 13.24%;
+  --wys-indent: 1.2em;
+  --wys-link: #2f6fa6;
+  --wys-caption-size: .9em;
+  --wys-caption-align: justify;
+  --wys-caption-sep: ".";
+}
+.wysiwyg-host[data-profile="neurips"] {
+  --wys-page-width: 816px;
+  --wys-page-height: 1056px;
+  --wys-page-font: "Times New Roman", "Nimbus Roman", "Liberation Serif", Times, serif;
+  --wys-page-size: 10pt;
+  --wys-page-leading: 1.1;
+  --wys-pad-top: 11.76%;
+  --wys-pad-x: 17.65%;
+  --wys-pad-bottom: 11.76%;
+  --wys-indent: 0px;
+  --wys-para-gap: .55em;
+  --wys-link: #1c1b18;
+  --wys-caption-size: .9em;
+  --wys-caption-align: justify;
+  --wys-caption-sep: ":";
+}
+.wysiwyg-host[data-profile="twocolumn"] {
+  --wys-page-width: 816px;
+  --wys-page-height: 1056px;
+  --wys-page-font: "Times New Roman", "Nimbus Roman", "Liberation Serif", Times, serif;
+  --wys-page-size: 10pt;
+  --wys-page-leading: 1.2;
+  --wys-pad-top: 10%;
+  --wys-pad-x: 10%;
+  --wys-pad-bottom: 10%;
+  --wys-indent: 1.2em;
+  --wys-caption-size: .9em;
+  --wys-caption-align: justify;
+  --wys-caption-sep: ":";
 }
 [data-theme="dark"] .wysiwyg-host {
   background-image: radial-gradient(rgba(255, 240, 210, .06) .6px, transparent .6px);
 }
 .wysiwyg-host[hidden] { display: none; }
 
-.wys-doc.page-body {
-  width: auto;
-  height: auto;
-  max-width: 722px;
-  min-height: calc(100% - 44px);
-  margin: 22px auto 56px;
-  padding: 44px 52px 54px;
-  overflow: visible;
+/* The sheet stack: one paper-sized page per visual page. The profile stays on
+   each .wys-doc flow so template typography and two-column rules keep working. */
+.wys-pages {
+  width: var(--wys-page-width);
+  margin: 14px auto 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  box-sizing: border-box;
+}
+.wys-page {
+  width: 100%;
+  min-height: var(--wys-page-height);
   background: var(--paper);
-  color: var(--paper-ink);
-  border: 1px solid color-mix(in srgb, var(--paper-ink) 12%, transparent);
   border-radius: 3px;
   box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--paper-ink) 12%, transparent),
     0 1px 1px rgba(40, 34, 24, .10),
     0 14px 34px rgba(40, 34, 24, .16);
-  text-align: left;
-  font-size: 10.6pt;
-  line-height: 1.55;
-  outline: none;
 }
-[data-theme="dark"] .wys-doc.page-body {
+[data-theme="dark"] .wys-page {
   box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--paper-ink) 18%, transparent),
     0 1px 1px rgba(0, 0, 0, .45),
     0 20px 44px rgba(0, 0, 0, .45);
 }
-.wys-doc.paper-zh { line-height: 1.76; }
+.wys-doc.page-body {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: var(--wys-pad-top) var(--wys-pad-x) var(--wys-pad-bottom);
+  box-sizing: border-box;
+  overflow: visible;
+  background: transparent;
+  color: var(--paper-ink);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  text-align: left;
+  font-family: var(--wys-page-font);
+  font-size: var(--wys-page-size);
+  line-height: var(--wys-page-leading);
+  font-feature-settings: "kern" 1, "liga" 1;
+  outline: none;
+}
+.wys-doc.paper-zh {
+  font-family: var(--wys-page-font);
+  line-height: var(--wys-page-leading);
+}
+.wys-doc.wys-profile-cvpr,
+.wys-doc.wys-profile-twocolumn {
+  column-count: 2;
+  column-gap: 4.55%;
+  column-fill: balance;
+}
+.wys-doc.wys-profile-cvpr > .wys-block-title,
+.wys-doc.wys-profile-cvpr > .wys-block-toc,
+.wys-doc.wys-profile-twocolumn > .wys-block-title,
+.wys-doc.wys-profile-twocolumn > .wys-block-toc,
+.wys-doc.wys-profile-cvpr > .wys-span-all,
+.wys-doc.wys-profile-twocolumn > .wys-span-all { column-span: all; }
 .wys-doc .wys-block { position: relative; }
+.wys-doc h1.wys-heading,
+.wys-doc h2.wys-heading,
+.wys-doc h3.wys-heading,
+.wys-doc h4.wys-heading,
+.wys-doc .wys-title-block h1 { padding-top: 0; }
 
 /* ---------- editable surfaces ---------- */
 
@@ -3713,21 +3841,62 @@ li.CodeMirror-hint-active { background: var(--accent-tint); color: var(--accent-
 .wys-doc > .wys-block + .wys-block,
 .wys-container > .wys-block + .wys-block { margin-top: .2em; }
 
-.wys-doc .wys-para + .wys-para { margin-top: .18em; }
-.wys-text {
+.wys-doc .wys-para + .wys-para { margin-top: var(--wys-para-gap); }
+.wys-doc .wys-text {
   outline: none;
-  min-height: 1.5em;
+  min-height: 1.2em;
   text-align: justify;
   hyphens: auto;
   -webkit-hyphens: auto;
   border-radius: 2px;
 }
-.wys-para .wys-text { text-indent: 1.7em; }
+.wys-doc .wys-para .wys-text { text-indent: var(--wys-indent); }
 .wys-doc > .wys-heading + .wys-para .wys-text,
-.wys-doc > .wys-visual + .wys-para .wys-text,
-.wys-doc > .wys-container + .wys-para .wys-text,
+.wys-doc > .wys-block-title + .wys-para .wys-text,
+.wys-doc > .wys-block-toc + .wys-para .wys-text,
 .wys-container > .wys-block + .wys-block .wys-text { text-indent: 0; }
-.wys-para .wys-text[contenteditable="false"] { text-indent: 0; }
+.wys-doc .wys-para .wys-text[contenteditable="false"] { text-indent: 0; }
+
+/* Template profiles drop the editor-only vertical padding so consecutive
+   paragraphs sit on the same baseline rhythm as the compiled page. */
+.wys-doc.wys-profile-cvpr > .wys-block,
+.wys-doc.wys-profile-ctex > .wys-block,
+.wys-doc.wys-profile-neurips > .wys-block,
+.wys-doc.wys-profile-article > .wys-block,
+.wys-doc.wys-profile-letter > .wys-block,
+.wys-doc.wys-profile-twocolumn > .wys-block,
+.wys-doc.wys-profile-cvpr .wys-container > .wys-block,
+.wys-doc.wys-profile-ctex .wys-container > .wys-block,
+.wys-doc.wys-profile-neurips .wys-container > .wys-block,
+.wys-doc.wys-profile-article .wys-container > .wys-block,
+.wys-doc.wys-profile-letter .wys-container > .wys-block,
+.wys-doc.wys-profile-twocolumn .wys-container > .wys-block {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.wys-doc.wys-profile-cvpr > .wys-block + .wys-block,
+.wys-doc.wys-profile-ctex > .wys-block + .wys-block,
+.wys-doc.wys-profile-neurips > .wys-block + .wys-block,
+.wys-doc.wys-profile-article > .wys-block + .wys-block,
+.wys-doc.wys-profile-letter > .wys-block + .wys-block,
+.wys-doc.wys-profile-twocolumn > .wys-block + .wys-block,
+.wys-doc.wys-profile-cvpr .wys-container > .wys-block + .wys-block,
+.wys-doc.wys-profile-ctex .wys-container > .wys-block + .wys-block,
+.wys-doc.wys-profile-neurips .wys-container > .wys-block + .wys-block,
+.wys-doc.wys-profile-article .wys-container > .wys-block + .wys-block,
+.wys-doc.wys-profile-letter .wys-container > .wys-block + .wys-block,
+.wys-doc.wys-profile-twocolumn .wys-container > .wys-block + .wys-block {
+  margin-top: 0;
+}
+.wys-doc.wys-profile-cvpr > .wys-block,
+.wys-doc.wys-profile-twocolumn > .wys-block,
+.wys-doc.wys-profile-cvpr .wys-container > .wys-block,
+.wys-doc.wys-profile-twocolumn .wys-container > .wys-block {
+  margin-left: -5px;
+  margin-right: -5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
 
 .wys-block:hover { background: color-mix(in srgb, var(--paper-ink) 3.2%, transparent); }
 .wys-block.is-focused {
@@ -3768,14 +3937,15 @@ li.CodeMirror-hint-active { background: var(--accent-tint); color: var(--accent-
 /* ---------- headings ---------- */
 
 .wys-doc .wys-heading {
-  font-family: var(--serif);
-  font-weight: 600;
-  line-height: 1.32;
+  font-family: var(--wys-page-font);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.25;
   margin-top: 1.55em;
   margin-bottom: .38em;
   display: flex;
   align-items: baseline;
-  gap: 6px;
+  gap: .5em;
   color: var(--paper-ink);
 }
 .wys-doc > .wys-heading:first-child { margin-top: .2em; }
@@ -3784,6 +3954,42 @@ li.CodeMirror-hint-active { background: var(--accent-tint); color: var(--accent-
 .wys-doc h3.wys-heading { font-size: 1.13em; }
 .wys-doc h4.wys-heading { font-size: 1.02em; font-style: italic; }
 .wys-heading .wys-text { text-indent: 0; text-align: left; flex: 0 1 auto; outline: none; }
+.wys-heading-num { flex: none; font-variant-numeric: tabular-nums; }
+.wys-doc.wys-profile-cvpr .wys-heading-num::after { content: "."; }
+
+/* CVPR: Times bold at 12/11/10 pt, tight article spacing. */
+.wys-doc.wys-profile-cvpr h1.wys-heading { font-size: 1.2em; margin: .84em 0 .58em; letter-spacing: 0; }
+.wys-doc.wys-profile-cvpr h2.wys-heading { font-size: 1.1em; margin: .73em 0 .45em; }
+.wys-doc.wys-profile-cvpr h3.wys-heading { font-size: 1em; margin: .6em 0 .3em; }
+.wys-doc.wys-profile-cvpr h4.wys-heading { font-size: 1em; font-style: normal; margin: .5em 0 .25em; }
+
+/* NeurIPS: 12 pt section heads, 10 pt subsections, ragged right. */
+.wys-doc.wys-profile-neurips .wys-heading { justify-content: flex-start; }
+.wys-doc.wys-profile-neurips h1.wys-heading { font-size: 1.2em; margin: .75em 0 .55em; letter-spacing: 0; }
+.wys-doc.wys-profile-neurips h2.wys-heading { font-size: 1em; margin: .73em 0 .4em; }
+.wys-doc.wys-profile-neurips h3.wys-heading { font-size: 1em; margin: .6em 0 .3em; }
+.wys-doc.wys-profile-neurips h4.wys-heading { font-size: 1em; font-style: normal; margin: .55em 0 .25em; }
+
+/* ctexart: Chinese article headings, \Large/\large/\normalsize. */
+.wys-doc.wys-profile-ctex h1.wys-heading { font-size: 1.31em; margin: 1.5em 0 .75em; letter-spacing: .01em; }
+.wys-doc.wys-profile-ctex h2.wys-heading { font-size: 1.09em; margin: 1.25em 0 .55em; }
+.wys-doc.wys-profile-ctex h3.wys-heading { font-size: 1em; margin: 1em 0 .4em; }
+.wys-doc.wys-profile-ctex h4.wys-heading { font-size: 1em; font-style: normal; margin: .85em 0 .3em; }
+.wys-doc.wys-profile-ctex .wys-heading { gap: .65em; }
+
+/* Generic article / letter / two-column starter. */
+.wys-doc.wys-profile-article h1.wys-heading,
+.wys-doc.wys-profile-letter h1.wys-heading { font-size: 1.44em; margin: 1.5em 0 .6em; }
+.wys-doc.wys-profile-article h2.wys-heading,
+.wys-doc.wys-profile-letter h2.wys-heading { font-size: 1.2em; margin: 1.2em 0 .45em; }
+.wys-doc.wys-profile-article h3.wys-heading,
+.wys-doc.wys-profile-letter h3.wys-heading { font-size: 1em; margin: 1em 0 .3em; }
+.wys-doc.wys-profile-article h4.wys-heading,
+.wys-doc.wys-profile-letter h4.wys-heading { font-size: 1em; font-style: normal; margin: .8em 0 .25em; }
+.wys-doc.wys-profile-twocolumn h1.wys-heading { font-size: 1.2em; margin: .9em 0 .55em; }
+.wys-doc.wys-profile-twocolumn h2.wys-heading { font-size: 1em; margin: .75em 0 .4em; }
+.wys-doc.wys-profile-twocolumn h3.wys-heading { font-size: 1em; margin: .6em 0 .3em; }
+.wys-doc.wys-profile-twocolumn h4.wys-heading { font-size: 1em; font-style: normal; margin: .5em 0 .2em; }
 .wys-anchor {
   font-family: var(--mono);
   font-size: .52em;
@@ -3825,14 +4031,14 @@ li.CodeMirror-hint-active { background: var(--accent-tint); color: var(--accent-
   padding: 0 3px;
 }
 .wys-cite {
-  font-size: .94em;
-  color: var(--accent);
-  border-bottom: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  font-size: 1em;
+  color: var(--wys-link);
+  border-bottom: 1px solid color-mix(in srgb, currentColor 24%, transparent);
   cursor: default;
 }
-.wys-ref-atom { color: var(--accent); }
+.wys-ref-atom { color: var(--wys-link); }
 .wys-ref-atom .xref.missing { color: var(--danger); }
-.wys-link-token { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.wys-link-token { color: var(--wys-link); text-decoration: underline; text-underline-offset: 2px; }
 .wys-label-mark { font-family: var(--mono); font-size: .7em; color: var(--faint); opacity: .55; }
 .wys-fn { font-size: .68em; color: var(--accent); }
 .wys-symbol { font-family: var(--serif); }
@@ -3846,11 +4052,14 @@ li.CodeMirror-hint-active { background: var(--accent-tint); color: var(--accent-
   margin-bottom: .95em;
 }
 .wys-doc > .wys-visual + .wys-visual { margin-top: .4em; }
+.wys-doc .wys-visual,
+.wys-doc .wys-block-figure,
+.wys-doc .wys-block-table { break-inside: avoid; }
 
 .wys-block-equation { text-align: center; padding: 2px 0; position: relative; }
 .wys-block-equation .wys-equation { padding: 2px 0; }
 .wys-equation { overflow-x: auto; overflow-y: hidden; }
-.wys-equation mjx-container { font-size: 112% !important; }
+.wys-equation mjx-container { font-size: 106% !important; }
 .wys-eq-number {
   position: absolute;
   right: -6px;
@@ -3859,6 +4068,10 @@ li.CodeMirror-hint-active { background: var(--accent-tint); color: var(--accent-
   font-size: .92em;
   color: var(--paper-ink);
 }
+.wys-doc.wys-profile-cvpr .wys-eq-number,
+.wys-doc.wys-profile-twocolumn .wys-eq-number { right: 0; }
+.wys-doc.wys-profile-cvpr .wys-block-equation,
+.wys-doc.wys-profile-neurips .wys-block-equation { margin-top: .55em; margin-bottom: .55em; }
 
 /* figures & captions */
 .wys-block-figure { text-align: center; }
@@ -3879,15 +4092,34 @@ li.CodeMirror-hint-active { background: var(--accent-tint); color: var(--accent-
   text-align: center;
 }
 .wys-figure-missing code { font-family: var(--mono); font-size: 8.5pt; }
+.wys-figure-strip {
+  display: flex;
+  gap: 2%;
+  align-items: flex-start;
+  justify-content: center;
+}
+.wys-figure-strip > * { flex: 1 1 0; min-width: 0; }
+.wys-figure-strip .wys-figure-missing { padding: 10px 6px; font-size: 8pt; }
+.wys-figure-strip img { width: 100%; }
+.wys-figure-example {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  aspect-ratio: 1.8;
+  box-sizing: border-box;
+}
 .wys-caption {
-  font-size: .92em;
-  line-height: 1.5;
-  text-align: center;
+  font-size: var(--wys-caption-size);
+  line-height: 1.35;
+  text-align: var(--wys-caption-align);
   margin: 7px auto 0;
-  max-width: 92%;
+  max-width: 100%;
   color: var(--paper-ink);
 }
-.wys-caption-label { font-weight: 600; margin-right: .45em; }
+.wys-caption-label { font-weight: 700; margin-right: .35em; }
+.wys-caption-label::after { content: var(--wys-caption-sep); }
 
 /* tables */
 .wys-block-table { text-align: center; }
@@ -3942,13 +4174,34 @@ li.CodeMirror-hint-active { background: var(--accent-tint); color: var(--accent-
 }
 .wys-abstract-title {
   text-align: center;
-  font-family: var(--serif);
+  font-family: var(--wys-page-font);
   font-weight: 700;
   font-size: 1em;
-  letter-spacing: .06em;
+  letter-spacing: 0;
   margin-bottom: .5em;
 }
 .wys-abstract .wys-para .wys-text { text-indent: 0; }
+
+/* CVPR abstract: small italic body under a 12 pt bold heading. */
+.wys-doc.wys-profile-cvpr .wys-abstract {
+  font-style: italic;
+  font-size: 1em;
+  margin: .8em 0 .9em;
+}
+.wys-doc.wys-profile-cvpr .wys-abstract-title {
+  font-style: normal;
+  font-size: 1.2em;
+  margin-bottom: .55em;
+}
+/* NeurIPS abstract: 12 pt centered heading, body set in a quote. */
+.wys-doc.wys-profile-neurips .wys-abstract { font-size: 1em; margin: .4em 0 .9em; }
+.wys-doc.wys-profile-neurips .wys-abstract-title { font-size: 1.2em; margin-bottom: .35em; }
+.wys-doc.wys-profile-neurips .wys-abstract > .wys-block { margin-left: 2em; margin-right: 2em; }
+.wys-doc.wys-profile-neurips .wys-abstract > .wys-block + .wys-block { margin-top: .55em; }
+/* ctexart abstract: slightly smaller, inset, with a bold centered title. */
+.wys-doc.wys-profile-ctex .wys-abstract { font-size: .95em; margin: 1.4em 0 1.4em; }
+.wys-doc.wys-profile-ctex .wys-abstract > .wys-block { margin-left: 1.6em; margin-right: 1.6em; }
+.wys-doc.wys-profile-ctex .wys-abstract-title { font-size: 1em; margin-bottom: .7em; }
 .wys-quote {
   border-left: 2px solid color-mix(in srgb, var(--paper-ink) 18%, transparent);
   padding-left: 14px;
@@ -3976,14 +4229,27 @@ dl .wys-item { padding: 0; }
 /* ---------- title, toc, includes, bibliography ---------- */
 
 .wys-block-title { text-align: center; margin: .9em 0 1.7em; }
+/* .page-body h1 sets text-align:left; the WYS title must stay centered. */
+.wys-doc .wys-title-block h1 { text-align: center; }
 .wys-title-block h1 {
-  font-family: var(--serif);
+  font-family: var(--wys-page-font);
   font-size: 1.68em;
-  line-height: 1.3;
-  font-weight: 600;
+  line-height: 1.25;
+  font-weight: 700;
   margin: 0 0 .55em;
   color: var(--paper-ink);
 }
+.wys-title-authors {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3em;
+  font-size: 1em;
+  line-height: 1.35;
+  color: var(--paper-ink);
+}
+.wys-title-author { text-align: center; }
+.wys-title-date { margin-top: 1em; font-size: .95em; color: var(--paper-ink); }
 .wys-title-meta {
   font-size: .93em;
   color: var(--muted);
@@ -3993,16 +4259,61 @@ dl .wys-item { padding: 0; }
   flex-wrap: wrap;
 }
 
-.wys-toc { margin: .4em 0 .9em; }
+/* CVPR title: full-width 14.4 pt bold, 12 pt authors, no date. */
+.wys-doc.wys-profile-cvpr > .wys-block-title { margin: 2.4em 0 1.6em; }
+.wys-doc.wys-profile-cvpr .wys-title-block h1 {
+  font-size: 1.44em;
+  line-height: 1.25;
+  margin-bottom: .9em;
+}
+.wys-doc.wys-profile-cvpr .wys-title-authors { font-size: 1.2em; gap: 2.5em; }
+
+/* NeurIPS title: 17.28 pt bold between hairlines, bold author block. */
+.wys-doc.wys-profile-neurips > .wys-block-title { margin: .5em 0 1.4em; }
+.wys-doc.wys-profile-neurips .wys-title-block h1 {
+  font-size: 1.728em;
+  line-height: 1.16;
+  margin: 0 0 .17em;
+  padding: .7em 0 .8em;
+  border-top: 4px solid var(--paper-ink);
+  border-bottom: 1px solid var(--paper-ink);
+}
+.wys-doc.wys-profile-neurips .wys-title-authors { font-weight: 700; line-height: 1.4; }
+
+/* ctexart title: 17 pt bold, Chinese author line, date. */
+.wys-doc.wys-profile-ctex > .wys-block-title { margin: 2.2em 0 2.2em; }
+.wys-doc.wys-profile-ctex .wys-title-block h1 { font-size: 1.55em; line-height: 1.4; margin-bottom: .9em; }
+.wys-doc.wys-profile-ctex .wys-title-authors { font-size: 1.05em; gap: 4em; }
+.wys-doc.wys-profile-ctex .wys-title-date { margin-top: 1.3em; font-size: 1em; }
+
+/* generic article */
+.wys-doc.wys-profile-article > .wys-block-title,
+.wys-doc.wys-profile-letter > .wys-block-title { margin: 1.6em 0 2em; }
+.wys-doc.wys-profile-article .wys-title-block h1,
+.wys-doc.wys-profile-letter .wys-title-block h1 { font-size: 1.45em; }
+.wys-doc.wys-profile-twocolumn > .wys-block-title { margin: 1.4em 0 1.8em; }
+.wys-doc.wys-profile-twocolumn .wys-title-block h1 { font-size: 1.44em; }
+
+.wys-toc { margin: .4em 0 1.1em; }
+.wys-toc-title {
+  text-align: center;
+  font-family: var(--wys-page-font);
+  font-weight: 700;
+  font-size: 1.09em;
+  margin-bottom: .8em;
+}
 .wys-toc-item {
   display: flex;
   align-items: baseline;
-  gap: 4px;
-  font-size: .93em;
-  padding: 2px 0;
+  gap: .5em;
+  font-size: 1em;
+  padding: 1px 0;
+  padding-left: calc(var(--toc-level, 0) * 1.6em);
   color: var(--paper-ink);
 }
-.wys-toc-dots { flex: 1; border-bottom: 1px dotted color-mix(in srgb, var(--paper-ink) 28%, transparent); transform: translateY(-2px); }
+.wys-toc-num { flex: none; min-width: 1.4em; text-align: right; font-variant-numeric: tabular-nums; }
+.wys-toc-text { flex: none; }
+.wys-toc-dots { flex: 1; border-bottom: 1px dotted color-mix(in srgb, var(--paper-ink) 34%, transparent); transform: translateY(-2px); }
 
 .wys-block-include,
 .wys-block-bib {
@@ -4066,14 +4377,18 @@ dl .wys-item { padding: 0; }
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: -18px 0 26px;
+  width: min(calc(100% - 36px), var(--wys-page-width));
+  margin: 14px auto 0;
   padding: 7px 10px;
-  border-bottom: 1px dashed color-mix(in srgb, var(--paper-ink) 20%, transparent);
+  box-sizing: border-box;
+  border: 1px solid color-mix(in srgb, var(--paper-ink) 14%, transparent);
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--paper) 86%, var(--bg-deep));
 }
 .wys-preamble-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
-.wys-preamble-text b { font-size: .82em; font-weight: 600; color: var(--muted); }
-.wys-preamble-text small { font-size: .72em; color: var(--faint); font-family: var(--mono); }
-.wys-preamble-btn { margin-left: auto; flex: none; font-size: 8.5pt; height: 24px; }
+.wys-preamble-text b { font-size: 11px; font-weight: 600; color: var(--muted); }
+.wys-preamble-text small { font-size: 10px; color: var(--faint); font-family: var(--mono); }
+.wys-preamble-btn { margin-left: auto; flex: none; font-size: 11px; height: 24px; }
 
 .wys-notice {
   max-width: 420px;
@@ -4099,13 +4414,10 @@ dl .wys-item { padding: 0; }
 /* ---------- responsive ---------- */
 
 @media (max-width: 860px) {
-  .wys-doc.page-body { margin: 12px 10px 40px; padding: 30px 26px 40px; }
-  .wys-doc > .wys-block,
-  .wys-container > .wys-block { margin-left: -6px; margin-right: -6px; padding-left: 6px; padding-right: 6px; }
+  .wys-preamble { width: calc(100% - 20px); margin: 12px auto 0; }
 }
 @media (max-width: 620px) {
   .editor-head .editor-mode button { padding: 0 7px; font-size: 10px; }
-  .wys-doc.page-body { padding: 24px 18px 34px; font-size: 10.2pt; }
   .wys-preamble { flex-wrap: wrap; }
   .wys-preamble-btn { margin-left: 0; }
   .wys-eq-number { right: 0; }
@@ -17556,6 +17868,8 @@ const TeXPreview = (() => {
     s = s.replace(/\\\\\s*(?:\[[^\]]*\])?/g, ' ');
     s = s.replace(/\\(?:newline|linebreak)\s*(?:\[[^\]]*\])?/g, ' ');
     s = s.replace(/~/g, ' ');
+    // Control space ("\LaTeX\ is") would otherwise leave a stray backslash.
+    s = s.replace(/\\\s+/g, ' ');
     s = s.replace(/\\(?:thanks|footnote|footnotetext)\s*\{/g, '{');
     s = s.replace(/\\(?:textbf|textit|emph|textsc|textsf|texttt|textrm|textnormal|mbox|hbox|text|mathrm|mathbf|mathit)\s*\{([^{}]*)\}/g, '$1');
     s = s.replace(/\\[a-zA-Z@]+\*?\s*(?:\[[^\]]*\])?/g, (m) => {
@@ -17890,6 +18204,9 @@ const TeXPreview = (() => {
       zh: false,
       docClass: 'article',
       docOptions: [],
+      packageOptions: new Map(),
+      geometryRaw: '',
+      baseFont: '',
       titleRaw: '',
       authorRaw: '',
       dateRaw: null,
@@ -18006,13 +18323,15 @@ const TeXPreview = (() => {
     if (ctx.docOptions.includes('letterpaper')) ctx.pageSize = 'letter';
     if (ctx.docOptions.includes('a4paper')) ctx.pageSize = 'a4';
     const opts = ctx.docOptions.join(',');
-    if (/11pt|12pt/.test(opts)) ctx.baseFont = opts.match(/1[12]pt/)[0];
+    const size = /\b(10|11|12)pt\b/.exec(opts);
+    if (size) ctx.baseFont = `${size[1]}pt`;
   }
 
   function parseGeometry(ctx, preamble) {
     const geo = extractCommandArg(preamble, 'geometry');
     if (!geo) return;
     const o = geo.text;
+    ctx.geometryRaw = o;
     if (/letterpaper/i.test(o)) ctx.pageSize = 'letter';
     if (/a4paper/i.test(o)) ctx.pageSize = 'a4';
   }
@@ -18021,9 +18340,13 @@ const TeXPreview = (() => {
     const re = /\\usepackage\s*(?:\[([^\]]*)\])?\s*\{([^}]*)\}/g;
     let m;
     while ((m = re.exec(preamble))) {
+      const options = (m[1] || '').split(',').map((s) => s.trim().toLowerCase()).filter(Boolean);
       for (const p of m[2].split(',')) {
         const name = p.trim().toLowerCase();
-        if (name) ctx.packages.add(name);
+        if (name) {
+          ctx.packages.add(name);
+          if (options.length) ctx.packageOptions.set(name, options);
+        }
       }
     }
     const cls = ctx.docClass;
@@ -20458,6 +20781,66 @@ const TeXPreview = (() => {
     };
   }
 
+  // Author notes are typeset as footnotes, not as extra author lines.
+  function stripAuthorNotes(src) {
+    const s = String(src || '');
+    let out = '';
+    let i = 0;
+    while (i < s.length) {
+      if (s[i] === '\\') {
+        const m = /^\\(?:thanks|footnote|footnotetext)\b\s*/.exec(s.slice(i));
+        if (m) {
+          const p = i + m[0].length;
+          if (s[p] === '{') {
+            const g = readGroup(s, p);
+            if (g) { i = g.end; continue; }
+          }
+        }
+      }
+      out += s[i++];
+    }
+    return out;
+  }
+
+  // Simple, argument-less definitions such as \def\confName{CVPR}. The visual
+  // editor can substitute these without a TeX engine.
+  function collectSimpleDefs(source) {
+    const defs = {};
+    const re = /\\(?:def|newcommand|renewcommand|providecommand)\s*(?:\{\s*\\([A-Za-z@]+)\s*\}|\\([A-Za-z@]+))\s*(?:\[[^\]]*\]\s*)?\{([^{}]*)\}/g;
+    let m;
+    while ((m = re.exec(source))) {
+      const name = m[1] || m[2];
+      const value = m[3];
+      if (!name || value == null || defs[name] != null) continue;
+      if (/[#\\{}]/.test(value)) continue;
+      defs[name] = value.trim();
+    }
+    return defs;
+  }
+
+  function expandSimpleDefs(src, defs) {
+    let out = String(src || '');
+    for (const name of Object.keys(defs || {}).sort((a, b) => b.length - a.length)) {
+      const re = new RegExp(`\\\\${name}(?![A-Za-z@])`, 'g');
+      out = out.replace(re, () => defs[name]);
+    }
+    return out;
+  }
+
+  function splitTitleLines(src) {
+    return stripAuthorNotes(src)
+      .split(/\\\\\s*(?:\[[^\]]*\])?/)
+      .map((line) => plainText(line))
+      .filter(Boolean);
+  }
+
+  function splitAuthorGroups(src) {
+    return stripAuthorNotes(src)
+      .split(/\\(?:and|And|AND)(?![A-Za-z])/)
+      .map((author) => splitTitleLines(author))
+      .filter((group) => group.length);
+  }
+
   function buildProject(input = {}) {
     const ctx = createRenderContext(input);
     const warnings = ctx.warnings;
@@ -20492,14 +20875,39 @@ const TeXPreview = (() => {
       html = '<div class="tex-placeholder"><b>正文为空</b><br>在 main.tex 的 document 环境中开始写作吧。</div>';
     }
     const stats = countStats(html, ctx);
+    const packages = Array.from(ctx.packages);
+    const docOptions = ctx.docOptions.slice();
+    const cvprOptions = ctx.packageOptions.get('cvpr') || [];
+    const neuripsOptions = ctx.packageOptions.get('neurips_2025')
+      || ctx.packageOptions.get('neurips')
+      || [];
+    const cvprReview = packages.includes('cvpr') && cvprOptions.includes('review');
+    const neuripsFinal = neuripsOptions.some((o) => (
+      o === 'final' || o === 'preprint' || o === 'dandb' || o === 'creativeai' || o === 'sglblindworkshop'
+    ));
+    const anonymous = cvprReview || (packages.some((p) => /^neurips/.test(p)) && !neuripsFinal);
+    const defs = collectSimpleDefs(source);
+    const defValue = (name) => (defs[name] != null ? plainText(defs[name]) : '');
+    const titleRaw = expandSimpleDefs(ctx.titleRaw, defs);
+    const authorRaw = expandSimpleDefs(ctx.authorRaw, defs);
     const meta = {
-      title: plainText(ctx.titleRaw) || '未命名文稿',
-      author: plainText(ctx.authorRaw),
+      title: plainText(titleRaw) || '未命名文稿',
+      titleLines: splitTitleLines(titleRaw),
+      author: plainText(authorRaw),
+      authorGroups: splitAuthorGroups(authorRaw),
       date: ctx.hasDateCommand ? formatDate(ctx.dateRaw, ctx.zh) : '',
       engine: ctx.engine,
       pageSize: ctx.pageSize,
       zh: ctx.zh,
       docClass: ctx.docClass,
+      docOptions,
+      baseFont: ctx.baseFont || '10pt',
+      packages,
+      geometry: ctx.geometryRaw || '',
+      anonymous,
+      paperId: defValue('paperID'),
+      confName: defValue('confName'),
+      defs,
       mainPath: ctx.mainPath,
       bibFiles: ctx.bibFiles.slice(),
       hasTitle: !!ctx.titleRaw,
@@ -23579,6 +23987,7 @@ const WYS_STRUCT_COMMANDS = new Set([
   'input', 'include', 'subfile', 'includeonly', 'keywords'
 ]);
 const WYS_SILENT_COMMANDS = new Set(['bibliographystyle', 'includeonly']);
+const WYS_INCLUDE_COMMANDS = new Set(['input', 'include', 'subfile']);
 const WYS_LIST_ENVS = new Set(['itemize', 'enumerate', 'description']);
 const WYS_MATH_ENVS = new Set([
   'equation', 'equation*', 'align', 'align*', 'gather', 'gather*', 'multline', 'multline*',
@@ -23615,28 +24024,95 @@ const WYS_FORMAT_MACROS = {
   textnormal: 'span',
   mbox: 'span'
 };
+// TeX 2.09-era declarations still common in conference templates.
+const WYS_DECL_MACROS = {
+  bf: 'textbf', bfseries: 'textbf', mdseries: 'textnormal',
+  it: 'textit', itshape: 'textit', sl: 'textit', slshape: 'textit',
+  em: 'emph',
+  tt: 'texttt', ttfamily: 'texttt',
+  sc: 'textsc', scshape: 'textsc',
+  rm: 'textrm', rmfamily: 'textrm', normalfont: 'textnormal',
+  sf: 'textsf', sffamily: 'textsf'
+};
 const WYS_SYMBOL_MACROS = {
   LaTeX: 'LaTeX', TeX: 'TeX', XeLaTeX: 'XeLaTeX', pdfLaTeX: 'pdfLaTeX',
   BibTeX: 'BibTeX', LaTeXe: 'LaTeX2e', ldots: '…', dots: '…', textellipsis: '…',
   textbackslash: '\\', textasciitilde: '~', textasciicircum: '^',
   textendash: '–', textemdash: '—', S: '§', P: '¶', copyright: '©', textregistered: '®',
-  texttrademark: '™', dag: '†', ddag: '‡', pounds: '£', euro: '€', checkmark: '✓'
+  texttrademark: '™', dag: '†', ddag: '‡', pounds: '£', euro: '€', checkmark: '✓',
+  eg: 'e.g.', ie: 'i.e.', etc: 'etc.', etal: 'et al.', vs: 'vs.', cf: 'cf.', iid: 'i.i.d.'
 };
 
 const wys = {
   active: false,
   path: '',
+  rootPath: '',
   blocks: [],
   bodyStart: 0,
   bodyEnd: 0,
   project: null,
+  profile: 'article',
   typesetToken: 0,
+  renderToken: 0,
   refreshTimer: null,
   internalEdit: false,
   focusRequest: null,
   lastBlock: null,
-  savedRange: null
+  savedRange: null,
+  hostObserver: null
 };
+
+// The visual surface follows the document class rather than one generic sheet:
+// CVPR is a two-column Times page, NeurIPS a wide single column, and the
+// Chinese starter an A4 ctexart page. Profiles drive both geometry and type.
+function wysTemplateProfile(project) {
+  const meta = (project && project.meta) || {};
+  const packages = (meta.packages || []).map((s) => String(s).toLowerCase());
+  const options = (meta.docOptions || []).map((s) => String(s).toLowerCase());
+  if (packages.includes('cvpr')) return 'cvpr';
+  if (packages.some((p) => /^neurips/.test(p) || p === 'nips')) return 'neurips';
+  if (meta.zh || /^ctex/.test(meta.docClass || '')) return 'ctex';
+  if (options.includes('twocolumn')) return 'twocolumn';
+  return meta.pageSize === 'letter' ? 'letter' : 'article';
+}
+
+function wysPlainHeading(raw) {
+  return String(raw || '')
+    .replace(/\\label\s*\{[^}]*\}/g, '')
+    .replace(/\\(?:cite|citep|citet|ref|eqref|cref|Cref|autoref)\*?\s*(?:\[[^\]]*\])?\s*\{[^}]*\}/g, '')
+    .replace(/\\(?:textbf|textit|emph|texttt|textrm|textsf|textsc)\s*\{([^{}]*)\}/g, '$1')
+    .replace(/\$([^$]*)\$/g, '$1')
+    .replace(/\\[a-zA-Z@]+\*?/g, ' ')
+    .replace(/[{}]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+}
+
+// Headings are scanned file by file, so take the section number from the
+// document-wide TOC/label table instead of a local counter (which would
+// restart in every \input file).
+function wysAssignHeadingNumbers(blocks, project) {
+  if (!project) return;
+  const toc = project.toc || [];
+  const labels = project.labels || {};
+  const used = new Set();
+  for (const block of blocks) {
+    if (block.kind !== 'heading' || block.starred) continue;
+    let number = '';
+    const labeled = block.label ? labels[block.label] : null;
+    if (labeled && labeled.number && labeled.number !== '?') number = String(labeled.number);
+    if (!number && toc.length) {
+      const title = wysPlainHeading(block.raw);
+      const index = toc.findIndex((item, i) => !used.has(i) && wysPlainHeading(item.title) === title);
+      if (index >= 0) {
+        used.add(index);
+        if (toc[index].number) number = String(toc[index].number);
+      }
+    }
+    if (number) block.number = number;
+  }
+}
 
 /* --------------------------------------------------------------------------
    Small source helpers (brace aware, comment aware)
@@ -23872,7 +24348,7 @@ function wysScanProse(text, start, end, project, opts = {}) {
           prefix: '\\keywords{',
           suffix: '}',
           parent: opts.parent != null ? opts.parent : null
-        }, project, text));
+        }, project, text, opts.path));
         i = g.end;
         continue;
       }
@@ -23910,7 +24386,7 @@ function wysScanProse(text, start, end, project, opts = {}) {
         contentEnd: trimmed.end,
         prefix,
         parent: opts.parent != null ? opts.parent : null
-      }, project, text));
+      }, project, text, opts.path));
     }
     i = stop > i ? stop : i + 1;
     if (text.startsWith('\\par', i)) i += 4;
@@ -23918,7 +24394,7 @@ function wysScanProse(text, start, end, project, opts = {}) {
   return blocks;
 }
 
-function wysScanItems(text, start, end, project, parent) {
+function wysScanItems(text, start, end, project, parent, fromPath) {
   const items = [];
   let i = start;
   let current = null;
@@ -23928,7 +24404,7 @@ function wysScanItems(text, start, end, project, parent) {
     if (trimmed.end > trimmed.start) {
       current.contentEnd = trimmed.end;
       current.end = trimmed.end;
-      items.push(wysMakeBlock(current, project, text));
+      items.push(wysMakeBlock(current, project, text, fromPath));
     }
     current = null;
   };
@@ -23974,7 +24450,7 @@ function wysScanItems(text, start, end, project, parent) {
   return items;
 }
 
-function wysMakeBlock(base, project, text) {
+function wysMakeBlock(base, project, text, fromPath) {
   const block = Object.assign({
     index: -1,
     kind: 'para',
@@ -23984,11 +24460,12 @@ function wysMakeBlock(base, project, text) {
     prefix: '',
     suffix: '',
     label: '',
+    path: fromPath || '',
     parsed: null,
     raw: ''
   }, base);
   block.raw = text.slice(block.contentStart, block.contentEnd);
-  block.parsed = wysParseInline(block.raw, project);
+  block.parsed = wysParseInline(block.raw, project, block.path);
   const unsafeBlockCmd = /\\(?:begin|end|section|subsection|chapter|part|paragraph|item|par)\b/.test(block.raw);
   const comment = /(^|[^\\])%/.test(block.raw);
   const multiline = /\n[ \t]*\n/.test(block.raw);
@@ -23996,9 +24473,11 @@ function wysMakeBlock(base, project, text) {
   return block;
 }
 
-function wysScanDocument(text, path, project) {
+function wysScanDocument(text, path, project, opts = {}) {
   const range = wysBodyRange(text);
   const blocks = [];
+  const stack = Array.isArray(opts.stack) ? opts.stack : [path];
+  const depth = Number(opts.depth) || 0;
   let i = range.start;
   const push = (b) => { b.index = blocks.length; blocks.push(b); return b; };
 
@@ -24051,8 +24530,10 @@ function wysScanDocument(text, path, project) {
               command: h.command,
               starred: h.starred
             });
+            const labelMatch = /\\label\s*\{([^}]*)\}/.exec(text.slice(h.start, h.end));
+            if (labelMatch) b.label = labelMatch[1].trim();
             b.raw = text.slice(h.contentStart, h.contentEnd);
-            b.parsed = wysParseInline(b.raw, project);
+            b.parsed = wysParseInline(b.raw, project, path);
             b.editable = b.parsed.safe && !/(^|[^\\])%/.test(b.raw);
             i = h.end;
             continue;
@@ -24086,12 +24567,13 @@ function wysScanDocument(text, path, project) {
                 container.title = title;
               }
               if (kind === 'list') {
-                container.children = wysScanItems(text, bodyStart, env.innerEnd, project, container.index)
+                container.children = wysScanItems(text, bodyStart, env.innerEnd, project, container.index, path)
                   .map((child) => push(child).index);
               } else {
                 container.children = wysScanProse(text, bodyStart, env.innerEnd, project, {
                   keywords: kind === 'abstract',
-                  parent: container.index
+                  parent: container.index,
+                  path
                 }).map((child) => push(child).index);
               }
               i = env.end;
@@ -24122,6 +24604,28 @@ function wysScanDocument(text, path, project) {
           if (text[p] === '{') {
             group = wysReadGroup(text, p, range.end);
             if (group) p = group.end;
+          }
+          // Render the whole paper, not an include placeholder: expand
+          // \input/\include in place, with cycle and depth guards.
+          if (WYS_INCLUDE_COMMANDS.has(cmd.name) && group && depth < 12) {
+            const target = wysResolveTexPath(group.text, path);
+            const targetFile = target ? state.files.get(target) : null;
+            if (target && targetFile && targetFile.text != null && !stack.includes(target)) {
+              const sub = wysScanDocument(targetFile.text, target, project, {
+                stack: stack.concat(target),
+                depth: depth + 1
+              });
+              const base = blocks.length;
+              for (const child of sub.blocks) {
+                child.index += base;
+                if (child.parent != null) child.parent += base;
+                if (Array.isArray(child.children)) child.children = child.children.map((n) => n + base);
+                if (!child.path) child.path = target;
+                blocks.push(child);
+              }
+              i = p;
+              continue;
+            }
           }
           if (!WYS_SILENT_COMMANDS.has(cmd.name)) {
             push({
@@ -24170,11 +24674,14 @@ function wysScanDocument(text, path, project) {
         contentStart,
         contentEnd: trimmed.end,
         prefix
-      }, project, text));
+      }, project, text, path));
     }
     i = p > i ? p : i + 1;
   }
 
+  for (const block of blocks) {
+    if (!block.path) block.path = path;
+  }
   return { blocks, bodyStart: range.start, bodyEnd: range.end, hasPreamble: range.hasPreamble };
 }
 
@@ -24182,7 +24689,7 @@ function wysEnvKind(env) {
   if (env === 'abstract') return 'abstract';
   if (WYS_LIST_ENVS.has(env)) return 'list';
   if (WYS_MATH_ENVS.has(env)) return 'math';
-  if (env === 'figure' || env === 'figure*' || env === 'wrapfigure') return 'figure';
+  if (env === 'figure' || env === 'figure*' || env === 'wrapfigure' || env === 'strip') return 'figure';
   if (env === 'table' || env === 'table*' || env === 'tabular' || env === 'tabular*' || env === 'longtable') return 'table';
   if (env === 'verbatim' || env === 'Verbatim' || env === 'lstlisting' || env === 'minted') return 'code';
   if (env === 'quote' || env === 'quotation' || env === 'center' || env === 'flushleft' || env === 'flushright') return 'quote';
@@ -24234,10 +24741,14 @@ function wysRefDisplay(project, cmd, key) {
   return escapeHtml(n);
 }
 
-function wysParseInline(src, project) {
+function shouldRenderDefValue(value) {
+  return typeof value === 'string' && !!value && !/[\\{}#$]/.test(value);
+}
+
+function wysParseInline(src, project, fromPath) {
   const st = { safe: true };
   const text = String(src == null ? '' : src);
-  const tokens = wysParseInlineSeq(text, 0, text.length, project, st, 0);
+  const tokens = wysParseInlineSeq(text, 0, text.length, project, st, 0, fromPath);
   return {
     safe: st.safe,
     tokens,
@@ -24245,7 +24756,7 @@ function wysParseInline(src, project) {
   };
 }
 
-function wysParseInlineSeq(s, i, limit, project, st, depth) {
+function wysParseInlineSeq(s, i, limit, project, st, depth, fromPath) {
   const out = [];
   let text = '';
   const flush = () => { if (text) { out.push({ t: 'text', v: text }); text = ''; } };
@@ -24296,13 +24807,26 @@ function wysParseInlineSeq(s, i, limit, project, st, depth) {
       if (!cmd) { text += '\\'; i++; continue; }
       const name = cmd.name;
 
+      // Unbraced declaration (\bf text) styles the rest of this scope.
+      if (WYS_DECL_MACROS[name]) {
+        const p = wysSkipSpaces(s, cmd.end, limit);
+        const g = s[p] === '{' ? wysReadGroup(s, p, limit) : null;
+        flush();
+        const child = g
+          ? wysParseInlineSeq(s, g.contentStart, g.contentEnd, project, st, depth + 1, fromPath)
+          : wysParseInlineSeq(s, cmd.end, limit, project, st, depth + 1, fromPath);
+        out.push({ t: 'mark', kind: WYS_DECL_MACROS[name], children: child });
+        i = g ? g.end : limit;
+        continue;
+      }
+
       if (WYS_FORMAT_MACROS[name]) {
         let p = wysSkipSpaces(s, cmd.end, limit);
         if (s[p] !== '{') { st.safe = false; text += s.slice(i, cmd.end); i = cmd.end; continue; }
         const g = wysReadGroup(s, p, limit);
         if (!g) { st.safe = false; text += s.slice(i, cmd.end); i = cmd.end; continue; }
         flush();
-        const child = wysParseInlineSeq(s, g.contentStart, g.contentEnd, project, st, depth + 1);
+        const child = wysParseInlineSeq(s, g.contentStart, g.contentEnd, project, st, depth + 1, fromPath);
         out.push({ t: 'mark', kind: name, children: child });
         i = g.end;
         continue;
@@ -24399,7 +24923,7 @@ function wysParseInlineSeq(s, i, limit, project, st, depth) {
         const g = s[p] === '{' ? wysReadGroup(s, p, limit) : null;
         if (!g) { st.safe = false; text += s.slice(i, cmd.end); i = cmd.end; continue; }
         flush();
-        const url = wysAssetUrl(g.text.trim(), wys.path);
+        const url = wysAssetUrl(g.text.trim(), fromPath || wys.path);
         const html = url
           ? `<img class="wys-inline-img" src="${escapeAttr(url)}" alt="">`
           : `<span class="wys-macro-token">\\includegraphics</span>`;
@@ -24426,6 +24950,21 @@ function wysParseInlineSeq(s, i, limit, project, st, depth) {
         flush();
         out.push({ t: 'atom', tex, html: `<span class="wys-symbol">${escapeHtml(WYS_SYMBOL_MACROS[name])}</span>`, cls: 'wys-symbol-atom' });
         i = p;
+        continue;
+      }
+
+      // Simple user definitions (\def\confName{CVPR}) render as their value
+      // while keeping the original source for round-tripping.
+      const defs = project && project.meta && project.meta.defs;
+      if (defs && typeof defs[name] === 'string' && shouldRenderDefValue(defs[name])) {
+        flush();
+        out.push({
+          t: 'atom',
+          tex: s.slice(i, cmd.end),
+          html: `<span class="wys-symbol">${escapeHtml(defs[name])}</span>`,
+          cls: 'wys-symbol-atom'
+        });
+        i = cmd.end;
         continue;
       }
 
@@ -24495,7 +25034,22 @@ function wysParseInlineSeq(s, i, limit, project, st, depth) {
     }
 
     if (ch === '~') { text += '\u00A0'; i++; continue; }
-    if (ch === '{' || ch === '}') { i++; continue; }
+    if (ch === '{') {
+      // Old-style font declarations scope to the group: {\bf text}.
+      const g = wysReadGroup(s, i, limit);
+      const decl = g ? /^\s*\\([A-Za-z]+)\s*/.exec(g.text) : null;
+      const kind = decl ? WYS_DECL_MACROS[decl[1]] : null;
+      if (g && kind) {
+        flush();
+        const child = wysParseInlineSeq(s, g.contentStart + decl[0].length, g.contentEnd, project, st, depth + 1, fromPath);
+        out.push({ t: 'mark', kind, children: child });
+        i = g.end;
+        continue;
+      }
+      i++;
+      continue;
+    }
+    if (ch === '}') { i++; continue; }
     if (ch === '\n' || ch === '\r') { text += ' '; i++; continue; }
     text += ch;
     i++;
@@ -24504,9 +25058,18 @@ function wysParseInlineSeq(s, i, limit, project, st, depth) {
   return out;
 }
 
+// TeX's ``...''/`...' pairs read as typographic quotes on the page.
+function wysSmartQuotes(value) {
+  return String(value || '')
+    .replace(/``/g, '“')
+    .replace(/''/g, '”')
+    .replace(/`/g, '‘')
+    .replace(/'/g, '’');
+}
+
 function wysRenderTokens(tokens) {
   return tokens.map((tok) => {
-    if (tok.t === 'text') return escapeHtml(tok.v);
+    if (tok.t === 'text') return escapeHtml(wysSmartQuotes(tok.v));
     if (tok.t === 'break') return '<br>';
     if (tok.t === 'atom') {
       return `<span class="wys-atom${tok.cls ? ' ' + tok.cls : ''}" contenteditable="false" data-tex="${escapeAttr(tok.tex)}">${tok.html}</span>`;
@@ -24540,6 +25103,7 @@ const WYS_LATEX_ESCAPES = {
 
 function wysEscapeText(value) {
   return String(value || '')
+    .replace(/[\u201C\u201D\u2018\u2019]/g, (ch) => ({ '\u201C': '``', '\u201D': "''", '\u2018': '`', '\u2019': "'" }[ch]))
     .replace(/[\\{}%$&#_^~\u00A0]/g, (ch) => WYS_LATEX_ESCAPES[ch] || ch);
 }
 
@@ -24636,6 +25200,7 @@ function wysParagraphSurface(block, project, opts = {}) {
   const wrap = document.createElement('div');
   wrap.className = 'wys-block wys-para' + (block.kind === 'keywords' ? ' wys-keywords-block' : '') + (opts.className ? ' ' + opts.className : '');
   wrap.dataset.block = String(block.index);
+  if (block.path) wrap.dataset.path = block.path;
   if (block.kind === 'keywords') {
     const prefix = document.createElement('span');
     prefix.className = 'wys-prefix';
@@ -24659,6 +25224,13 @@ function wysHeadingSurface(block, project) {
   const head = document.createElement(tag);
   head.className = 'wys-block wys-heading';
   head.dataset.block = String(block.index);
+  if (block.path) head.dataset.path = block.path;
+  if (block.number) {
+    const num = document.createElement('span');
+    num.className = 'wys-heading-num';
+    num.textContent = block.number;
+    head.appendChild(num);
+  }
   const text = document.createElement('span');
   text.className = 'wys-text';
   text.spellcheck = false;
@@ -24666,12 +25238,13 @@ function wysHeadingSurface(block, project) {
   if (!block.editable) text.classList.add('is-readonly');
   text.innerHTML = block.parsed.html;
   head.appendChild(text);
-  const file = state.files.get(wys.path);
-  const labelMatch = /\\label\s*\{([^}]*)\}/.exec(file ? file.text.slice(block.contentEnd, block.end) : '');
-  if (labelMatch) {
+  const file = state.files.get(block.path || wys.path);
+  const label = block.label
+    || (/\\label\s*\{([^}]*)\}/.exec(file ? file.text.slice(block.contentEnd, block.end) : '') || [])[1];
+  if (label) {
     const anchor = document.createElement('span');
     anchor.className = 'wys-anchor';
-    anchor.textContent = labelMatch[1];
+    anchor.textContent = label;
     anchor.title = '标签';
     head.appendChild(anchor);
   }
@@ -24683,10 +25256,11 @@ function wysItemSurface(block, project) {
   const li = document.createElement('li');
   li.className = 'wys-block wys-item';
   li.dataset.block = String(block.index);
+  if (block.path) li.dataset.path = block.path;
   if (block.label) {
     const label = document.createElement('span');
     label.className = 'wys-item-label';
-    label.innerHTML = wysParseInline(block.label, project).html;
+    label.innerHTML = wysParseInline(block.label, project, block.path).html;
     li.appendChild(label);
   }
   const text = document.createElement('div');
@@ -24704,6 +25278,7 @@ function wysVisualBlock(block, extraClass, bodyHtml, label) {
   const wrap = document.createElement('div');
   wrap.className = `wys-block wys-visual${extraClass ? ' ' + extraClass : ''}`;
   wrap.dataset.block = String(block.index);
+  if (block.path) wrap.dataset.path = block.path;
   if (label) wrap.setAttribute('aria-label', label);
   wrap.innerHTML = bodyHtml;
   wrap.appendChild(wysHoverTool(block));
@@ -24717,12 +25292,12 @@ function wysBlockNumber(raw, project) {
   return label && label.number ? String(label.number) : '';
 }
 
-function wysCaptionHtml(caption, project, raw, kind) {
+function wysCaptionHtml(caption, project, raw, kind, fromPath) {
   if (!caption) return '';
   const zh = !!(project && project.meta && project.meta.zh);
   const word = kind === 'table' ? (zh ? '表' : 'Table') : (zh ? '图' : 'Figure');
   const number = wysBlockNumber(raw, project);
-  return `<div class="wys-caption"><span class="wys-caption-label">${word}${number ? ' ' + escapeHtml(number) : ''}</span>${wysParseInline(caption, project).html}</div>`;
+  return `<div class="wys-caption"><span class="wys-caption-label">${word}${number ? ' ' + escapeHtml(number) : ''}</span>${wysParseInline(caption, project, fromPath).html}</div>`;
 }
 
 function wysExtractFirst(raw, re) {
@@ -24733,19 +25308,33 @@ function wysExtractFirst(raw, re) {
 }
 
 function wysFigureBody(raw, project, block) {
-  const caption = wysExtractFirst(raw, /\\caption\*?\s*(?:\[[^\]]*\]\s*)?\{/g);
-  const graphic = /\\includegraphics\s*(?:\[([^\]]*)\])?\s*\{([^}]*)\}/.exec(raw);
-  let html = '';
-  if (graphic) {
-    const url = wysAssetUrl(graphic[2], wys.path);
-    const width = wysGraphicWidth(graphic[1] || '');
-    if (url) {
-      html += `<div class="wys-figure-media"><img src="${escapeAttr(url)}" alt="${escapeAttr(pathBase(graphic[2]))}"${width ? ` style="width:${width}"` : ''}></div>`;
-    } else {
-      html += `<div class="wys-figure-missing">图片未找到 · <code>${escapeHtml(graphic[2])}</code></div>`;
-    }
+  let caption = wysExtractFirst(raw, /\\caption\*?\s*(?:\[[^\]]*\]\s*)?\{/g);
+  if (!caption) {
+    caption = wysExtractFirst(raw, /\\captionof\s*\{[^}]*\}\s*(?:\[[^\]]*\]\s*)?\{/g);
   }
-  if (caption) html += wysCaptionHtml(caption.group.text, project, raw, 'figure');
+  const graphics = [];
+  const re = /\\includegraphics\s*(?:\[([^\]]*)\])?\s*\{([^}]*)\}/g;
+  let m;
+  while ((m = re.exec(raw))) graphics.push({ opts: m[1] || '', ref: m[2] });
+  let html = '';
+  if (graphics.length) {
+    const fromPath = (block && block.path) || wys.path;
+    const parts = graphics.map((graphic) => {
+      const url = wysAssetUrl(graphic.ref, fromPath);
+      const width = wysGraphicWidth(graphic.opts);
+      if (url) {
+        return `<img src="${escapeAttr(url)}" alt="${escapeAttr(pathBase(graphic.ref))}"${width ? ` style="width:${width}"` : ''}>`;
+      }
+      // The mwe example images are not project assets but the TeX engine still
+      // typesets them, so keep their golden-ratio footprint in the visual page.
+      const example = /^example-image/i.test(pathBase(graphic.ref));
+      return `<div class="wys-figure-missing${example ? ' wys-figure-example' : ''}">图片未找到 · <code>${escapeHtml(graphic.ref)}</code></div>`;
+    });
+    html += graphics.length > 1
+      ? `<div class="wys-figure-media wys-figure-strip">${parts.join('')}</div>`
+      : `<div class="wys-figure-media">${parts[0]}</div>`;
+  }
+  if (caption) html += wysCaptionHtml(caption.group.text, project, raw, 'figure', block && block.path);
   if (!html) html = `<pre class="wys-source">${escapeHtml(raw.trim())}</pre>`;
   return html;
 }
@@ -24799,7 +25388,7 @@ function wysSplitRows(raw) {
     .filter((r) => r.length);
 }
 
-function wysTableBody(raw, project) {
+function wysTableBody(raw, project, fromPath) {
   let caption = '';
   const cap = wysExtractFirst(raw, /\\caption\*?\s*(?:\[[^\]]*\]\s*)?\{/g);
   if (cap) caption = cap.group.text;
@@ -24822,13 +25411,13 @@ function wysTableBody(raw, project) {
         const g = wysReadGroup(clean, mc[0].length - 1, clean.length);
         if (g) clean = g.text;
       }
-      return `<td>${wysParseInline(clean, project).html}</td>`;
+      return `<td>${wysParseInline(clean, project, fromPath).html}</td>`;
     });
     table += `<tr${index === 0 ? ' class="head"' : ''}>${cells.join('')}</tr>`;
   });
   table += '</table>';
   let html = '';
-  if (caption) html += wysCaptionHtml(caption, project, raw, 'table');
+  if (caption) html += wysCaptionHtml(caption, project, raw, 'table', fromPath);
   html += table;
   return html;
 }
@@ -24853,6 +25442,7 @@ function wysRenderBlock(block, project) {
     const wrap = document.createElement('div');
     wrap.className = `wys-block wys-container wys-${block.kind}`;
     wrap.dataset.block = String(block.index);
+    if (block.path) wrap.dataset.path = block.path;
     const zh = !!(project && project.meta && project.meta.zh);
     if (block.kind === 'abstract') {
       const title = document.createElement('div');
@@ -24914,8 +25504,13 @@ function wysRenderBlock(block, project) {
   if (block.kind === 'environment') {
     const kind = wysEnvKind(block.env);
     if (kind === 'math') return wysVisualBlock(block, 'wys-block-equation', wysMathBody(block.raw, block.env, project), block.env);
-    if (kind === 'figure') return wysVisualBlock(block, 'wys-block-figure', wysFigureBody(block.raw, project, block), block.env);
-    if (kind === 'table') return wysVisualBlock(block, 'wys-block-table', wysTableBody(block.raw, project), block.env);
+    if (kind === 'figure' || kind === 'table') {
+      const el = kind === 'figure'
+        ? wysVisualBlock(block, 'wys-block-figure', wysFigureBody(block.raw, project, block), block.env)
+        : wysVisualBlock(block, 'wys-block-table', wysTableBody(block.raw, project, block.path), block.env);
+      if (block.env === 'strip' || /\*$/.test(block.env)) el.classList.add('wys-span-all');
+      return el;
+    }
     if (kind === 'code') return wysVisualBlock(block, 'wys-block-code', `<pre class="wys-source">${escapeHtml(block.raw.trim())}</pre>`, block.env);
     return wysVisualBlock(block, 'wys-block-env', `<pre class="wys-source">${escapeHtml(block.raw.trim())}</pre>`, block.env);
   }
@@ -24925,24 +25520,49 @@ function wysRenderBlock(block, project) {
 
 function wysCommandCard(block, project) {
   const cmd = block.command;
-  const fileName = pathBase(wys.path);
+  const fromPath = block.path || wys.path;
+  const fileName = pathBase(fromPath);
   if (cmd === 'maketitle') {
     const meta = (project && project.meta) || {};
+    const profile = wys.profile;
+    const zh = !!meta.zh;
+    let titleLines = Array.isArray(meta.titleLines) && meta.titleLines.length
+      ? meta.titleLines
+      : [meta.title || (zh ? '未命名文稿' : 'Untitled Paper')];
+    let groups = Array.isArray(meta.authorGroups) ? meta.authorGroups.filter((g) => g.length) : [];
+    if (meta.anonymous && profile === 'cvpr') {
+      groups = [[`Anonymous ${meta.confName || 'CVPR'} submission`, `Paper ID ${meta.paperId || '*****'}`]];
+    } else if (meta.anonymous && profile === 'neurips') {
+      groups = [['Anonymous Author(s)', 'Affiliation', 'Address', 'email']];
+    }
+    const authors = groups.length
+      ? `<div class="wys-title-authors">${groups.map((group) => `<div class="wys-title-author">${group.map((line) => escapeHtml(line)).join('<br>')}</div>`).join('')}</div>`
+      : '';
+    const showDate = profile !== 'cvpr' && profile !== 'neurips' && meta.date;
     const html = `<div class="wys-title-block">
-      <h1>${escapeHtml(meta.title || '未命名文稿')}</h1>
-      <div class="wys-title-meta">${escapeHtml(meta.author || '')}${meta.date ? `<span>${escapeHtml(meta.date)}</span>` : ''}</div>
+      <h1>${titleLines.map((line) => escapeHtml(line)).join('<br>')}</h1>
+      ${authors}
+      ${showDate ? `<div class="wys-title-date">${escapeHtml(meta.date)}</div>` : ''}
     </div>`;
     return wysVisualBlock(block, 'wys-block-title', html, '标题');
   }
   if (cmd === 'tableofcontents') {
     const toc = (project && project.toc) || [];
+    const zh = !!(project && project.meta && project.meta.zh);
     const html = toc.length
-      ? `<div class="wys-toc">${toc.map((item) => `<div class="wys-toc-item" style="padding-left:${(item.level || 1) * 14}px"><span>${escapeHtml(item.title || '')}</span><span class="wys-toc-dots"></span><span>${escapeHtml(item.number || '')}</span></div>`).join('')}</div>`
-      : '<div class="wys-visual-note">目录将在编译后生成</div>';
+      ? `<div class="wys-toc"><div class="wys-toc-title">${zh ? '目录' : 'Contents'}</div>${toc.map((item) => {
+        const level = Math.max(1, item.level || 1);
+        return `<div class="wys-toc-item" style="--toc-level:${level - 1}">`
+          + `<span class="wys-toc-num">${escapeHtml(item.number || '')}</span>`
+          + `<span class="wys-toc-text">${escapeHtml(item.title || '')}</span>`
+          + '<span class="wys-toc-dots"></span>'
+          + '</div>';
+      }).join('')}</div>`
+      : `<div class="wys-visual-note">${zh ? '目录将在编译后生成' : 'Contents will appear after compilation'}</div>`;
     return wysVisualBlock(block, 'wys-block-toc', html, '目录');
   }
   if (cmd === 'input' || cmd === 'include' || cmd === 'subfile') {
-    const target = wysResolveTexPath(block.argument, wys.path);
+    const target = wysResolveTexPath(block.argument, fromPath);
     const targetFile = target ? state.files.get(target) : null;
     const exists = !!targetFile;
     const html = `<div class="wys-include-line">
@@ -24968,8 +25588,9 @@ function wysCommandCard(block, project) {
       index: block.index,
       kind: 'keywords',
       raw: block.argument,
-      parsed: wysParseInline(block.argument, project),
-      editable: wysParseInline(block.argument, project).safe,
+      path: fromPath,
+      parsed: wysParseInline(block.argument, project, fromPath),
+      editable: wysParseInline(block.argument, project, fromPath).safe,
       prefix: '\\keywords{'
     };
     return wysParagraphSurface(fake, project);
@@ -24977,7 +25598,7 @@ function wysCommandCard(block, project) {
   return wysVisualBlock(block, 'wys-block-src', `<pre class="wys-source">${escapeHtml(`\\${cmd}`)}</pre>`, fileName);
 }
 
-function wysPreambleChip(lineCount, meta) {
+function wysPreambleChip(lineCount, meta, path) {
   const chip = document.createElement('div');
   chip.className = 'wys-preamble';
   chip.innerHTML = `<div class="wys-preamble-text"><b>导言区</b><small>${lineCount} 行 · ${escapeHtml((meta && meta.docClass) || 'LaTeX')} · 宏包与文档设置</small></div>`;
@@ -24987,7 +25608,8 @@ function wysPreambleChip(lineCount, meta) {
   btn.textContent = '编辑导言区';
   btn.addEventListener('click', () => {
     setEditorMode('source');
-    if (editor && state.activePath === wys.path) {
+    if (path && state.activePath !== path) openFile(path);
+    if (editor) {
       editor.setCursor({ line: 0, ch: 0 });
       editor.focus();
     }
@@ -25000,9 +25622,150 @@ function wysPreambleChip(lineCount, meta) {
    Render the document into #wysiwyg
    -------------------------------------------------------------------------- */
 
-function wyswygRefresh(opts = {}) {
+// Measure the page box from the active profile. A block is laid out at the
+// real column width so its height can be used to split the paper into pages.
+function wysPageMetrics(host, profile) {
+  const cs = getComputedStyle(host);
+  const rawNum = (name, fallback) => {
+    const v = parseFloat(String(cs.getPropertyValue(name) || '').trim());
+    return Number.isFinite(v) ? v : fallback;
+  };
+  const pageWidth = rawNum('--wys-page-width', 816);
+  const pageHeight = rawNum('--wys-page-height', 1056);
+  const padX = pageWidth * rawNum('--wys-pad-x', 11.76) / 100;
+  // CSS resolves percentage padding against the containing block's width,
+  // including padding-top/bottom, so all three margins scale with page width.
+  const padTop = pageWidth * rawNum('--wys-pad-top', 11.76) / 100;
+  const padBottom = pageWidth * rawNum('--wys-pad-bottom', 13.24) / 100;
+  const columns = profile === 'cvpr' || profile === 'twocolumn';
+  const contentWidth = pageWidth - padX * 2;
+  const gap = columns ? contentWidth * 0.0455 : 0;
+  const columnWidth = columns ? (contentWidth - gap) / 2 : contentWidth;
+  return {
+    pageWidth,
+    pageHeight,
+    padX,
+    padTop,
+    padBottom,
+    contentWidth,
+    contentHeight: pageHeight - padTop - padBottom,
+    columns,
+    gap,
+    columnWidth
+  };
+}
+
+// Full-width blocks interrupt the two-column flow: the centered title, the
+// teaser strip, and starred floats all span both columns in the template.
+function wysIsWideBlock(block, metrics) {
+  if (!metrics.columns) return false;
+  if (block.kind === 'command' && (block.command === 'maketitle' || block.command === 'tableofcontents')) return true;
+  if (block.kind === 'environment' && (block.env === 'strip' || /\*$/.test(block.env || ''))) return true;
+  return false;
+}
+
+function wysWaitForImages(root) {
+  const imgs = root.tagName === 'IMG' ? [root] : Array.from(root.querySelectorAll('img'));
+  if (!imgs.length) return Promise.resolve();
+  const wait = Promise.all(imgs.map((img) => new Promise((resolve) => {
+    const done = () => resolve();
+    if (img.complete) {
+      if (img.decode) img.decode().then(done, done);
+      else done();
+      return;
+    }
+    img.addEventListener('load', done, { once: true });
+    img.addEventListener('error', done, { once: true });
+    setTimeout(done, 1200);
+  })));
+  return Promise.race([wait, new Promise((resolve) => setTimeout(resolve, 1800))]);
+}
+
+async function wysMeasureBlocks(host, blocks, project, profile, metrics) {
+  const heights = new Map();
+  const probe = document.createElement('div');
+  probe.className = `wys-doc page-body wys-profile-${profile}`;
+  probe.style.cssText = 'position:absolute;left:-20000px;top:0;visibility:hidden;pointer-events:none;'
+    + 'margin:0;padding:0;border:0;box-shadow:none;min-height:0;width:10px;column-count:auto;';
+  host.appendChild(probe);
+  try {
+    for (const block of blocks) {
+      if (block.parent != null) continue;
+      const wide = wysIsWideBlock(block, metrics);
+      const width = wide ? metrics.contentWidth : metrics.columnWidth;
+      probe.style.width = `${Math.max(40, width)}px`;
+      let el = null;
+      try {
+        el = wysRenderBlock(block, project);
+      } catch (e) {
+        console.warn('WYSIWYG measure failed', e);
+        continue;
+      }
+      probe.appendChild(el);
+      // Images carry the page's largest intrinsic height; measuring before they
+      // decode would under-count figures and let a page overflow.
+      if (el.querySelector('img') || el.tagName === 'IMG') await wysWaitForImages(el);
+      const cs = getComputedStyle(el);
+      const h = el.getBoundingClientRect().height
+        + (parseFloat(cs.marginTop) || 0)
+        + (parseFloat(cs.marginBottom) || 0);
+      heights.set(block.index, Math.max(1, h));
+      probe.removeChild(el);
+    }
+  } finally {
+    probe.remove();
+  }
+  return heights;
+}
+
+// Group top-level blocks into paper pages. A full-width block costs twice its
+// height in a two-column flow because it pushes both columns down.
+function wysPaginateBlocks(blocks, heights, metrics) {
+  const capacity = metrics.columns ? metrics.contentHeight * 2 : metrics.contentHeight;
+  const pages = [];
+  let current = { blocks: [], used: 0, hasColumn: false };
+  const flush = () => {
+    if (!current.blocks.length) return;
+    pages.push(current);
+    current = { blocks: [], used: 0, hasColumn: false };
+  };
+  for (const block of blocks) {
+    if (block.parent != null) continue;
+    const wide = wysIsWideBlock(block, metrics);
+    const height = heights.get(block.index) || 0;
+    const cost = wide && metrics.columns ? height * 2 : height;
+    if (current.blocks.length) {
+      if (wide && current.hasColumn) flush();
+      else if (current.used + cost > capacity * 0.97) flush();
+    }
+    current.blocks.push(block);
+    current.used += cost;
+    if (!wide) current.hasColumn = true;
+  }
+  flush();
+  if (!pages.length) pages.push({ blocks: [], used: 0, hasColumn: false });
+  return pages;
+}
+
+// The sheet is laid out at the real page size (letter/A4 at 96 dpi) and then
+// zoomed to fit the pane. Scaling the whole page — rather than shrinking the
+// page width at a fixed font size — keeps line breaks, column widths and
+// margins identical to the compiled PDF.
+function wysFitSheet(doc) {
+  const host = $('#wysiwyg');
+  if (!host || !doc) return;
+  const pageWidth = parseFloat(getComputedStyle(doc).getPropertyValue('--wys-page-width')) || 816;
+  const avail = Math.max(240, host.clientWidth - 36);
+  const zoom = Math.round(Math.min(1, avail / pageWidth) * 1000) / 1000;
+  if (doc.dataset.zoom === String(zoom)) return;
+  doc.dataset.zoom = String(zoom);
+  doc.style.zoom = String(zoom);
+}
+
+async function wyswygRefresh(opts = {}) {
   const host = $('#wysiwyg');
   if (!host || !wys.active) return;
+  const renderToken = ++wys.renderToken;
   const file = currentFile();
   if (!file || file.text == null) {
     host.innerHTML = '<div class="wys-notice">没有可编辑的文本文件。</div>';
@@ -25024,65 +25787,126 @@ function wyswygRefresh(opts = {}) {
   }
   wys.path = file.path;
   wys.project = project;
-  const scan = wysScanDocument(file.text, file.path, project);
+  // The visual surface always shows the whole paper. When the project has a
+  // main file, scan from it so \input/\include bodies appear in place; the
+  // active file only decides where the view scrolls.
+  const mainFile = state.mainPath ? state.files.get(state.mainPath) : null;
+  const root = mainFile && mainFile.text != null && /\\begin\s*\{document\}/.test(mainFile.text)
+    ? mainFile
+    : file;
+  wys.rootPath = root.path;
+  const scan = wysScanDocument(root.text, root.path, project);
   wys.blocks = scan.blocks;
   wys.bodyStart = scan.bodyStart;
   wys.bodyEnd = scan.bodyEnd;
+  wysAssignHeadingNumbers(wys.blocks, project);
 
-  host.innerHTML = '';
-  const doc = document.createElement('div');
-  doc.className = 'wys-doc page-body' + (project && project.meta && project.meta.zh ? ' paper-zh' : '');
-  if (scan.hasPreamble) {
-    const lineCount = wysLineOf(file.text, scan.bodyStart) - 1;
-    doc.appendChild(wysPreambleChip(lineCount, project && project.meta));
-  }
-  for (const block of wys.blocks) {
-    if (block.parent != null) continue;
-    try {
-      doc.appendChild(wysRenderBlock(block, project));
-    } catch (e) {
-      console.warn('WYSIWYG block failed', e);
-      const fallback = wysVisualBlock(block, 'wys-block-src', `<pre class="wys-source">${escapeHtml(file.text.slice(block.start, block.end))}</pre>`, '源码');
-      doc.appendChild(fallback);
+  const profile = wysTemplateProfile(project);
+  wys.profile = profile;
+  host.dataset.profile = profile;
+
+  // Measure while the previous page stays on screen: images decode
+  // asynchronously, and clearing the host first would drop focus mid-edit.
+  let groups = null;
+  if (scan.blocks.length) {
+    const metrics = wysPageMetrics(host, profile);
+    const heights = await wysMeasureBlocks(host, wys.blocks, project, profile, metrics);
+    if (renderToken !== wys.renderToken || !wys.active) return;
+    groups = wysPaginateBlocks(wys.blocks, heights, metrics);
+    if (window.__QELEMCHI_WYS_DEBUG) {
+      window.__wysDebugLast = {
+        metrics,
+        heights: Array.from(heights.entries()),
+        groups: groups.map((g) => g.blocks.map((b) => b.index)),
+        blocks: wys.blocks.map((b) => ({ index: b.index, kind: b.kind, env: b.env, path: b.path, raw: String(b.raw || '').slice(0, 80) }))
+      };
     }
   }
+
+  host.innerHTML = '';
+  if (scan.hasPreamble) {
+    const lineCount = wysLineOf(root.text, scan.bodyStart) - 1;
+    host.appendChild(wysPreambleChip(lineCount, project && project.meta, root.path));
+  }
+  const pagesEl = document.createElement('div');
+  pagesEl.className = 'wys-pages';
+
+  const renderBlocks = (flow, blocks) => {
+    for (const block of blocks) {
+      try {
+        flow.appendChild(wysRenderBlock(block, project));
+      } catch (e) {
+        console.warn('WYSIWYG block failed', e);
+        const blockFile = state.files.get(block.path || file.path) || file;
+        const fallback = wysVisualBlock(block, 'wys-block-src', `<pre class="wys-source">${escapeHtml(blockFile.text.slice(block.start, block.end))}</pre>`, '源码');
+        flow.appendChild(fallback);
+      }
+    }
+  };
+
+  const addPage = (blocks) => {
+    const pageEl = document.createElement('div');
+    pageEl.className = 'wys-page';
+    pageEl.dataset.page = String(pagesEl.children.length + 1);
+    const flow = document.createElement('div');
+    flow.className = `wys-doc page-body wys-profile-${profile}`
+      + (project && project.meta && project.meta.zh ? ' paper-zh' : '');
+    flow.dataset.page = pageEl.dataset.page;
+    renderBlocks(flow, blocks);
+    pageEl.appendChild(flow);
+    pagesEl.appendChild(pageEl);
+    return flow;
+  };
+
   if (!scan.blocks.length) {
+    const flow = addPage([]);
     const empty = document.createElement('div');
     empty.className = 'wys-empty';
     empty.innerHTML = '<b>正文为空</b><span>在源码模式中写入第一段，或直接在这里开始输入。</span>';
     const start = document.createElement('div');
     start.className = 'wys-block wys-para';
     start.dataset.emptyAt = String(scan.bodyStart);
+    start.dataset.path = root.path;
     const text = document.createElement('div');
     text.className = 'wys-text';
     text.contentEditable = 'true';
     text.innerHTML = '<br>';
     start.appendChild(text);
     empty.appendChild(start);
-    doc.appendChild(empty);
+    flow.appendChild(empty);
+  } else {
+    for (const group of groups || []) addPage(group.blocks);
   }
+  const doc = pagesEl;
   if (opts.emptyAt != null) {
     const holder = document.createElement('div');
     holder.className = 'wys-block wys-para wys-new';
     holder.dataset.emptyAt = String(opts.emptyAt);
+    if (opts.emptyPath) holder.dataset.path = opts.emptyPath;
     const text = document.createElement('div');
     text.className = 'wys-text';
     text.contentEditable = 'true';
     text.innerHTML = '<br>';
     holder.appendChild(text);
     let anchor = null;
+    const anchorPath = opts.emptyPath || root.path;
     for (const b of wys.blocks) {
       if (b.parent != null) continue;
+      if ((b.path || root.path) !== anchorPath) continue;
       if (b.contentEnd <= opts.emptyAt) anchor = b;
     }
-    const anchorEl = anchor ? doc.querySelector(`:scope > [data-block="${anchor.index}"]`) : null;
+    const anchorEl = anchor ? doc.querySelector(`[data-block="${anchor.index}"]`) : null;
     if (anchorEl) anchorEl.after(holder);
-    else doc.insertBefore(holder, doc.firstChild);
+    else {
+      const flow = doc.querySelector('.wys-doc') || doc;
+      flow.insertBefore(holder, flow.firstChild);
+    }
   }
   if (opts.emptyItemAt != null) {
     const li = document.createElement('li');
     li.className = 'wys-block wys-item wys-new';
     li.dataset.emptyAt = String(opts.emptyItemAt);
+    if (opts.emptyPath) li.dataset.path = opts.emptyPath;
     const text = document.createElement('div');
     text.className = 'wys-text';
     text.contentEditable = 'true';
@@ -25091,9 +25915,10 @@ function wyswygRefresh(opts = {}) {
     const listEl = opts.parentIndex != null
       ? doc.querySelector(`[data-block="${opts.parentIndex}"] .wys-list`)
       : null;
-    (listEl || doc).appendChild(li);
+    (listEl || doc.querySelector('.wys-doc') || doc).appendChild(li);
   }
   host.appendChild(doc);
+  wysFitSheet(doc);
   const newPara = (opts.emptyAt != null || opts.emptyItemAt != null) ? doc.querySelector('.wys-new .wys-text') : null;
   if (newPara) {
     newPara.focus();
@@ -25112,23 +25937,36 @@ function wyswygRefresh(opts = {}) {
   }).catch(() => {});
 
   if (opts.focusOffset != null) {
-    wysFocusOffset(opts.focusOffset);
+    wysFocusOffset(opts.focusOffset, opts.focusPath || file.path);
   } else if (opts.focusPathLine != null) {
     wysFocusLine(opts.focusPathLine);
+  } else if (root.path !== file.path) {
+    wysScrollToPath(file.path);
   }
 }
 
-function wysFocusOffset(offset) {
+function wysScrollToPath(path) {
+  const host = $('#wysiwyg');
+  if (!host || !path || path === wys.rootPath) return;
+  const first = wys.blocks.find((b) => b.parent == null && (b.path || wys.rootPath) === path);
+  if (!first) return;
+  const el = host.querySelector(`[data-block="${first.index}"]`);
+  if (el) el.scrollIntoView({ block: 'center' });
+}
+
+function wysFocusOffset(offset, path) {
   const host = $('#wysiwyg');
   if (!host) return;
+  const scope = path || wys.path;
   let best = null;
   for (const block of wys.blocks) {
     if (!block.editable) continue;
+    if ((block.path || wys.rootPath) !== scope) continue;
     if (block.contentStart <= offset && offset <= block.contentEnd) { best = block; break; }
     if (block.contentStart >= offset) { best = block; break; }
   }
   if (!best) {
-    const editables = wys.blocks.filter((b) => b.editable);
+    const editables = wys.blocks.filter((b) => b.editable && (b.path || wys.rootPath) === scope);
     best = editables[editables.length - 1];
   }
   if (!best) return;
@@ -25150,7 +25988,7 @@ function wysFocusLine(line) {
   let offset = 0;
   const lines = String(file.text || '').split('\n');
   for (let i = 0; i < Math.min(lines.length, Math.max(0, line - 1)); i++) offset += lines[i].length + 1;
-  wysFocusOffset(offset);
+  wysFocusOffset(offset, file.path);
 }
 
 function wyswygOpen(path, opts = {}) {
@@ -25168,6 +26006,7 @@ function wyswygOpen(path, opts = {}) {
 
 function wyswygDeactivate() {
   wys.active = false;
+  wys.renderToken++;
   wys.blocks = [];
   wys.focusRequest = null;
   const host = $('#wysiwyg');
@@ -25193,7 +26032,8 @@ function wysEditableFromTarget(target) {
 
 function wysApplyBlockSource(index, newContent) {
   const block = wys.blocks[index];
-  const file = currentFile();
+  const blockPath = block ? (block.path || wys.path) : '';
+  const file = blockPath ? state.files.get(blockPath) : currentFile();
   if (!block || !file || file.text == null || !block.editable) return;
   if (block.kind === 'para' || block.kind === 'item') newContent = newContent.trim();
   const oldRaw = file.text.slice(block.contentStart, block.contentEnd);
@@ -25208,16 +26048,17 @@ function wysApplyBlockSource(index, newContent) {
   if (block.kind === 'heading') block.end += delta;
   for (const other of wys.blocks) {
     if (other === block) continue;
+    if ((other.path || wys.path) !== blockPath) continue;
     if (other.contentStart >= oldEnd) other.contentStart += delta;
     if (other.contentEnd > oldEnd) other.contentEnd += delta;
     if (other.start >= oldEnd) other.start += delta;
     if (other.end >= oldEnd) other.end += delta;
   }
-  wysAfterSourceChange();
+  wysAfterSourceChange(file);
 }
 
-function wysAfterSourceChange() {
-  const file = currentFile();
+function wysAfterSourceChange(file) {
+  if (!file) file = currentFile();
   if (!file) return;
   file.size = new Blob([file.text]).size;
   markDirty(file.path);
@@ -25232,9 +26073,11 @@ function wysAfterSourceChange() {
   if (state.mode === 'github') maybeSaveDraftSoon();
 }
 
-function wysShiftBlockRanges(oldEnd, delta) {
+function wysShiftBlockRanges(oldEnd, delta, path) {
   if (!delta) return;
+  const scope = path || wys.path;
   for (const other of wys.blocks) {
+    if ((other.path || wys.path) !== scope) continue;
     if (other.contentStart >= oldEnd) other.contentStart += delta;
     if (other.contentEnd > oldEnd) other.contentEnd += delta;
     if (other.start >= oldEnd) other.start += delta;
@@ -25331,24 +26174,25 @@ function wysSplitBlock(blockInfo, mode) {
   holderB.appendChild(afterFrag);
   const before = wysSerializeBlockText(holderA);
   const after = wysSerializeBlockText(holderB);
-  const file = currentFile();
+  const file = state.files.get(block.path || wys.path) || currentFile();
   if (!file) return;
+  const path = file.path;
 
   if (mode === 'item') {
     if (!after) {
       const at = block.contentEnd;
       const insertion = '\n  \\item ';
       file.text = file.text.slice(0, at) + insertion + file.text.slice(at);
-      wysShiftBlockRanges(at, insertion.length);
-      wysAfterSourceChange();
-      wyswygRefresh({ emptyItemAt: at + insertion.length, parentIndex: block.parent });
+      wysShiftBlockRanges(at, insertion.length, path);
+      wysAfterSourceChange(file);
+      wyswygRefresh({ emptyItemAt: at + insertion.length, emptyPath: path, parentIndex: block.parent });
       return;
     }
     const insertion = `\n  \\item ${after}`;
     const content = `${before}${insertion}`;
     wysApplyBlockSource(block.index, content);
     const at = block.contentStart + content.length - after.length;
-    wyswygRefresh({ focusOffset: at });
+    wyswygRefresh({ focusOffset: at, focusPath: path });
     return;
   }
 
@@ -25356,33 +26200,32 @@ function wysSplitBlock(blockInfo, mode) {
   if (!after) {
     const at = block.contentEnd;
     file.text = file.text.slice(0, at) + '\n\n' + file.text.slice(at);
-    wysShiftBlockRanges(at, 2);
-    wysAfterSourceChange();
-    wyswygRefresh({ emptyAt: at + 2 });
+    wysShiftBlockRanges(at, 2, path);
+    wysAfterSourceChange(file);
+    wyswygRefresh({ emptyAt: at + 2, emptyPath: path });
     return;
   }
   const content = `${before}\n\n${after}`;
   wysApplyBlockSource(block.index, content);
   const at = block.contentStart + before.length + 2;
-  wyswygRefresh({ focusOffset: at });
+  wyswygRefresh({ focusOffset: at, focusPath: path });
 }
 
 function wysFillEmptyParagraph(wrap, value) {
-  const file = currentFile();
+  const path = wrap.dataset.path || wys.path;
+  const file = state.files.get(path) || currentFile();
   if (!file || !value) return;
   const at = Number(wrap.dataset.emptyAt);
   if (!Number.isFinite(at)) return;
   const rest = file.text.slice(at);
   const suffix = /^\s*(\n|$)/.test(rest) ? '' : '\n\n';
   file.text = file.text.slice(0, at) + value + suffix + rest;
-  wysShiftBlockRanges(at, value.length + suffix.length);
-  wysAfterSourceChange();
-  wyswygRefresh({ focusOffset: at + value.length });
+  wysShiftBlockRanges(at, value.length + suffix.length, file.path);
+  wysAfterSourceChange(file);
+  wyswygRefresh({ focusOffset: at + value.length, focusPath: file.path });
 }
 
 function wysInsertSnippet(snippet) {
-  const file = currentFile();
-  if (!file || file.text == null) return;
   let block = null;
   const found = wysEditableFromTarget(document.activeElement);
   if (found) block = found.block;
@@ -25390,7 +26233,9 @@ function wysInsertSnippet(snippet) {
     const editables = wys.blocks.filter((b) => b.editable || b.kind === 'heading');
     block = editables[editables.length - 1] || wys.blocks[wys.blocks.length - 1];
   }
-  const at = block ? block.end : wys.bodyEnd;
+  const file = state.files.get((block && block.path) || wys.path) || currentFile();
+  if (!file || file.text == null) return;
+  const at = block ? block.end : wysBodyRange(file.text).end;
   const text = file.text;
   const glue = `\n\n${String(snippet).trim()}\n\n`;
   file.text = text.slice(0, at) + glue + text.slice(at);
@@ -25403,7 +26248,7 @@ function wysInsertSnippet(snippet) {
   wys.internalEdit = true;
   schedulePreview();
   wys.internalEdit = false;
-  wyswygRefresh({ focusOffset: at + 2 });
+  wyswygRefresh({ focusOffset: at + 2, focusPath: file.path });
   if (state.mode === 'demo') persistDemoSoon();
   if (state.mode === 'github') maybeSaveDraftSoon();
 }
@@ -25411,7 +26256,7 @@ function wysInsertSnippet(snippet) {
 function wysOpenSourceAt(index) {
   const block = wys.blocks[index];
   if (!block) return;
-  const file = currentFile();
+  const file = state.files.get(block.path || wys.path) || currentFile();
   const line = file ? wysLineOf(file.text, block.start) : 1;
   setEditorMode('source');
   if (file) focusEditorLine(file.path, line);
@@ -25567,18 +26412,19 @@ function wysHandleKeydown(e) {
   if (emptyWrap) {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      const file = currentFile();
+      const path = emptyWrap.dataset.path || wys.path;
+      const file = state.files.get(path) || currentFile();
       if (!file) return;
       const at = Number(emptyWrap.dataset.emptyAt);
       const insertion = e.target.closest('.wys-item') ? '\n  \\item ' : '\n\n';
       file.text = file.text.slice(0, at) + insertion + file.text.slice(at);
-      wysShiftBlockRanges(at, insertion.length);
-      wysAfterSourceChange();
+      wysShiftBlockRanges(at, insertion.length, file.path);
+      wysAfterSourceChange(file);
       if (e.target.closest('.wys-item')) {
         const parentIndex = Number(emptyWrap.closest('[data-block]') ? emptyWrap.closest('[data-block]').dataset.block : NaN);
-        wyswygRefresh({ emptyItemAt: at + insertion.length, parentIndex: Number.isFinite(parentIndex) ? parentIndex : null });
+        wyswygRefresh({ emptyItemAt: at + insertion.length, emptyPath: file.path, parentIndex: Number.isFinite(parentIndex) ? parentIndex : null });
       } else {
-        wyswygRefresh({ emptyAt: at + insertion.length });
+        wyswygRefresh({ emptyAt: at + insertion.length, emptyPath: file.path });
       }
     }
     return;
@@ -25625,9 +26471,10 @@ function wysHandleKeydown(e) {
 }
 
 function wysDeleteEmptyBlock(found) {
-  const file = currentFile();
-  if (!file || !found.block) return;
+  if (!found.block) return;
   const block = found.block;
+  const file = state.files.get(block.path || wys.path) || currentFile();
+  if (!file) return;
   const text = file.text;
   let start = block.contentStart;
   let end = block.contentEnd;
@@ -25649,7 +26496,7 @@ function wysDeleteEmptyBlock(found) {
   wys.internalEdit = true;
   schedulePreview();
   wys.internalEdit = false;
-  wyswygRefresh({ focusOffset: Math.max(0, start - 1) });
+  wyswygRefresh({ focusOffset: Math.max(0, start - 1), focusPath: file.path });
 }
 
 function wysWysiwygNotifySourceChanged() {
@@ -25671,6 +26518,20 @@ function wysWireHost() {
   const host = $('#wysiwyg');
   if (!host || host.dataset.wired === '1') return;
   host.dataset.wired = '1';
+
+  if (window.ResizeObserver) {
+    let frame = 0;
+    const observer = new ResizeObserver(() => {
+      if (!wys.active) return;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const doc = host.querySelector('.wys-pages') || host.querySelector('.wys-doc');
+        if (doc) wysFitSheet(doc);
+      });
+    });
+    observer.observe(host);
+    wys.hostObserver = observer;
+  }
 
   host.addEventListener('input', (e) => {
     if (wys.internalEdit) return;
@@ -25746,7 +26607,10 @@ function wysWireHost() {
       const after = wysSerializeBlockText(holderB);
       const content = [before, ...blocks.map((b) => wysEscapeText(b)), after].filter(Boolean).join('\n\n');
       wysApplyBlockSource(found.index, content);
-      wyswygRefresh({ focusOffset: found.block.contentStart + content.length - after.length });
+      wyswygRefresh({
+        focusOffset: found.block.contentStart + content.length - after.length,
+        focusPath: found.block.path || wys.path
+      });
       return;
     }
     const flat = text.replace(/\n/g, ' ');

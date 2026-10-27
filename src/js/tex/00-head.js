@@ -226,6 +226,8 @@ const TeXPreview = (() => {
     s = s.replace(/\\\\\s*(?:\[[^\]]*\])?/g, ' ');
     s = s.replace(/\\(?:newline|linebreak)\s*(?:\[[^\]]*\])?/g, ' ');
     s = s.replace(/~/g, ' ');
+    // Control space ("\LaTeX\ is") would otherwise leave a stray backslash.
+    s = s.replace(/\\\s+/g, ' ');
     s = s.replace(/\\(?:thanks|footnote|footnotetext)\s*\{/g, '{');
     s = s.replace(/\\(?:textbf|textit|emph|textsc|textsf|texttt|textrm|textnormal|mbox|hbox|text|mathrm|mathbf|mathit)\s*\{([^{}]*)\}/g, '$1');
     s = s.replace(/\\[a-zA-Z@]+\*?\s*(?:\[[^\]]*\])?/g, (m) => {

@@ -60,6 +60,9 @@
       zh: false,
       docClass: 'article',
       docOptions: [],
+      packageOptions: new Map(),
+      geometryRaw: '',
+      baseFont: '',
       titleRaw: '',
       authorRaw: '',
       dateRaw: null,
@@ -176,13 +179,15 @@
     if (ctx.docOptions.includes('letterpaper')) ctx.pageSize = 'letter';
     if (ctx.docOptions.includes('a4paper')) ctx.pageSize = 'a4';
     const opts = ctx.docOptions.join(',');
-    if (/11pt|12pt/.test(opts)) ctx.baseFont = opts.match(/1[12]pt/)[0];
+    const size = /\b(10|11|12)pt\b/.exec(opts);
+    if (size) ctx.baseFont = `${size[1]}pt`;
   }
 
   function parseGeometry(ctx, preamble) {
     const geo = extractCommandArg(preamble, 'geometry');
     if (!geo) return;
     const o = geo.text;
+    ctx.geometryRaw = o;
     if (/letterpaper/i.test(o)) ctx.pageSize = 'letter';
     if (/a4paper/i.test(o)) ctx.pageSize = 'a4';
   }
@@ -191,9 +196,13 @@
     const re = /\\usepackage\s*(?:\[([^\]]*)\])?\s*\{([^}]*)\}/g;
     let m;
     while ((m = re.exec(preamble))) {
+      const options = (m[1] || '').split(',').map((s) => s.trim().toLowerCase()).filter(Boolean);
       for (const p of m[2].split(',')) {
         const name = p.trim().toLowerCase();
-        if (name) ctx.packages.add(name);
+        if (name) {
+          ctx.packages.add(name);
+          if (options.length) ctx.packageOptions.set(name, options);
+        }
       }
     }
     const cls = ctx.docClass;

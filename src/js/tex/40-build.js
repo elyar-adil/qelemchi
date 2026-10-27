@@ -74,6 +74,66 @@
     };
   }
 
+  // Author notes are typeset as footnotes, not as extra author lines.
+  function stripAuthorNotes(src) {
+    const s = String(src || '');
+    let out = '';
+    let i = 0;
+    while (i < s.length) {
+      if (s[i] === '\\') {
+        const m = /^\\(?:thanks|footnote|footnotetext)\b\s*/.exec(s.slice(i));
+        if (m) {
+          const p = i + m[0].length;
+          if (s[p] === '{') {
+            const g = readGroup(s, p);
+            if (g) { i = g.end; continue; }
+          }
+        }
+      }
+      out += s[i++];
+    }
+    return out;
+  }
+
+  // Simple, argument-less definitions such as \def\confName{CVPR}. The visual
+  // editor can substitute these without a TeX engine.
+  function collectSimpleDefs(source) {
+    const defs = {};
+    const re = /\\(?:def|newcommand|renewcommand|providecommand)\s*(?:\{\s*\\([A-Za-z@]+)\s*\}|\\([A-Za-z@]+))\s*(?:\[[^\]]*\]\s*)?\{([^{}]*)\}/g;
+    let m;
+    while ((m = re.exec(source))) {
+      const name = m[1] || m[2];
+      const value = m[3];
+      if (!name || value == null || defs[name] != null) continue;
+      if (/[#\\{}]/.test(value)) continue;
+      defs[name] = value.trim();
+    }
+    return defs;
+  }
+
+  function expandSimpleDefs(src, defs) {
+    let out = String(src || '');
+    for (const name of Object.keys(defs || {}).sort((a, b) => b.length - a.length)) {
+      const re = new RegExp(`\\\\${name}(?![A-Za-z@])`, 'g');
+      out = out.replace(re, () => defs[name]);
+    }
+    return out;
+  }
+
+  function splitTitleLines(src) {
+    return stripAuthorNotes(src)
+      .split(/\\\\\s*(?:\[[^\]]*\])?/)
+      .map((line) => plainText(line))
+      .filter(Boolean);
+  }
+
+  function splitAuthorGroups(src) {
+    return stripAuthorNotes(src)
+      .split(/\\(?:and|And|AND)(?![A-Za-z])/)
+      .map((author) => splitTitleLines(author))
+      .filter((group) => group.length);
+  }
+
   function buildProject(input = {}) {
     const ctx = createRenderContext(input);
     const warnings = ctx.warnings;
@@ -108,14 +168,39 @@
       html = '<div class="tex-placeholder"><b>正文为空</b><br>在 main.tex 的 document 环境中开始写作吧。</div>';
     }
     const stats = countStats(html, ctx);
+    const packages = Array.from(ctx.packages);
+    const docOptions = ctx.docOptions.slice();
+    const cvprOptions = ctx.packageOptions.get('cvpr') || [];
+    const neuripsOptions = ctx.packageOptions.get('neurips_2025')
+      || ctx.packageOptions.get('neurips')
+      || [];
+    const cvprReview = packages.includes('cvpr') && cvprOptions.includes('review');
+    const neuripsFinal = neuripsOptions.some((o) => (
+      o === 'final' || o === 'preprint' || o === 'dandb' || o === 'creativeai' || o === 'sglblindworkshop'
+    ));
+    const anonymous = cvprReview || (packages.some((p) => /^neurips/.test(p)) && !neuripsFinal);
+    const defs = collectSimpleDefs(source);
+    const defValue = (name) => (defs[name] != null ? plainText(defs[name]) : '');
+    const titleRaw = expandSimpleDefs(ctx.titleRaw, defs);
+    const authorRaw = expandSimpleDefs(ctx.authorRaw, defs);
     const meta = {
-      title: plainText(ctx.titleRaw) || '未命名文稿',
-      author: plainText(ctx.authorRaw),
+      title: plainText(titleRaw) || '未命名文稿',
+      titleLines: splitTitleLines(titleRaw),
+      author: plainText(authorRaw),
+      authorGroups: splitAuthorGroups(authorRaw),
       date: ctx.hasDateCommand ? formatDate(ctx.dateRaw, ctx.zh) : '',
       engine: ctx.engine,
       pageSize: ctx.pageSize,
       zh: ctx.zh,
       docClass: ctx.docClass,
+      docOptions,
+      baseFont: ctx.baseFont || '10pt',
+      packages,
+      geometry: ctx.geometryRaw || '',
+      anonymous,
+      paperId: defValue('paperID'),
+      confName: defValue('confName'),
+      defs,
       mainPath: ctx.mainPath,
       bibFiles: ctx.bibFiles.slice(),
       hasTitle: !!ctx.titleRaw,

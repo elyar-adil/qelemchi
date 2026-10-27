@@ -27,8 +27,8 @@ function arg(name, fallback) {
 const OUT = path.resolve(arg('out', 'assets/tex'));
 const SWIFT = path.resolve(arg('swiftlatex', '/tmp/swiftlatex-extract'));
 const FORMATS = path.resolve(arg('formats', '/tmp/swiftlatex-test'));
-const TEXMF = path.resolve(arg('texmf', '/tmp/qelemchi-assets/texmf.bin.gz'));
-const FFLATE = path.resolve(arg('fflate', '/tmp/qelemchi-assets/fflate.umd.js'));
+const TEXMF = path.resolve(arg('texmf', '/tmp/qelemchi-build/texmf.bin.gz'));
+const FFLATE = path.resolve(arg('fflate', '/tmp/qelemchi-build/fflate.umd.js'));
 
 const ENGINES = {
   pdftex: 'swiftlatexpdftex',

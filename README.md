@@ -73,7 +73,7 @@ src/templates/     CVPR / NeurIPS 模板
 assets/tex/        SwiftLaTeX 引擎、LaTeX format、texmf 归档
 assets/pdfjs/      PDF.js 3.11.174 与 CJK CMap
 vendor/            CodeMirror 5、MathJax 3
-tex-assets/        build.mjs 生成的 CDN 发布包（含 manifest.json）
+tex-assets/        build.mjs 生成的本地校验包（含 manifest.json，不提交）
 
 ```
 

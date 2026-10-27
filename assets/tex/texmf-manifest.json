@@ -1,0 +1,1693 @@
+{
+  "files": [
+    {
+      "name": "8r.enc",
+      "off": 0,
+      "len": 4850,
+      "source": "8r.enc"
+    },
+    {
+      "name": "CJKfntef.sty",
+      "off": 4850,
+      "len": 12851,
+      "source": "CJKfntef.sty"
+    },
+    {
+      "name": "FandolFang-Regular.otf",
+      "off": 17701,
+      "len": 2706120,
+      "source": "FandolFang-Regular-sub.otf"
+    },
+    {
+      "name": "FandolKai-Regular.otf",
+      "off": 2723821,
+      "len": 3097284,
+      "source": "FandolKai-Regular-sub.otf"
+    },
+    {
+      "name": "FandolSong-Bold.otf",
+      "off": 5821105,
+      "len": 2193848,
+      "source": "FandolSong-Bold-sub.otf"
+    },
+    {
+      "name": "FandolSong-Regular.otf",
+      "off": 8014953,
+      "len": 1936652,
+      "source": "FandolSong-Regular-sub.otf"
+    },
+    {
+      "name": "amsbsy.sty",
+      "off": 9951605,
+      "len": 2222,
+      "source": "amsbsy.sty"
+    },
+    {
+      "name": "amsfonts.sty",
+      "off": 9953827,
+      "len": 5949,
+      "source": "amsfonts.sty"
+    },
+    {
+      "name": "amsgen.sty",
+      "off": 9959776,
+      "len": 4173,
+      "source": "amsgen.sty"
+    },
+    {
+      "name": "amsmath.sty",
+      "off": 9963949,
+      "len": 88826,
+      "source": "amsmath.sty"
+    },
+    {
+      "name": "amsopn.sty",
+      "off": 10052775,
+      "len": 4474,
+      "source": "amsopn.sty"
+    },
+    {
+      "name": "amssymb.sty",
+      "off": 10057249,
+      "len": 13829,
+      "source": "amssymb.sty"
+    },
+    {
+      "name": "amstext.sty",
+      "off": 10071078,
+      "len": 2444,
+      "source": "amstext.sty"
+    },
+    {
+      "name": "amsthm.sty",
+      "off": 10073522,
+      "len": 12594,
+      "source": "amsthm.sty"
+    },
+    {
+      "name": "article.cls",
+      "off": 10086116,
+      "len": 20144,
+      "source": "article.cls"
+    },
+    {
+      "name": "backref.sty",
+      "off": 10106260,
+      "len": 14056,
+      "source": "backref.sty"
+    },
+    {
+      "name": "bigintcalc.sty",
+      "off": 10120316,
+      "len": 40635,
+      "source": "bigintcalc.sty"
+    },
+    {
+      "name": "bitset.sty",
+      "off": 10160951,
+      "len": 33961,
+      "source": "bitset.sty"
+    },
+    {
+      "name": "booktabs.sty",
+      "off": 10194912,
+      "len": 6078,
+      "source": "booktabs.sty"
+    },
+    {
+      "name": "caption.sty",
+      "off": 10200990,
+      "len": 56128,
+      "source": "caption.sty"
+    },
+    {
+      "name": "caption3.sty",
+      "off": 10257118,
+      "len": 72619,
+      "source": "caption3.sty"
+    },
+    {
+      "name": "ckx.map",
+      "off": 10329737,
+      "len": 1289,
+      "source": "ckx.map"
+    },
+    {
+      "name": "cleveref.sty",
+      "off": 10331026,
+      "len": 329481,
+      "source": "cleveref.sty"
+    },
+    {
+      "name": "cm-super-t1.enc",
+      "off": 10660507,
+      "len": 2971,
+      "source": "cm-super-t1.enc"
+    },
+    {
+      "name": "cmbx10.pfb",
+      "off": 10663478,
+      "len": 34811,
+      "source": "cmbx10.pfb"
+    },
+    {
+      "name": "cmbx10.tfm",
+      "off": 10698289,
+      "len": 1328,
+      "source": "cmbx10.tfm"
+    },
+    {
+      "name": "cmbx12.pfb",
+      "off": 10699617,
+      "len": 32080,
+      "source": "cmbx12.pfb"
+    },
+    {
+      "name": "cmbx12.tfm",
+      "off": 10731697,
+      "len": 1324,
+      "source": "cmbx12.tfm"
+    },
+    {
+      "name": "cmex10.tfm",
+      "off": 10733021,
+      "len": 992,
+      "source": "cmex10.tfm"
+    },
+    {
+      "name": "cmex7.tfm",
+      "off": 10734013,
+      "len": 1004,
+      "source": "cmex7.tfm"
+    },
+    {
+      "name": "cmex8.tfm",
+      "off": 10735017,
+      "len": 988,
+      "source": "cmex8.tfm"
+    },
+    {
+      "name": "cmex9.tfm",
+      "off": 10736005,
+      "len": 996,
+      "source": "cmex9.tfm"
+    },
+    {
+      "name": "cmmi10.pfb",
+      "off": 10737001,
+      "len": 36299,
+      "source": "cmmi10.pfb"
+    },
+    {
+      "name": "cmmi10.tfm",
+      "off": 10773300,
+      "len": 1528,
+      "source": "cmmi10.tfm"
+    },
+    {
+      "name": "cmmi12.tfm",
+      "off": 10774828,
+      "len": 1524,
+      "source": "cmmi12.tfm"
+    },
+    {
+      "name": "cmmi6.tfm",
+      "off": 10776352,
+      "len": 1512,
+      "source": "cmmi6.tfm"
+    },
+    {
+      "name": "cmmi7.pfb",
+      "off": 10777864,
+      "len": 36281,
+      "source": "cmmi7.pfb"
+    },
+    {
+      "name": "cmmi8.pfb",
+      "off": 10814145,
+      "len": 35469,
+      "source": "cmmi8.pfb"
+    },
+    {
+      "name": "cmmi8.tfm",
+      "off": 10849614,
+      "len": 1520,
+      "source": "cmmi8.tfm"
+    },
+    {
+      "name": "cmmi9.pfb",
+      "off": 10851134,
+      "len": 36094,
+      "source": "cmmi9.pfb"
+    },
+    {
+      "name": "cmmi9.tfm",
+      "off": 10887228,
+      "len": 1524,
+      "source": "cmmi9.tfm"
+    },
+    {
+      "name": "cmr10.pfb",
+      "off": 10888752,
+      "len": 35752,
+      "source": "cmr10.pfb"
+    },
+    {
+      "name": "cmr10.tfm",
+      "off": 10924504,
+      "len": 1296,
+      "source": "cmr10.tfm"
+    },
+    {
+      "name": "cmr12.pfb",
+      "off": 10925800,
+      "len": 32722,
+      "source": "cmr12.pfb"
+    },
+    {
+      "name": "cmr12.tfm",
+      "off": 10958522,
+      "len": 1288,
+      "source": "cmr12.tfm"
+    },
+    {
+      "name": "cmr17.pfb",
+      "off": 10959810,
+      "len": 32362,
+      "source": "cmr17.pfb"
+    },
+    {
+      "name": "cmr17.tfm",
+      "off": 10992172,
+      "len": 1292,
+      "source": "cmr17.tfm"
+    },
+    {
+      "name": "cmr6.tfm",
+      "off": 10993464,
+      "len": 1300,
+      "source": "cmr6.tfm"
+    },
+    {
+      "name": "cmr7.pfb",
+      "off": 10994764,
+      "len": 32762,
+      "source": "cmr7.pfb"
+    },
+    {
+      "name": "cmr8.pfb",
+      "off": 11027526,
+      "len": 32726,
+      "source": "cmr8.pfb"
+    },
+    {
+      "name": "cmr8.tfm",
+      "off": 11060252,
+      "len": 1292,
+      "source": "cmr8.tfm"
+    },
+    {
+      "name": "cmr9.pfb",
+      "off": 11061544,
+      "len": 33993,
+      "source": "cmr9.pfb"
+    },
+    {
+      "name": "cmr9.tfm",
+      "off": 11095537,
+      "len": 1292,
+      "source": "cmr9.tfm"
+    },
+    {
+      "name": "cmsy10.pfb",
+      "off": 11096829,
+      "len": 32569,
+      "source": "cmsy10.pfb"
+    },
+    {
+      "name": "cmsy10.tfm",
+      "off": 11129398,
+      "len": 1124,
+      "source": "cmsy10.tfm"
+    },
+    {
+      "name": "cmsy6.tfm",
+      "off": 11130522,
+      "len": 1116,
+      "source": "cmsy6.tfm"
+    },
+    {
+      "name": "cmsy8.tfm",
+      "off": 11131638,
+      "len": 1120,
+      "source": "cmsy8.tfm"
+    },
+    {
+      "name": "cmsy9.tfm",
+      "off": 11132758,
+      "len": 1116,
+      "source": "cmsy9.tfm"
+    },
+    {
+      "name": "cmti10.pfb",
+      "off": 11133874,
+      "len": 37944,
+      "source": "cmti10.pfb"
+    },
+    {
+      "name": "cmti10.tfm",
+      "off": 11171818,
+      "len": 1480,
+      "source": "cmti10.tfm"
+    },
+    {
+      "name": "cmti7.tfm",
+      "off": 11173298,
+      "len": 1492,
+      "source": "cmti7.tfm"
+    },
+    {
+      "name": "cmti8.tfm",
+      "off": 11174790,
+      "len": 1504,
+      "source": "cmti8.tfm"
+    },
+    {
+      "name": "color.cfg",
+      "off": 11176294,
+      "len": 1213,
+      "source": "color.cfg"
+    },
+    {
+      "name": "color.sty",
+      "off": 11177507,
+      "len": 7256,
+      "source": "color.sty"
+    },
+    {
+      "name": "ctex-engine-xetex.def",
+      "off": 11184763,
+      "len": 5694,
+      "source": "ctex-engine-xetex.def"
+    },
+    {
+      "name": "ctex-fontset-fandol.def",
+      "off": 11190457,
+      "len": 4950,
+      "source": "ctex-fontset-fandol.def"
+    },
+    {
+      "name": "ctex-name-utf8.cfg",
+      "off": 11195407,
+      "len": 2164,
+      "source": "ctex-name-utf8.cfg"
+    },
+    {
+      "name": "ctex-scheme-chinese-article.def",
+      "off": 11197571,
+      "len": 5016,
+      "source": "ctex-scheme-chinese-article.def"
+    },
+    {
+      "name": "ctex.cfg",
+      "off": 11202587,
+      "len": 1621,
+      "source": "ctex.cfg"
+    },
+    {
+      "name": "ctexart.cls",
+      "off": 11204208,
+      "len": 60645,
+      "source": "ctexart.cls"
+    },
+    {
+      "name": "ctexbackend.cfg",
+      "off": 11264853,
+      "len": 2429,
+      "source": "ctexbackend.cfg"
+    },
+    {
+      "name": "ctexhook.sty",
+      "off": 11267282,
+      "len": 6889,
+      "source": "ctexhook.sty"
+    },
+    {
+      "name": "ctexopts.cfg",
+      "off": 11274171,
+      "len": 1685,
+      "source": "ctexopts.cfg"
+    },
+    {
+      "name": "ctexpatch.sty",
+      "off": 11275856,
+      "len": 8854,
+      "source": "ctexpatch.sty"
+    },
+    {
+      "name": "currfile.sty",
+      "off": 11284710,
+      "len": 11079,
+      "source": "currfile.sty"
+    },
+    {
+      "name": "cuted.sty",
+      "off": 11295789,
+      "len": 32452,
+      "source": "cuted.sty"
+    },
+    {
+      "name": "dvipsnam.def",
+      "off": 11328241,
+      "len": 5009,
+      "source": "dvipsnam.def"
+    },
+    {
+      "name": "ectt1000.tfm",
+      "off": 11333250,
+      "len": 1536,
+      "source": "ectt1000.tfm"
+    },
+    {
+      "name": "enumitem.sty",
+      "off": 11334786,
+      "len": 52272,
+      "source": "enumitem.sty"
+    },
+    {
+      "name": "environ.sty",
+      "off": 11387058,
+      "len": 4378,
+      "source": "environ.sty"
+    },
+    {
+      "name": "epstopdf-base.sty",
+      "off": 11391436,
+      "len": 13886,
+      "source": "epstopdf-base.sty"
+    },
+    {
+      "name": "epstopdf-sys.cfg",
+      "off": 11405322,
+      "len": 678,
+      "source": "epstopdf-sys.cfg"
+    },
+    {
+      "name": "etoolbox.sty",
+      "off": 11406000,
+      "len": 46885,
+      "source": "etoolbox.sty"
+    },
+    {
+      "name": "example-image-golden.pdf",
+      "off": 11452885,
+      "len": 36332,
+      "source": "example-image-golden.pdf"
+    },
+    {
+      "name": "example-image-golden.tex",
+      "off": 11489217,
+      "len": 419,
+      "source": "example-image-golden.tex"
+    },
+    {
+      "name": "expl3.sty",
+      "off": 11489636,
+      "len": 6556,
+      "source": "expl3.sty"
+    },
+    {
+      "name": "filehook-2020.sty",
+      "off": 11496192,
+      "len": 9005,
+      "source": "filehook-2020.sty"
+    },
+    {
+      "name": "filehook.sty",
+      "off": 11505197,
+      "len": 1210,
+      "source": "filehook.sty"
+    },
+    {
+      "name": "fix-cm.sty",
+      "off": 11506407,
+      "len": 14741,
+      "source": "fix-cm.sty"
+    },
+    {
+      "name": "fontenc.sty",
+      "off": 11521148,
+      "len": 5275,
+      "source": "fontenc.sty"
+    },
+    {
+      "name": "fontspec-xetex.sty",
+      "off": 11526423,
+      "len": 164690,
+      "source": "fontspec-xetex.sty"
+    },
+    {
+      "name": "fontspec.cfg",
+      "off": 11691113,
+      "len": 549,
+      "source": "fontspec.cfg"
+    },
+    {
+      "name": "fontspec.sty",
+      "off": 11691662,
+      "len": 3780,
+      "source": "fontspec.sty"
+    },
+    {
+      "name": "geometry.sty",
+      "off": 11695442,
+      "len": 41904,
+      "source": "geometry.sty"
+    },
+    {
+      "name": "gettitlestring.sty",
+      "off": 11737346,
+      "len": 8371,
+      "source": "gettitlestring.sty"
+    },
+    {
+      "name": "glyphlist.txt",
+      "off": 11745717,
+      "len": 77146,
+      "source": "glyphlist.txt"
+    },
+    {
+      "name": "graphics.cfg",
+      "off": 11822863,
+      "len": 1224,
+      "source": "graphics.cfg"
+    },
+    {
+      "name": "graphics.sty",
+      "off": 11824087,
+      "len": 18585,
+      "source": "graphics.sty"
+    },
+    {
+      "name": "graphicx.sty",
+      "off": 11842672,
+      "len": 8118,
+      "source": "graphicx.sty"
+    },
+    {
+      "name": "grfext.sty",
+      "off": 11850790,
+      "len": 7133,
+      "source": "grfext.sty"
+    },
+    {
+      "name": "hpdftex.def",
+      "off": 11857923,
+      "len": 48140,
+      "source": "hpdftex.def"
+    },
+    {
+      "name": "hxetex.def",
+      "off": 11906063,
+      "len": 44484,
+      "source": "hxetex.def"
+    },
+    {
+      "name": "hycolor.sty",
+      "off": 11950547,
+      "len": 17914,
+      "source": "hycolor.sty"
+    },
+    {
+      "name": "hyperref.sty",
+      "off": 11968461,
+      "len": 223119,
+      "source": "hyperref.sty"
+    },
+    {
+      "name": "iftex.sty",
+      "off": 12191580,
+      "len": 7984,
+      "source": "iftex.sty"
+    },
+    {
+      "name": "ifthen.sty",
+      "off": 12199564,
+      "len": 5525,
+      "source": "ifthen.sty"
+    },
+    {
+      "name": "ifvtex.sty",
+      "off": 12205089,
+      "len": 1057,
+      "source": "ifvtex.sty"
+    },
+    {
+      "name": "infwarerr.sty",
+      "off": 12206146,
+      "len": 8356,
+      "source": "infwarerr.sty"
+    },
+    {
+      "name": "inputenc.sty",
+      "off": 12214502,
+      "len": 5048,
+      "source": "inputenc.sty"
+    },
+    {
+      "name": "intcalc.sty",
+      "off": 12219550,
+      "len": 31769,
+      "source": "intcalc.sty"
+    },
+    {
+      "name": "kanjix.map",
+      "off": 12251319,
+      "len": 323,
+      "source": "kanjix.map"
+    },
+    {
+      "name": "keyval.sty",
+      "off": 12251642,
+      "len": 2671,
+      "source": "keyval.sty"
+    },
+    {
+      "name": "kvdefinekeys.sty",
+      "off": 12254313,
+      "len": 5412,
+      "source": "kvdefinekeys.sty"
+    },
+    {
+      "name": "kvoptions.sty",
+      "off": 12259725,
+      "len": 22555,
+      "source": "kvoptions.sty"
+    },
+    {
+      "name": "kvsetkeys.sty",
+      "off": 12282280,
+      "len": 13815,
+      "source": "kvsetkeys.sty"
+    },
+    {
+      "name": "l3backend-pdftex.def",
+      "off": 12296095,
+      "len": 31824,
+      "source": "l3backend-pdftex.def"
+    },
+    {
+      "name": "l3backend-xetex.def",
+      "off": 12327919,
+      "len": 33523,
+      "source": "l3backend-xetex.def"
+    },
+    {
+      "name": "lineno.sty",
+      "off": 12361442,
+      "len": 156060,
+      "source": "lineno.sty"
+    },
+    {
+      "name": "lmmono10-regular.otf",
+      "off": 12517502,
+      "len": 64684,
+      "source": "lmmono10-regular.otf"
+    },
+    {
+      "name": "lmroman10-bold.otf",
+      "off": 12582186,
+      "len": 111240,
+      "source": "lmroman10-bold.otf"
+    },
+    {
+      "name": "lmroman10-italic.otf",
+      "off": 12693426,
+      "len": 118828,
+      "source": "lmroman10-italic.otf"
+    },
+    {
+      "name": "lmroman10-regular.otf",
+      "off": 12812254,
+      "len": 111536,
+      "source": "lmroman10-regular.otf"
+    },
+    {
+      "name": "lmroman12-bold.otf",
+      "off": 12923790,
+      "len": 110496,
+      "source": "lmroman12-bold.otf"
+    },
+    {
+      "name": "lmroman12-regular.otf",
+      "off": 13034286,
+      "len": 110400,
+      "source": "lmroman12-regular.otf"
+    },
+    {
+      "name": "lmroman17-regular.otf",
+      "off": 13144686,
+      "len": 110248,
+      "source": "lmroman17-regular.otf"
+    },
+    {
+      "name": "lmroman6-regular.otf",
+      "off": 13254934,
+      "len": 112212,
+      "source": "lmroman6-regular.otf"
+    },
+    {
+      "name": "lmroman8-regular.otf",
+      "off": 13367146,
+      "len": 111948,
+      "source": "lmroman8-regular.otf"
+    },
+    {
+      "name": "lmroman9-regular.otf",
+      "off": 13479094,
+      "len": 112680,
+      "source": "lmroman9-regular.otf"
+    },
+    {
+      "name": "lmromanslant10-regular.otf",
+      "off": 13591774,
+      "len": 118508,
+      "source": "lmromanslant10-regular.otf"
+    },
+    {
+      "name": "lmss12.pfb",
+      "off": 13710282,
+      "len": 96107,
+      "source": "lmss12.pfb"
+    },
+    {
+      "name": "lmss17.pfb",
+      "off": 13806389,
+      "len": 97155,
+      "source": "lmss17.pfb"
+    },
+    {
+      "name": "lmsy10.pfb",
+      "off": 13903544,
+      "len": 27863,
+      "source": "lmsy10.pfb"
+    },
+    {
+      "name": "ltxcmds.sty",
+      "off": 13931407,
+      "len": 17865,
+      "source": "ltxcmds.sty"
+    },
+    {
+      "name": "mathcolor.ltx",
+      "off": 13949272,
+      "len": 2885,
+      "source": "mathcolor.ltx"
+    },
+    {
+      "name": "microtype-pdftex.def",
+      "off": 13952157,
+      "len": 49656,
+      "source": "microtype-pdftex.def"
+    },
+    {
+      "name": "microtype.cfg",
+      "off": 14001813,
+      "len": 27642,
+      "source": "microtype.cfg"
+    },
+    {
+      "name": "microtype.sty",
+      "off": 14029455,
+      "len": 103020,
+      "source": "microtype.sty"
+    },
+    {
+      "name": "msam10.tfm",
+      "off": 14132475,
+      "len": 916,
+      "source": "msam10.tfm"
+    },
+    {
+      "name": "msam5.tfm",
+      "off": 14133391,
+      "len": 924,
+      "source": "msam5.tfm"
+    },
+    {
+      "name": "msam7.tfm",
+      "off": 14134315,
+      "len": 928,
+      "source": "msam7.tfm"
+    },
+    {
+      "name": "msbm10.pfb",
+      "off": 14135243,
+      "len": 34694,
+      "source": "msbm10.pfb"
+    },
+    {
+      "name": "msbm10.tfm",
+      "off": 14169937,
+      "len": 908,
+      "source": "msbm10.tfm"
+    },
+    {
+      "name": "msbm5.tfm",
+      "off": 14170845,
+      "len": 940,
+      "source": "msbm5.tfm"
+    },
+    {
+      "name": "msbm7.tfm",
+      "off": 14171785,
+      "len": 940,
+      "source": "msbm7.tfm"
+    },
+    {
+      "name": "mt-cmr.cfg",
+      "off": 14172725,
+      "len": 22906,
+      "source": "mt-cmr.cfg"
+    },
+    {
+      "name": "mt-msa.cfg",
+      "off": 14195631,
+      "len": 5929,
+      "source": "mt-msa.cfg"
+    },
+    {
+      "name": "mt-msb.cfg",
+      "off": 14201560,
+      "len": 5594,
+      "source": "mt-msb.cfg"
+    },
+    {
+      "name": "mt-ptm.cfg",
+      "off": 14207154,
+      "len": 12427,
+      "source": "mt-ptm.cfg"
+    },
+    {
+      "name": "nameref.sty",
+      "off": 14219581,
+      "len": 11459,
+      "source": "nameref.sty"
+    },
+    {
+      "name": "natbib.sty",
+      "off": 14231040,
+      "len": 45456,
+      "source": "natbib.sty"
+    },
+    {
+      "name": "nicefrac.sty",
+      "off": 14276496,
+      "len": 4029,
+      "source": "nicefrac.sty"
+    },
+    {
+      "name": "ot1pcr.fd",
+      "off": 14280525,
+      "len": 985,
+      "source": "ot1pcr.fd"
+    },
+    {
+      "name": "ot1phv.fd",
+      "off": 14281510,
+      "len": 1679,
+      "source": "ot1phv.fd"
+    },
+    {
+      "name": "ot1ptm.fd",
+      "off": 14283189,
+      "len": 961,
+      "source": "ot1ptm.fd"
+    },
+    {
+      "name": "pcrr7t.tfm",
+      "off": 14284150,
+      "len": 960,
+      "source": "pcrr7t.tfm"
+    },
+    {
+      "name": "pcrr7t.vf",
+      "off": 14285110,
+      "len": 1344,
+      "source": "pcrr7t.vf"
+    },
+    {
+      "name": "pcrr8r.tfm",
+      "off": 14286454,
+      "len": 1292,
+      "source": "pcrr8r.tfm"
+    },
+    {
+      "name": "pd1enc.def",
+      "off": 14287746,
+      "len": 14249,
+      "source": "pd1enc.def"
+    },
+    {
+      "name": "pdfescape.sty",
+      "off": 14301995,
+      "len": 19007,
+      "source": "pdfescape.sty"
+    },
+    {
+      "name": "pdfglyphlist.txt",
+      "off": 14321002,
+      "len": 5117,
+      "source": "pdfglyphlist.txt"
+    },
+    {
+      "name": "pdftex.def",
+      "off": 14326119,
+      "len": 19626,
+      "source": "pdftex.def"
+    },
+    {
+      "name": "pdftex.map",
+      "off": 14345745,
+      "len": 311912,
+      "source": "pdftex.map"
+    },
+    {
+      "name": "pdftexcmds.sty",
+      "off": 14657657,
+      "len": 20089,
+      "source": "pdftexcmds.sty"
+    },
+    {
+      "name": "phvb.tfm",
+      "off": 14677746,
+      "len": 2300,
+      "source": "phvb.tfm"
+    },
+    {
+      "name": "phvb.vf",
+      "off": 14680046,
+      "len": 1516,
+      "source": "phvb.vf"
+    },
+    {
+      "name": "phvb8r.tfm",
+      "off": 14681562,
+      "len": 4484,
+      "source": "phvb8r.tfm"
+    },
+    {
+      "name": "phvr7t.tfm",
+      "off": 14686046,
+      "len": 2520,
+      "source": "phvr7t.tfm"
+    },
+    {
+      "name": "phvr7t.vf",
+      "off": 14688566,
+      "len": 1372,
+      "source": "phvr7t.vf"
+    },
+    {
+      "name": "phvr8r.tfm",
+      "off": 14689938,
+      "len": 4712,
+      "source": "phvr8r.tfm"
+    },
+    {
+      "name": "phvr8t.tfm",
+      "off": 14694650,
+      "len": 7040,
+      "source": "phvr8t.tfm"
+    },
+    {
+      "name": "phvr8t.vf",
+      "off": 14701690,
+      "len": 2344,
+      "source": "phvr8t.vf"
+    },
+    {
+      "name": "plain.bst",
+      "off": 14704034,
+      "len": 20613,
+      "source": "plain.bst"
+    },
+    {
+      "name": "ptmb.tfm",
+      "off": 14724647,
+      "len": 2684,
+      "source": "ptmb.tfm"
+    },
+    {
+      "name": "ptmb.vf",
+      "off": 14727331,
+      "len": 1512,
+      "source": "ptmb.vf"
+    },
+    {
+      "name": "ptmb7t.tfm",
+      "off": 14728843,
+      "len": 2172,
+      "source": "ptmb7t.tfm"
+    },
+    {
+      "name": "ptmb7t.vf",
+      "off": 14731015,
+      "len": 1372,
+      "source": "ptmb7t.vf"
+    },
+    {
+      "name": "ptmb8r.tfm",
+      "off": 14732387,
+      "len": 4524,
+      "source": "ptmb8r.tfm"
+    },
+    {
+      "name": "ptmb8t.tfm",
+      "off": 14736911,
+      "len": 6880,
+      "source": "ptmb8t.tfm"
+    },
+    {
+      "name": "ptmb8t.vf",
+      "off": 14743791,
+      "len": 2340,
+      "source": "ptmb8t.vf"
+    },
+    {
+      "name": "ptmr7t.tfm",
+      "off": 14746131,
+      "len": 2124,
+      "source": "ptmr7t.tfm"
+    },
+    {
+      "name": "ptmr7t.vf",
+      "off": 14748255,
+      "len": 1380,
+      "source": "ptmr7t.vf"
+    },
+    {
+      "name": "ptmr8c.tfm",
+      "off": 14749635,
+      "len": 1352,
+      "source": "ptmr8c.tfm"
+    },
+    {
+      "name": "ptmr8c.vf",
+      "off": 14750987,
+      "len": 3556,
+      "source": "ptmr8c.vf"
+    },
+    {
+      "name": "ptmr8r.tfm",
+      "off": 14754543,
+      "len": 4408,
+      "source": "ptmr8r.tfm"
+    },
+    {
+      "name": "ptmr8t.tfm",
+      "off": 14758951,
+      "len": 6672,
+      "source": "ptmr8t.tfm"
+    },
+    {
+      "name": "ptmr8t.vf",
+      "off": 14765623,
+      "len": 2348,
+      "source": "ptmr8t.vf"
+    },
+    {
+      "name": "ptmri7t.tfm",
+      "off": 14767971,
+      "len": 2288,
+      "source": "ptmri7t.tfm"
+    },
+    {
+      "name": "ptmri7t.vf",
+      "off": 14770259,
+      "len": 1384,
+      "source": "ptmri7t.vf"
+    },
+    {
+      "name": "ptmri8r.tfm",
+      "off": 14771643,
+      "len": 4640,
+      "source": "ptmri8r.tfm"
+    },
+    {
+      "name": "ptmri8t.tfm",
+      "off": 14776283,
+      "len": 6944,
+      "source": "ptmri8t.tfm"
+    },
+    {
+      "name": "ptmri8t.vf",
+      "off": 14783227,
+      "len": 2328,
+      "source": "ptmri8t.vf"
+    },
+    {
+      "name": "puenc.def",
+      "off": 14785555,
+      "len": 117118,
+      "source": "puenc.def"
+    },
+    {
+      "name": "pzdr.tfm",
+      "off": 14902673,
+      "len": 1528,
+      "source": "pzdr.tfm"
+    },
+    {
+      "name": "refcount.sty",
+      "off": 14904201,
+      "len": 9878,
+      "source": "refcount.sty"
+    },
+    {
+      "name": "rerunfilecheck.sty",
+      "off": 14914079,
+      "len": 9684,
+      "source": "rerunfilecheck.sty"
+    },
+    {
+      "name": "sftt1000.pfb",
+      "off": 14923763,
+      "len": 169201,
+      "source": "sftt1000.pfb"
+    },
+    {
+      "name": "silence.sty",
+      "off": 15092964,
+      "len": 17540,
+      "source": "silence.sty"
+    },
+    {
+      "name": "size10.clo",
+      "off": 15110504,
+      "len": 8448,
+      "source": "size10.clo"
+    },
+    {
+      "name": "size11.clo",
+      "off": 15118952,
+      "len": 8464,
+      "source": "size11.clo"
+    },
+    {
+      "name": "stringenc.sty",
+      "off": 15127416,
+      "len": 21514,
+      "source": "stringenc.sty"
+    },
+    {
+      "name": "subcaption.sty",
+      "off": 15148930,
+      "len": 12494,
+      "source": "subcaption.sty"
+    },
+    {
+      "name": "supp-pdf.mkii",
+      "off": 15161424,
+      "len": 71627,
+      "source": "supp-pdf.mkii"
+    },
+    {
+      "name": "t1phv.fd",
+      "off": 15233051,
+      "len": 1483,
+      "source": "t1phv.fd"
+    },
+    {
+      "name": "t1ptm.fd",
+      "off": 15234534,
+      "len": 774,
+      "source": "t1ptm.fd"
+    },
+    {
+      "name": "texglyphlist.txt",
+      "off": 15235308,
+      "len": 10227,
+      "source": "texglyphlist.txt"
+    },
+    {
+      "name": "times.sty",
+      "off": 15245535,
+      "len": 856,
+      "source": "times.sty"
+    },
+    {
+      "name": "trig.sty",
+      "off": 15246391,
+      "len": 4023,
+      "source": "trig.sty"
+    },
+    {
+      "name": "trimspaces.sty",
+      "off": 15250414,
+      "len": 1380,
+      "source": "trimspaces.sty"
+    },
+    {
+      "name": "ts1enc.def",
+      "off": 15251794,
+      "len": 8090,
+      "source": "ts1enc.def"
+    },
+    {
+      "name": "ts1ptm.fd",
+      "off": 15259884,
+      "len": 619,
+      "source": "ts1ptm.fd"
+    },
+    {
+      "name": "ucrr8a.pfb",
+      "off": 15260503,
+      "len": 45758,
+      "source": "ucrr8a.pfb"
+    },
+    {
+      "name": "uhvb8a.pfb",
+      "off": 15306261,
+      "len": 35941,
+      "source": "uhvb8a.pfb"
+    },
+    {
+      "name": "uhvr8a.pfb",
+      "off": 15342202,
+      "len": 44648,
+      "source": "uhvr8a.pfb"
+    },
+    {
+      "name": "umsa.fd",
+      "off": 15386850,
+      "len": 961,
+      "source": "umsa.fd"
+    },
+    {
+      "name": "umsb.fd",
+      "off": 15387811,
+      "len": 961,
+      "source": "umsb.fd"
+    },
+    {
+      "name": "uniquecounter.sty",
+      "off": 15388772,
+      "len": 7008,
+      "source": "uniquecounter.sty"
+    },
+    {
+      "name": "url.sty",
+      "off": 15395780,
+      "len": 12796,
+      "source": "url.sty"
+    },
+    {
+      "name": "utmb8a.pfb",
+      "off": 15408576,
+      "len": 44729,
+      "source": "utmb8a.pfb"
+    },
+    {
+      "name": "utmr8a.pfb",
+      "off": 15453305,
+      "len": 46026,
+      "source": "utmr8a.pfb"
+    },
+    {
+      "name": "utmri8a.pfb",
+      "off": 15499331,
+      "len": 45458,
+      "source": "utmri8a.pfb"
+    },
+    {
+      "name": "xcolor.sty",
+      "off": 15544789,
+      "len": 55384,
+      "source": "xcolor.sty"
+    },
+    {
+      "name": "xeCJK.cfg",
+      "off": 15600173,
+      "len": 411,
+      "source": "xeCJK.cfg"
+    },
+    {
+      "name": "xeCJK.sty",
+      "off": 15600584,
+      "len": 281282,
+      "source": "xeCJK.sty"
+    },
+    {
+      "name": "xeCJKfntef.sty",
+      "off": 15881866,
+      "len": 54028,
+      "source": "xeCJKfntef.sty"
+    },
+    {
+      "name": "xetex.def",
+      "off": 15935894,
+      "len": 14788,
+      "source": "xetex.def"
+    },
+    {
+      "name": "xspace.sty",
+      "off": 15950682,
+      "len": 4545,
+      "source": "xspace.sty"
+    },
+    {
+      "name": "xtemplate.sty",
+      "off": 15955227,
+      "len": 1308,
+      "source": "xtemplate.sty"
+    },
+    {
+      "name": "zhnumber-utf8.cfg",
+      "off": 15956535,
+      "len": 5770,
+      "source": "zhnumber-utf8.cfg"
+    },
+    {
+      "name": "zhnumber.sty",
+      "off": 15962305,
+      "len": 45672,
+      "source": "zhnumber.sty"
+    }
+  ],
+  "requested": {
+    "xetex|26|ctexart.cls": "ctexart.cls",
+    "xetex|26|ctexbackend.cfg": "ctexbackend.cfg",
+    "xetex|26|expl3.sty": "expl3.sty",
+    "xetex|26|l3backend-xetex.def": "l3backend-xetex.def",
+    "xetex|26|ctex-engine-xetex.def": "ctex-engine-xetex.def",
+    "xetex|26|ctexhook.sty": "ctexhook.sty",
+    "xetex|3|cmr10": "cmr10.tfm",
+    "xetex|26|ctexpatch.sty": "ctexpatch.sty",
+    "xetex|26|fix-cm.sty": "fix-cm.sty",
+    "xetex|26|ts1enc.def": "ts1enc.def",
+    "xetex|26|ctexopts.cfg": "ctexopts.cfg",
+    "xetex|26|article.cls": "article.cls",
+    "xetex|26|size11.clo": "size11.clo",
+    "xetex|47|lmroman10-regular": "lmroman10-regular.otf",
+    "xetex|26|xeCJK.sty": "xeCJK.sty",
+    "xetex|26|CJKfntef.sty": "CJKfntef.sty",
+    "xetex|26|xeCJKfntef.sty": "xeCJKfntef.sty",
+    "xetex|26|xtemplate.sty": "xtemplate.sty",
+    "xetex|26|fontspec.sty": "fontspec.sty",
+    "xetex|26|fontspec-xetex.sty": "fontspec-xetex.sty",
+    "xetex|26|fontenc.sty": "fontenc.sty",
+    "xetex|26|fontspec.cfg": "fontspec.cfg",
+    "xetex|47|lmroman10-bold": "lmroman10-bold.otf",
+    "xetex|26|xeCJK.cfg": "xeCJK.cfg",
+    "xetex|26|hyperref.sty": "hyperref.sty",
+    "xetex|26|zhnumber.sty": "zhnumber.sty",
+    "xetex|26|zhnumber-utf8.cfg": "zhnumber-utf8.cfg",
+    "xetex|26|ctex-scheme-chinese-article.def": "ctex-scheme-chinese-article.def",
+    "xetex|26|ctex-name-utf8.cfg": "ctex-name-utf8.cfg",
+    "xetex|47|lmroman9-regular": "lmroman9-regular.otf",
+    "xetex|26|ctex-fontset-fandol.def": "ctex-fontset-fandol.def",
+    "xetex|47|FandolSong-Regular.otf": "FandolSong-Regular.otf",
+    "xetex|47|FandolSong-Bold.otf": "FandolSong-Bold.otf",
+    "xetex|47|FandolKai-Regular.otf": "FandolKai-Regular.otf",
+    "xetex|26|ctex.cfg": "ctex.cfg",
+    "xetex|26|geometry.sty": "geometry.sty",
+    "xetex|26|keyval.sty": "keyval.sty",
+    "xetex|26|ifvtex.sty": "ifvtex.sty",
+    "xetex|26|iftex.sty": "iftex.sty",
+    "xetex|26|amsmath.sty": "amsmath.sty",
+    "xetex|26|amsopn.sty": "amsopn.sty",
+    "xetex|26|amstext.sty": "amstext.sty",
+    "xetex|26|amsgen.sty": "amsgen.sty",
+    "xetex|26|amsbsy.sty": "amsbsy.sty",
+    "xetex|26|amssymb.sty": "amssymb.sty",
+    "xetex|26|amsfonts.sty": "amsfonts.sty",
+    "xetex|26|amsthm.sty": "amsthm.sty",
+    "xetex|26|graphicx.sty": "graphicx.sty",
+    "xetex|26|graphics.sty": "graphics.sty",
+    "xetex|26|trig.sty": "trig.sty",
+    "xetex|26|graphics.cfg": "graphics.cfg",
+    "xetex|26|xetex.def": "xetex.def",
+    "xetex|26|booktabs.sty": "booktabs.sty",
+    "xetex|26|kvsetkeys.sty": "kvsetkeys.sty",
+    "xetex|26|kvdefinekeys.sty": "kvdefinekeys.sty",
+    "xetex|26|pdfescape.sty": "pdfescape.sty",
+    "xetex|26|ltxcmds.sty": "ltxcmds.sty",
+    "xetex|26|pdftexcmds.sty": "pdftexcmds.sty",
+    "xetex|26|infwarerr.sty": "infwarerr.sty",
+    "xetex|26|hycolor.sty": "hycolor.sty",
+    "xetex|26|nameref.sty": "nameref.sty",
+    "xetex|26|refcount.sty": "refcount.sty",
+    "xetex|26|gettitlestring.sty": "gettitlestring.sty",
+    "xetex|26|kvoptions.sty": "kvoptions.sty",
+    "xetex|26|etoolbox.sty": "etoolbox.sty",
+    "xetex|26|stringenc.sty": "stringenc.sty",
+    "xetex|26|pd1enc.def": "pd1enc.def",
+    "xetex|26|intcalc.sty": "intcalc.sty",
+    "xetex|26|puenc.def": "puenc.def",
+    "xetex|26|url.sty": "url.sty",
+    "xetex|26|bitset.sty": "bitset.sty",
+    "xetex|26|bigintcalc.sty": "bigintcalc.sty",
+    "xetex|26|hxetex.def": "hxetex.def",
+    "xetex|26|rerunfilecheck.sty": "rerunfilecheck.sty",
+    "xetex|26|uniquecounter.sty": "uniquecounter.sty",
+    "xetex|26|xcolor.sty": "xcolor.sty",
+    "xetex|26|color.cfg": "color.cfg",
+    "xetex|26|mathcolor.ltx": "mathcolor.ltx",
+    "xetex|3|pzdr": "pzdr.tfm",
+    "xetex|47|lmroman17-regular": "lmroman17-regular.otf",
+    "xetex|47|lmroman12-regular": "lmroman12-regular.otf",
+    "xetex|47|lmroman12-bold": "lmroman12-bold.otf",
+    "xetex|47|lmroman8-regular": "lmroman8-regular.otf",
+    "xetex|47|lmroman6-regular": "lmroman6-regular.otf",
+    "xetex|3|cmmi10": "cmmi10.tfm",
+    "xetex|3|cmmi8": "cmmi8.tfm",
+    "xetex|3|cmmi6": "cmmi6.tfm",
+    "xetex|3|cmsy10": "cmsy10.tfm",
+    "xetex|3|cmsy8": "cmsy8.tfm",
+    "xetex|3|cmsy6": "cmsy6.tfm",
+    "xetex|3|cmex10": "cmex10.tfm",
+    "xetex|3|cmex8": "cmex8.tfm",
+    "xetex|3|cmex7": "cmex7.tfm",
+    "xetex|26|umsa.fd": "umsa.fd",
+    "xetex|3|msam10": "msam10.tfm",
+    "xetex|3|msam7": "msam7.tfm",
+    "xetex|26|umsb.fd": "umsb.fd",
+    "xetex|3|msbm10": "msbm10.tfm",
+    "xetex|3|msbm7": "msbm7.tfm",
+    "xetex|3|cmr8": "cmr8.tfm",
+    "xetex|3|cmr6": "cmr6.tfm",
+    "xetex|47|lmromanslant10-regular": "lmromanslant10-regular.otf",
+    "xetex|47|lmroman10-italic": "lmroman10-italic.otf",
+    "xetex|47|FandolFang-Regular.otf": "FandolFang-Regular.otf",
+    "xetex|47|lmmono10-regular": "lmmono10-regular.otf",
+    "xetex|7|plain": "plain.bst",
+    "xetex|11|pdftex.map": "pdftex.map",
+    "xetex|11|kanjix.map": "kanjix.map",
+    "xetex|11|ckx.map": "ckx.map",
+    "xetex|11|texglyphlist.txt": "texglyphlist.txt",
+    "xetex|11|pdfglyphlist.txt": "pdfglyphlist.txt",
+    "xetex|11|glyphlist.txt": "glyphlist.txt",
+    "xetex|32|FandolSong-Regular.otf": "FandolSong-Regular.otf",
+    "xetex|32|lmroman17-regular.otf": "lmroman17-regular.otf",
+    "xetex|32|lmroman12-regular.otf": "lmroman12-regular.otf",
+    "xetex|32|FandolSong-Bold.otf": "FandolSong-Bold.otf",
+    "xetex|32|lmroman10-regular.otf": "lmroman10-regular.otf",
+    "xetex|32|lmroman10-bold.otf": "lmroman10-bold.otf",
+    "xetex|32|lmroman12-bold.otf": "lmroman12-bold.otf",
+    "xetex|32|lmroman8-regular.otf": "lmroman8-regular.otf",
+    "xetex|32|lmromanslant10-regular.otf": "lmromanslant10-regular.otf",
+    "xetex|32|FandolKai-Regular.otf": "FandolKai-Regular.otf",
+    "xetex|32|cmmi10.pfb": "cmmi10.pfb",
+    "xetex|32|cmr8.pfb": "cmr8.pfb",
+    "xetex|32|cmsy10.pfb": "cmsy10.pfb",
+    "xetex|32|cmmi8.pfb": "cmmi8.pfb",
+    "xetex|32|cmr10.pfb": "cmr10.pfb",
+    "xetex|32|lmroman10-italic.otf": "lmroman10-italic.otf",
+    "xetex|32|lmmono10-regular.otf": "lmmono10-regular.otf",
+    "xetex|45|cmmi10": "cmmi10.tfm",
+    "xetex|45|cmr8": "cmr8.tfm",
+    "xetex|45|cmsy10": "cmsy10.tfm",
+    "xetex|45|cmmi8": "cmmi8.tfm",
+    "xetex|45|cmr10": "cmr10.tfm",
+    "pdftex|26|article.cls": "article.cls",
+    "pdftex|26|size11.clo": "size11.clo",
+    "pdftex|3|cmr10": "cmr10.tfm",
+    "pdftex|26|geometry.sty": "geometry.sty",
+    "pdftex|26|keyval.sty": "keyval.sty",
+    "pdftex|26|ifvtex.sty": "ifvtex.sty",
+    "pdftex|26|iftex.sty": "iftex.sty",
+    "pdftex|26|amsmath.sty": "amsmath.sty",
+    "pdftex|26|amsopn.sty": "amsopn.sty",
+    "pdftex|26|amstext.sty": "amstext.sty",
+    "pdftex|26|amsgen.sty": "amsgen.sty",
+    "pdftex|26|amsbsy.sty": "amsbsy.sty",
+    "pdftex|26|amssymb.sty": "amssymb.sty",
+    "pdftex|26|amsfonts.sty": "amsfonts.sty",
+    "pdftex|26|graphicx.sty": "graphicx.sty",
+    "pdftex|26|graphics.sty": "graphics.sty",
+    "pdftex|26|trig.sty": "trig.sty",
+    "pdftex|26|graphics.cfg": "graphics.cfg",
+    "pdftex|26|pdftex.def": "pdftex.def",
+    "pdftex|26|booktabs.sty": "booktabs.sty",
+    "pdftex|26|hyperref.sty": "hyperref.sty",
+    "pdftex|26|kvsetkeys.sty": "kvsetkeys.sty",
+    "pdftex|26|kvdefinekeys.sty": "kvdefinekeys.sty",
+    "pdftex|26|pdfescape.sty": "pdfescape.sty",
+    "pdftex|26|ltxcmds.sty": "ltxcmds.sty",
+    "pdftex|26|pdftexcmds.sty": "pdftexcmds.sty",
+    "pdftex|26|infwarerr.sty": "infwarerr.sty",
+    "pdftex|26|hycolor.sty": "hycolor.sty",
+    "pdftex|26|nameref.sty": "nameref.sty",
+    "pdftex|26|refcount.sty": "refcount.sty",
+    "pdftex|26|gettitlestring.sty": "gettitlestring.sty",
+    "pdftex|26|kvoptions.sty": "kvoptions.sty",
+    "pdftex|26|etoolbox.sty": "etoolbox.sty",
+    "pdftex|26|stringenc.sty": "stringenc.sty",
+    "pdftex|26|pd1enc.def": "pd1enc.def",
+    "pdftex|26|intcalc.sty": "intcalc.sty",
+    "pdftex|26|puenc.def": "puenc.def",
+    "pdftex|26|url.sty": "url.sty",
+    "pdftex|26|bitset.sty": "bitset.sty",
+    "pdftex|26|bigintcalc.sty": "bigintcalc.sty",
+    "pdftex|26|hpdftex.def": "hpdftex.def",
+    "pdftex|26|rerunfilecheck.sty": "rerunfilecheck.sty",
+    "pdftex|26|uniquecounter.sty": "uniquecounter.sty",
+    "pdftex|26|l3backend-pdftex.def": "l3backend-pdftex.def",
+    "pdftex|26|supp-pdf.mkii": "supp-pdf.mkii",
+    "pdftex|26|epstopdf-base.sty": "epstopdf-base.sty",
+    "pdftex|26|epstopdf-sys.cfg": "epstopdf-sys.cfg",
+    "pdftex|3|cmr17": "cmr17.tfm",
+    "pdftex|3|cmr12": "cmr12.tfm",
+    "pdftex|3|cmbx10": "cmbx10.tfm",
+    "pdftex|3|cmbx12": "cmbx12.tfm",
+    "pdftex|11|pdftex.map": "pdftex.map",
+    "pdftex|32|cmbx10.pfb": "cmbx10.pfb",
+    "pdftex|32|cmbx12.pfb": "cmbx12.pfb",
+    "pdftex|32|cmr10.pfb": "cmr10.pfb",
+    "pdftex|32|cmr12.pfb": "cmr12.pfb",
+    "pdftex|32|cmr17.pfb": "cmr17.pfb",
+    "pdftex|7|plain": "plain.bst",
+    "pdftex|26|size10.clo": "size10.clo",
+    "pdftex|26|times.sty": "times.sty",
+    "pdftex|26|xspace.sty": "xspace.sty",
+    "pdftex|26|xcolor.sty": "xcolor.sty",
+    "pdftex|26|color.cfg": "color.cfg",
+    "pdftex|26|mathcolor.ltx": "mathcolor.ltx",
+    "pdftex|26|dvipsnam.def": "dvipsnam.def",
+    "pdftex|26|natbib.sty": "natbib.sty",
+    "pdftex|26|silence.sty": "silence.sty",
+    "pdftex|26|caption.sty": "caption.sty",
+    "pdftex|26|caption3.sty": "caption3.sty",
+    "pdftex|26|subcaption.sty": "subcaption.sty",
+    "pdftex|3|phvb": "phvb.tfm",
+    "pdftex|3|ptmb": "ptmb.tfm",
+    "pdftex|26|lineno.sty": "lineno.sty",
+    "pdftex|26|enumitem.sty": "enumitem.sty",
+    "pdftex|26|cuted.sty": "cuted.sty",
+    "pdftex|26|currfile.sty": "currfile.sty",
+    "pdftex|26|filehook.sty": "filehook.sty",
+    "pdftex|26|filehook-2020.sty": "filehook-2020.sty",
+    "pdftex|26|backref.sty": "backref.sty",
+    "pdftex|26|cleveref.sty": "cleveref.sty",
+    "pdftex|26|ot1ptm.fd": "ot1ptm.fd",
+    "pdftex|3|ptmr7t": "ptmr7t.tfm",
+    "pdftex|26|grfext.sty": "grfext.sty",
+    "pdftex|26|color.sty": "color.sty",
+    "pdftex|3|ptmb7t": "ptmb7t.tfm",
+    "pdftex|3|cmmi12": "cmmi12.tfm",
+    "pdftex|3|cmsy10": "cmsy10.tfm",
+    "pdftex|3|cmex10": "cmex10.tfm",
+    "pdftex|3|cmex7": "cmex7.tfm",
+    "pdftex|26|umsa.fd": "umsa.fd",
+    "pdftex|3|msam10": "msam10.tfm",
+    "pdftex|3|msam7": "msam7.tfm",
+    "pdftex|26|umsb.fd": "umsb.fd",
+    "pdftex|3|msbm10": "msbm10.tfm",
+    "pdftex|3|msbm7": "msbm7.tfm",
+    "pdftex|26|example-image-golden": "example-image-golden.tex",
+    "pdftex|26|example-image-golden.tex": "example-image-golden.tex",
+    "pdftex|26|example-image-golden.pdf": "example-image-golden.pdf",
+    "pdftex|3|ptmri7t": "ptmri7t.tfm",
+    "pdftex|3|msam5": "msam5.tfm",
+    "pdftex|3|msbm5": "msbm5.tfm",
+    "pdftex|26|ot1pcr.fd": "ot1pcr.fd",
+    "pdftex|3|pcrr7t": "pcrr7t.tfm",
+    "pdftex|26|ot1phv.fd": "ot1phv.fd",
+    "pdftex|3|phvr7t": "phvr7t.tfm",
+    "pdftex|33|phvr7t.vf": "phvr7t.vf",
+    "pdftex|3|phvr8r": "phvr8r.tfm",
+    "pdftex|33|phvb.vf": "phvb.vf",
+    "pdftex|3|phvb8r": "phvb8r.tfm",
+    "pdftex|33|ptmb7t.vf": "ptmb7t.vf",
+    "pdftex|3|ptmb8r": "ptmb8r.tfm",
+    "pdftex|33|ptmr7t.vf": "ptmr7t.vf",
+    "pdftex|3|ptmr8r": "ptmr8r.tfm",
+    "pdftex|33|ptmri7t.vf": "ptmri7t.vf",
+    "pdftex|3|ptmri8r": "ptmri8r.tfm",
+    "pdftex|33|ptmb.vf": "ptmb.vf",
+    "pdftex|32|lmss17.pfb": "lmss17.pfb",
+    "pdftex|32|lmss12.pfb": "lmss12.pfb",
+    "pdftex|32|lmsy10.pfb": "lmsy10.pfb",
+    "pdftex|33|pcrr7t.vf": "pcrr7t.vf",
+    "pdftex|3|pcrr8r": "pcrr8r.tfm",
+    "pdftex|3|cmr9": "cmr9.tfm",
+    "pdftex|3|cmr6": "cmr6.tfm",
+    "pdftex|3|cmmi9": "cmmi9.tfm",
+    "pdftex|3|cmmi6": "cmmi6.tfm",
+    "pdftex|3|cmsy9": "cmsy9.tfm",
+    "pdftex|3|cmsy6": "cmsy6.tfm",
+    "pdftex|3|cmex9": "cmex9.tfm",
+    "pdftex|3|cmti10": "cmti10.tfm",
+    "pdftex|3|cmti7": "cmti7.tfm",
+    "pdftex|3|cmr8": "cmr8.tfm",
+    "pdftex|3|cmmi8": "cmmi8.tfm",
+    "pdftex|3|cmsy8": "cmsy8.tfm",
+    "pdftex|3|cmex8": "cmex8.tfm",
+    "pdftex|3|cmti8": "cmti8.tfm",
+    "pdftex|44|8r.enc": "8r.enc",
+    "pdftex|32|cmmi10.pfb": "cmmi10.pfb",
+    "pdftex|32|cmmi7.pfb": "cmmi7.pfb",
+    "pdftex|32|cmmi9.pfb": "cmmi9.pfb",
+    "pdftex|32|cmr7.pfb": "cmr7.pfb",
+    "pdftex|32|cmr9.pfb": "cmr9.pfb",
+    "pdftex|32|cmsy10.pfb": "cmsy10.pfb",
+    "pdftex|32|cmti10.pfb": "cmti10.pfb",
+    "pdftex|32|ucrr8a.pfb": "ucrr8a.pfb",
+    "pdftex|32|uhvb8a.pfb": "uhvb8a.pfb",
+    "pdftex|32|uhvr8a.pfb": "uhvr8a.pfb",
+    "pdftex|32|utmb8a.pfb": "utmb8a.pfb",
+    "pdftex|32|utmr8a.pfb": "utmr8a.pfb",
+    "pdftex|32|utmri8a.pfb": "utmri8a.pfb",
+    "pdftex|26|environ.sty": "environ.sty",
+    "pdftex|26|trimspaces.sty": "trimspaces.sty",
+    "pdftex|26|inputenc.sty": "inputenc.sty",
+    "pdftex|26|fontenc.sty": "fontenc.sty",
+    "pdftex|26|t1ptm.fd": "t1ptm.fd",
+    "pdftex|3|ptmr8t": "ptmr8t.tfm",
+    "pdftex|26|nicefrac.sty": "nicefrac.sty",
+    "pdftex|26|ifthen.sty": "ifthen.sty",
+    "pdftex|26|microtype.sty": "microtype.sty",
+    "pdftex|26|microtype-pdftex.def": "microtype-pdftex.def",
+    "pdftex|26|microtype.cfg": "microtype.cfg",
+    "pdftex|26|mt-ptm.cfg": "mt-ptm.cfg",
+    "pdftex|3|ptmb8t": "ptmb8t.tfm",
+    "pdftex|3|ectt1000": "ectt1000.tfm",
+    "pdftex|26|mt-cmr.cfg": "mt-cmr.cfg",
+    "pdftex|26|mt-msa.cfg": "mt-msa.cfg",
+    "pdftex|26|mt-msb.cfg": "mt-msb.cfg",
+    "pdftex|26|t1phv.fd": "t1phv.fd",
+    "pdftex|3|phvr8t": "phvr8t.tfm",
+    "pdftex|3|ptmri8t": "ptmri8t.tfm",
+    "pdftex|33|ptmb8t.vf": "ptmb8t.vf",
+    "pdftex|33|ptmr8t.vf": "ptmr8t.vf",
+    "pdftex|33|phvr8t.vf": "phvr8t.vf",
+    "pdftex|33|ptmri8t.vf": "ptmri8t.vf",
+    "pdftex|26|ts1ptm.fd": "ts1ptm.fd",
+    "pdftex|3|ptmr8c": "ptmr8c.tfm",
+    "pdftex|33|ptmr8c.vf": "ptmr8c.vf",
+    "pdftex|44|cm-super-t1.enc": "cm-super-t1.enc",
+    "pdftex|32|msbm10.pfb": "msbm10.pfb",
+    "pdftex|32|sftt1000.pfb": "sftt1000.pfb"
+  }
+}

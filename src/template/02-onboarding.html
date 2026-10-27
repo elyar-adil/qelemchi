@@ -1,0 +1,200 @@
+<section class="onboarding" id="onboarding" hidden aria-label="欢迎使用 Qelemchi">
+  <div class="onboarding-grain" aria-hidden="true"></div>
+  <header class="onboarding-top">
+    <div class="onboarding-brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none"><path d="M9 4.5h16.5L33 12v23.5H9z" stroke="currentColor" stroke-width="1.4"/><path d="M25.5 4.5V12H33" stroke="currentColor" stroke-width="1.4"/><path d="M14 19h14M14 23.5h11M14 28h8" stroke="currentColor" stroke-width="1.2" opacity=".55"/><path d="M27.5 4.5v12L24 14l-3.5 2.5v-12" fill="var(--accent)"/></svg>
+      </span>
+      <span>Qelemchi</span>
+    </div>
+    <div class="onboarding-top-meta">
+      <span>单 HTML 文件</span>
+      <span class="dot">·</span>
+      <span>无后端</span>
+      <span class="dot">·</span>
+      <span>v1.0</span>
+    </div>
+  </header>
+
+  <div class="onboarding-grid">
+    <div class="onboarding-copy">
+      <div class="onboarding-kicker"><span></span>GITHUB-NATIVE LATEX WORKSPACE</div>
+      <h1>把论文<br>写在 <em>GitHub</em> 上。</h1>
+      <p class="onboarding-lede">一个没有后端的 Overleaf 替代品。LaTeX 源码放在你自己的仓库里，每次保存都是一次提交；打开一个 HTML 文件，就能写作、预览、回到任意一版。</p>
+
+      <div class="onboarding-features">
+        <div class="ofeature">
+          <div class="ofeature-num">01</div>
+          <div>
+            <h3>版本就是提交</h3>
+            <p>不做私有格式的“云端文档”。仓库里只有 .tex、.bib 和图片，退出这个应用也能用 Git、Overleaf 或 arXiv 继续。</p>
+          </div>
+        </div>
+        <div class="ofeature">
+          <div class="ofeature-num">02</div>
+          <div>
+            <h3>论文不经过第三方</h3>
+            <p>浏览器直连 api.github.com。令牌只在本机加密保存，论文内容不经过任何中间服务器。</p>
+          </div>
+        </div>
+        <div class="ofeature">
+          <div class="ofeature-num">03</div>
+          <div>
+            <h3>即时排版，真实 PDF</h3>
+            <p>边写边看接近 LaTeX 的排版。需要最终稿时，GitHub Actions 用真正的 TeX Live 编译并提交 PDF。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="commit-illustration" aria-hidden="true">
+        <div class="commit-rail">
+          <span class="commit-dot rust"></span><span class="commit-line"></span>
+          <span class="commit-dot"></span><span class="commit-line"></span>
+          <span class="commit-dot"></span><span class="commit-line"></span>
+          <span class="commit-dot sage"></span>
+        </div>
+        <div class="commit-items">
+          <div class="commit-item"><code>a41c9f2</code><span>把摘要改短了两句</span><time>刚刚</time></div>
+          <div class="commit-item"><code>f08b3d1</code><span>补上 Theorem 2 的证明</span><time>昨天</time></div>
+          <div class="commit-item"><code>7c2e6aa</code><span>更新 fig:system 矢量图</span><time>3 天前</time></div>
+          <div class="commit-item"><code>1dd90e4</code><span>submission v1</span><time>上周</time></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="onboarding-aside">
+      <div class="connect-card">
+        <div class="connect-tabs" role="tablist" aria-label="开始方式">
+          <button type="button" class="connect-tab active" data-connect-tab="github" role="tab" aria-selected="true">连接 GitHub</button>
+          <button type="button" class="connect-tab" data-connect-tab="demo" role="tab" aria-selected="false">先看示例</button>
+        </div>
+
+        <div class="connect-panel" data-connect-panel="github">
+          <div class="connect-intro">
+            <h2>打开你的论文仓库</h2>
+            <p>使用 fine-grained token，只给它一个仓库的 Contents 读写权限。</p>
+          </div>
+          <form id="connect-form" novalidate>
+            <div class="field">
+              <div class="field-label">
+                <label for="token-input">Personal access token</label>
+                <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">创建令牌 ↗</a>
+              </div>
+              <div class="input-wrap">
+                <input id="token-input" name="token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…" aria-describedby="token-hint">
+                <button type="button" class="input-action" id="toggle-token" aria-label="显示令牌">
+                  <svg class="eye-on" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2.5 10s2.7-4.2 7.5-4.2 7.5 4.2 7.5 4.2-2.7 4.2-7.5 4.2S2.5 10 2.5 10Z"/><circle cx="10" cy="10" r="2.2"/></svg>
+                </button>
+              </div>
+              <div class="field-hint" id="token-hint">Repository access 只选论文仓库 · Contents: Read and write · Actions: Read and write</div>
+            </div>
+
+            <div class="field">
+              <div class="field-label">
+                <label for="repo-input">仓库</label>
+                <button type="button" class="text-btn small" id="browse-repos">浏览可用仓库</button>
+              </div>
+              <div class="input-wrap">
+                <span class="input-prefix">github.com/</span>
+                <input id="repo-input" name="repo" type="text" autocomplete="off" spellcheck="false" placeholder="owner/paper-repo" style="padding-left: 82px">
+              </div>
+              <div class="repo-picker" id="repo-picker" hidden></div>
+              <div class="field-hint">建议使用私有仓库。公开仓库中的论文任何人都能读取。</div>
+            </div>
+
+            <div class="field">
+              <span class="field-label-static">令牌保存在哪里？</span>
+              <div class="remember-options" role="radiogroup" aria-label="令牌保存方式">
+                <label class="remember-option">
+                  <input type="radio" name="remember" value="session" checked>
+                  <span class="ro-radio"></span>
+                  <span class="ro-text"><b>仅本次会话</b><small>关闭标签页即清除</small></span>
+                </label>
+                <label class="remember-option">
+                  <input type="radio" name="remember" value="device">
+                  <span class="ro-radio"></span>
+                  <span class="ro-text"><b>记住本机</b><small>AES-GCM 加密</small></span>
+                </label>
+                <label class="remember-option">
+                  <input type="radio" name="remember" value="passphrase">
+                  <span class="ro-radio"></span>
+                  <span class="ro-text"><b>口令解锁</b><small>每次打开输入</small></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field passphrase-field" id="passphrase-field" hidden>
+              <label for="passphrase-input">解锁口令</label>
+              <input id="passphrase-input" type="password" autocomplete="new-password" placeholder="至少 8 个字符">
+              <div class="field-hint">口令不会离开浏览器，用于 PBKDF2 派生密钥。</div>
+            </div>
+
+            <div class="form-error" id="connect-error" role="alert" hidden></div>
+            <button class="btn btn-primary btn-connect" id="connect-submit" type="submit">
+              <span>连接并打开论文</span>
+              <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.5 9h11M10.5 5l4 4-4 4"/></svg>
+            </button>
+          </form>
+
+          <div class="connect-help">
+            <a href="https://github.com/new" target="_blank" rel="noopener">新建私有仓库</a>
+            <span class="dot">·</span>
+            <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">fine-grained token 指南</a>
+            <span class="dot">·</span>
+            <button type="button" class="text-btn small" id="show-token-help">为什么不用 OAuth？</button>
+          </div>
+
+          <div class="token-help" id="token-help" hidden>
+            <p><b>OAuth 需要一个保管 client_secret 的服务器</b>，而这不是这个项目的形态。GitHub 的 OAuth 令牌交换端点也不允许浏览器跨域调用。因此，唯一能保持“零后端”的方式，是你自己创建一个权限最小的 fine-grained token。</p>
+            <p>把 token 想象成一把只开一扇门的钥匙：只授权一个论文仓库、只给 Contents 读写；如果需要 Actions 编译 PDF，再给 Actions 读写。它不会进入仓库、不会出现在 URL 里，也不会被发送到 api.github.com 之外的任何地方。</p>
+          </div>
+
+          <div class="connect-security">
+            <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3.5" y="8" width="11" height="7.5" rx="1.3"/><path d="M6.2 8V6.2a2.8 2.8 0 0 1 5.6 0V8"/></svg>
+            <span>直连 api.github.com · 无中间服务器 · 令牌仅保存在本机</span>
+          </div>
+        </div>
+
+        <div class="connect-panel" data-connect-panel="demo" hidden>
+          <div class="demo-cover">
+            <div class="demo-paper" aria-hidden="true">
+              <div class="demo-paper-kicker">RESEARCH NOTE · 2026</div>
+              <div class="demo-paper-title">边注与提交</div>
+              <div class="demo-paper-sub">一种 GitHub 原生的学术写作工作流</div>
+              <div class="demo-paper-rule"></div>
+              <div class="demo-paper-lines"><i></i><i></i><i class="short"></i><i></i><i class="mid"></i></div>
+              <div class="demo-paper-eq">L = −<span>Σ</span> log p(y | x)</div>
+              <div class="demo-paper-foot">1 · Qelemchi</div>
+            </div>
+            <div class="demo-cover-badge">无需 GitHub</div>
+          </div>
+          <div class="connect-intro demo-intro">
+            <h2>先写两页，再决定</h2>
+            <p>示例论文包含多文件、公式、图、表、参考文献和交叉引用。所有修改都会留在本机，可以随时导出。</p>
+          </div>
+          <ul class="demo-points">
+            <li><span>01</span>即时 LaTeX 排版预览</li>
+            <li><span>02</span>完整的多文件项目与图片</li>
+            <li><span>03</span>之后可无损连接 GitHub</li>
+          </ul>
+          <button class="btn btn-primary btn-connect" id="demo-start" type="button">
+            <span>打开示例论文</span>
+            <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.5 9h11M10.5 5l4 4-4 4"/></svg>
+          </button>
+          <div class="demo-foot">示例是模板，不是真实论文。把标题和作者换成你的即可。</div>
+        </div>
+      </div>
+
+      <div class="onboarding-note">
+        <span class="onboarding-note-mark">Te</span>
+        <p>“写作工具的存储层应该和论文本身一样长寿。<br>Git 仓库比任何一家公司的数据库都更接近这一点。”</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="onboarding-footer">
+    <span>无需服务器</span><span class="dot">·</span><span>无需数据库</span><span class="dot">·</span><span>一个 HTML 文件</span>
+    <span class="onboarding-footer-spacer"></span>
+    <span>LaTeX 排版预览在浏览器本地完成；最终 PDF 由你的 GitHub Actions 生成。</span>
+  </footer>
+</section>

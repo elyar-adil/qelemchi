@@ -1,0 +1,166 @@
+/* ==========================================================================
+   Qelemchi · CodeMirror 5 theme
+   ========================================================================== */
+
+.CodeMirror {
+  height: 100%;
+  font-family: var(--mono);
+  font-size: var(--editor-font-size, 13.5px);
+  line-height: 1.72;
+  background: var(--editor-bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+.CodeMirror-scroll { padding-bottom: 40vh; }
+.CodeMirror-lines { padding: 16px 0 20px; }
+.CodeMirror pre.CodeMirror-line, .CodeMirror pre.CodeMirror-line-like { padding: 0 18px 0 12px; }
+.CodeMirror-gutters {
+  background: var(--editor-bg);
+  border-right: 0;
+  padding-left: 6px;
+}
+.CodeMirror-linenumber {
+  color: color-mix(in srgb, var(--faint) 76%, transparent);
+  font-size: 10px;
+  padding: 0 10px 0 4px;
+  min-width: 26px;
+}
+.CodeMirror-cursor { border-left: 1.5px solid var(--accent); }
+.CodeMirror-selected { background: color-mix(in srgb, var(--accent) 15%, transparent) !important; }
+.CodeMirror-focused .CodeMirror-selected { background: color-mix(in srgb, var(--accent) 20%, transparent) !important; }
+.CodeMirror-activeline-background { background: color-mix(in srgb, var(--ink) 3.2%, transparent); }
+.CodeMirror-activeline-gutter { background: color-mix(in srgb, var(--ink) 3.2%, transparent); }
+.CodeMirror-matchingbracket {
+  color: var(--accent) !important;
+  background: color-mix(in srgb, var(--accent) 13%, transparent);
+  outline: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  border-radius: 2px;
+}
+.CodeMirror-nonmatchingbracket { color: var(--danger) !important; }
+
+/* tokens */
+.cm-s-qelemchi .cm-tag { color: color-mix(in srgb, var(--accent) 88%, var(--ink)); font-weight: 500; }
+.cm-s-qelemchi .cm-bracket { color: color-mix(in srgb, var(--ink) 42%, transparent); }
+.cm-s-qelemchi .cm-atom { color: var(--blue); }
+.cm-s-qelemchi .cm-number { color: var(--amber); }
+.cm-s-qelemchi .cm-keyword { color: var(--accent); font-weight: 600; }
+.cm-s-qelemchi .cm-comment { color: color-mix(in srgb, var(--sage) 78%, var(--muted)); font-style: italic; }
+.cm-s-qelemchi .cm-string { color: var(--sage); }
+.cm-s-qelemchi .cm-variable { color: var(--ink-2); }
+.cm-s-qelemchi .cm-error {
+  color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 8%, transparent);
+  border-radius: 2px;
+}
+.cm-s-qelemchi .cm-meta { color: var(--muted); }
+[data-theme="dark"] .cm-s-qelemchi .cm-tag { color: #e9967b; }
+[data-theme="dark"] .cm-s-qelemchi .cm-atom { color: #9cc0da; }
+[data-theme="dark"] .cm-s-qelemchi .cm-bracket { color: rgba(236, 229, 215, .38); }
+[data-theme="dark"] .cm-s-qelemchi .cm-comment { color: #8da38d; }
+[data-theme="dark"] .cm-s-qelemchi .cm-number { color: #d5b26a; }
+
+/* fold gutter */
+.CodeMirror-foldgutter { width: 14px; }
+.CodeMirror-foldgutter-open,
+.CodeMirror-foldgutter-folded { color: var(--faint); cursor: pointer; }
+.CodeMirror-foldgutter-open::after { content: "⌄"; font-size: 11px; line-height: 1; }
+.CodeMirror-foldgutter-folded::after { content: "›"; font-size: 13px; line-height: 1; }
+.CodeMirror-foldmarker {
+  color: var(--accent);
+  background: var(--accent-tint);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 0 4px;
+  font-family: var(--ui);
+  font-size: 9px;
+  line-height: 1;
+}
+
+/* search dialog */
+.CodeMirror-dialog {
+  position: absolute; left: 0; right: 0; top: 0;
+  background: var(--panel-raised);
+  border-bottom: 1px solid var(--line);
+  padding: 5px 10px;
+  z-index: 20;
+  font-family: var(--ui);
+  font-size: 11px;
+  color: var(--ink-2);
+  display: flex; align-items: center; gap: 6px;
+}
+.CodeMirror-dialog input {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 4px;
+  height: 25px;
+  padding: 0 7px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--ink);
+  outline: 0;
+  flex: 1;
+}
+.CodeMirror-dialog input:focus { border-color: var(--accent); }
+.CodeMirror-dialog button {
+  height: 24px; padding: 0 7px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--panel);
+  font-size: 9.5px; color: var(--muted);
+}
+.CodeMirror-dialog button:hover { border-color: var(--line-strong); color: var(--ink); }
+.CodeMirror-search-match {
+  background: color-mix(in srgb, var(--amber) 34%, transparent);
+  border-top: 1px solid var(--amber);
+  border-bottom: 1px solid var(--amber);
+  opacity: .9;
+}
+
+/* hints */
+.CodeMirror-hints {
+  position: absolute;
+  z-index: 150;
+  margin: 0;
+  padding: 4px;
+  background: var(--panel-raised);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  box-shadow: var(--shadow-md);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  max-height: 260px;
+  overflow-y: auto;
+  min-width: 240px;
+}
+.CodeMirror-hint {
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: var(--ink-2);
+  white-space: pre;
+  cursor: pointer;
+}
+li.CodeMirror-hint-active { background: var(--accent-tint); color: var(--accent-ink); }
+.CodeMirror-hint .hint-meta { color: var(--faint); font-size: 8.5px; margin-left: 8px; }
+.CodeMirror-hint .hint-kind {
+  display: inline-block;
+  font-size: 7px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--faint);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 1px 3px;
+  margin-right: 6px;
+}
+
+/* scrollbar */
+.CodeMirror-vscrollbar::-webkit-scrollbar { width: 9px; }
+.CodeMirror-hscrollbar::-webkit-scrollbar { height: 9px; }
+
+/* selection toolbar for mobile */
+@media (max-width: 720px) {
+  .CodeMirror { font-size: 12.5px; line-height: 1.68; }
+  .CodeMirror pre.CodeMirror-line, .CodeMirror pre.CodeMirror-line-like { padding-right: 12px; }
+  .CodeMirror-gutters { padding-left: 2px; }
+  .CodeMirror-linenumber { padding-right: 6px; }
+}

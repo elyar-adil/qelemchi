@@ -1,0 +1,465 @@
+/* ==========================================================================
+   Qelemchi · WYSIWYG editor
+   The visual surface mirrors the typeset paper: continuous text, inline
+   figures/tables/equations, and no visible LaTeX source unless asked for.
+   ========================================================================== */
+
+.editor-head .editor-mode {
+  margin: 7px 6px 7px 4px;
+  background: var(--panel-sunken);
+}
+.editor-head .editor-mode button { height: 22px; padding: 0 9px; }
+
+.wysiwyg-host {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+  background-color: var(--bg-deep);
+  background-image: radial-gradient(color-mix(in srgb, var(--ink) 8%, transparent) .6px, transparent .6px);
+  background-size: 16px 16px;
+  background-position: -8px -8px;
+  scrollbar-gutter: stable;
+}
+[data-theme="dark"] .wysiwyg-host {
+  background-image: radial-gradient(rgba(255, 240, 210, .06) .6px, transparent .6px);
+}
+.wysiwyg-host[hidden] { display: none; }
+
+.wys-doc.page-body {
+  width: auto;
+  height: auto;
+  max-width: 722px;
+  min-height: calc(100% - 44px);
+  margin: 22px auto 56px;
+  padding: 44px 52px 54px;
+  overflow: visible;
+  background: var(--paper);
+  color: var(--paper-ink);
+  border: 1px solid color-mix(in srgb, var(--paper-ink) 12%, transparent);
+  border-radius: 3px;
+  box-shadow:
+    0 1px 1px rgba(40, 34, 24, .10),
+    0 14px 34px rgba(40, 34, 24, .16);
+  text-align: left;
+  font-size: 10.6pt;
+  line-height: 1.55;
+  outline: none;
+}
+[data-theme="dark"] .wys-doc.page-body {
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, .45),
+    0 20px 44px rgba(0, 0, 0, .45);
+}
+.wys-doc.paper-zh { line-height: 1.76; }
+.wys-doc .wys-block { position: relative; }
+
+/* ---------- editable surfaces ---------- */
+
+.wys-doc > .wys-block,
+.wys-container > .wys-block {
+  margin-left: -12px;
+  margin-right: -12px;
+  padding: 2px 12px;
+  border-radius: 4px;
+  transition: background .12s ease, box-shadow .12s ease;
+}
+.wys-doc > .wys-block + .wys-block,
+.wys-container > .wys-block + .wys-block { margin-top: .2em; }
+
+.wys-doc .wys-para + .wys-para { margin-top: .18em; }
+.wys-text {
+  outline: none;
+  min-height: 1.5em;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  border-radius: 2px;
+}
+.wys-para .wys-text { text-indent: 1.7em; }
+.wys-doc > .wys-heading + .wys-para .wys-text,
+.wys-doc > .wys-visual + .wys-para .wys-text,
+.wys-doc > .wys-container + .wys-para .wys-text,
+.wys-container > .wys-block + .wys-block .wys-text { text-indent: 0; }
+.wys-para .wys-text[contenteditable="false"] { text-indent: 0; }
+
+.wys-block:hover { background: color-mix(in srgb, var(--paper-ink) 3.2%, transparent); }
+.wys-block.is-focused {
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+.wys-block.is-focused .wys-text { text-indent: 1.7em; }
+.wys-block.is-focused.wys-heading .wys-text,
+.wys-block.is-focused .wys-visual .wys-text { text-indent: 0; }
+
+.wys-text.is-readonly { cursor: default; }
+
+/* The only chrome in the visual editor: a hover-only way back to source. */
+.wys-tool {
+  position: absolute;
+  top: 0;
+  right: 6px;
+  transform: translateY(-105%);
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: .04em;
+  line-height: 1.6;
+  color: var(--muted);
+  background: var(--paper);
+  border: 1px solid color-mix(in srgb, var(--paper-ink) 15%, transparent);
+  border-radius: 3px;
+  padding: 0 5px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .12s ease, color .12s ease;
+  z-index: 4;
+}
+.wys-block:hover > .wys-tool,
+.wys-block:focus-within > .wys-tool { opacity: .92; pointer-events: auto; }
+.wys-container:has(.wys-block:hover) > .wys-tool { opacity: 0; pointer-events: none; }
+.wys-tool:hover { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+
+/* ---------- headings ---------- */
+
+.wys-doc .wys-heading {
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: 1.32;
+  margin-top: 1.55em;
+  margin-bottom: .38em;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  color: var(--paper-ink);
+}
+.wys-doc > .wys-heading:first-child { margin-top: .2em; }
+.wys-doc h1.wys-heading { font-size: 1.62em; letter-spacing: .01em; margin-top: 1.9em; }
+.wys-doc h2.wys-heading { font-size: 1.34em; }
+.wys-doc h3.wys-heading { font-size: 1.13em; }
+.wys-doc h4.wys-heading { font-size: 1.02em; font-style: italic; }
+.wys-heading .wys-text { text-indent: 0; text-align: left; flex: 0 1 auto; outline: none; }
+.wys-anchor {
+  font-family: var(--mono);
+  font-size: .52em;
+  color: var(--faint);
+  border-bottom: 1px dotted color-mix(in srgb, var(--paper-ink) 22%, transparent);
+  padding: 0 1px;
+  opacity: 0;
+  transition: opacity .12s;
+  flex: none;
+}
+.wys-block:hover .wys-anchor { opacity: .85; }
+
+/* ---------- keywords ---------- */
+
+.wys-keywords-block .wys-prefix {
+  font-weight: 600;
+  color: var(--paper-ink);
+}
+.wys-keywords-block .wys-text { text-indent: 0; display: inline; }
+
+/* ---------- inline atoms ---------- */
+
+.wys-atom {
+  border-radius: 3px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0 1px;
+  transition: background .12s;
+}
+.wys-atom:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.wys-atom.tex-math { font-style: normal; }
+.wys-atom .wys-macro-token,
+.wys-macro-token {
+  font-family: var(--mono);
+  font-size: .8em;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border-radius: 3px;
+  padding: 0 3px;
+}
+.wys-cite {
+  font-size: .94em;
+  color: var(--accent);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  cursor: default;
+}
+.wys-ref-atom { color: var(--accent); }
+.wys-ref-atom .xref.missing { color: var(--danger); }
+.wys-link-token { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.wys-label-mark { font-family: var(--mono); font-size: .7em; color: var(--faint); opacity: .55; }
+.wys-fn { font-size: .68em; color: var(--accent); }
+.wys-symbol { font-family: var(--serif); }
+.wys-comment-token { font-family: var(--mono); font-size: .78em; color: var(--muted); opacity: .7; }
+.wys-inline-img { max-height: 1.4em; vertical-align: -0.25em; border-radius: 2px; }
+
+/* ---------- visual blocks (equations, figures, tables…) ---------- */
+
+.wys-doc .wys-visual {
+  margin-top: .85em;
+  margin-bottom: .95em;
+}
+.wys-doc > .wys-visual + .wys-visual { margin-top: .4em; }
+
+.wys-block-equation { text-align: center; padding: 2px 0; position: relative; }
+.wys-block-equation .wys-equation { padding: 2px 0; }
+.wys-equation { overflow-x: auto; overflow-y: hidden; }
+.wys-equation mjx-container { font-size: 112% !important; }
+.wys-eq-number {
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: .92em;
+  color: var(--paper-ink);
+}
+
+/* figures & captions */
+.wys-block-figure { text-align: center; }
+.wys-figure-media img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 2px;
+}
+.wys-figure-missing {
+  font-size: 9pt;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--paper-ink) 3%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--paper-ink) 20%, transparent);
+  border-radius: 4px;
+  padding: 18px;
+  text-align: center;
+}
+.wys-figure-missing code { font-family: var(--mono); font-size: 8.5pt; }
+.wys-caption {
+  font-size: .92em;
+  line-height: 1.5;
+  text-align: center;
+  margin: 7px auto 0;
+  max-width: 92%;
+  color: var(--paper-ink);
+}
+.wys-caption-label { font-weight: 600; margin-right: .45em; }
+
+/* tables */
+.wys-block-table { text-align: center; }
+.wys-block-table .wys-caption { margin: 0 auto 7px; }
+.wys-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .93em;
+  margin: 2px 0;
+}
+.wys-table td {
+  padding: 5px 9px;
+  border-bottom: .5pt solid color-mix(in srgb, var(--paper-ink) 18%, transparent);
+  vertical-align: top;
+}
+.wys-table tr.head td {
+  font-weight: 600;
+  border-top: .9pt solid var(--paper-ink);
+  border-bottom: .5pt solid var(--paper-ink);
+}
+
+/* code and unrecognised environments */
+.wys-block-code .wys-source,
+.wys-block-env .wys-source,
+.wys-block-src .wys-source {
+  border-left: 2px solid color-mix(in srgb, var(--paper-ink) 14%, transparent);
+  padding: 2px 10px;
+  opacity: .8;
+}
+.wys-source {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 9pt;
+  line-height: 1.6;
+  color: var(--paper-ink);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ---------- containers ---------- */
+
+.wys-doc .wys-container {
+  margin-top: 1.05em;
+  margin-bottom: 1.05em;
+}
+.wys-container > .wys-block { margin-top: .2em; }
+
+.wys-abstract {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  font-size: .95em;
+}
+.wys-abstract-title {
+  text-align: center;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1em;
+  letter-spacing: .06em;
+  margin-bottom: .5em;
+}
+.wys-abstract .wys-para .wys-text { text-indent: 0; }
+.wys-quote {
+  border-left: 2px solid color-mix(in srgb, var(--paper-ink) 18%, transparent);
+  padding-left: 14px;
+  font-style: italic;
+}
+.wys-quote .wys-text { text-indent: 1.2em; }
+.wys-theorem-head,
+.wys-proof-head {
+  font-weight: 600;
+  margin-bottom: .1em;
+}
+.wys-proof-head { font-style: italic; }
+.wys-qed { float: right; color: var(--paper-ink); margin-top: -.4em; }
+
+.wys-list { margin: .35em 0 .45em 1.55em; padding: 0; }
+.wys-list .wys-item { padding: 1px 4px; margin: 0; list-style: inherit; }
+.wys-list .wys-item + .wys-item { margin-top: .1em; }
+.wys-item .wys-text { text-indent: 0; text-align: left; }
+.wys-item-label { font-style: italic; margin-right: .4em; }
+.wys-list dl, .wys-doc dl { margin: 0; }
+.wys-list dt { font-style: italic; font-weight: 600; margin-top: .35em; }
+.wys-list dd { margin: 0 0 0 1.4em; }
+dl .wys-item { padding: 0; }
+
+/* ---------- title, toc, includes, bibliography ---------- */
+
+.wys-block-title { text-align: center; margin: .9em 0 1.7em; }
+.wys-title-block h1 {
+  font-family: var(--serif);
+  font-size: 1.68em;
+  line-height: 1.3;
+  font-weight: 600;
+  margin: 0 0 .55em;
+  color: var(--paper-ink);
+}
+.wys-title-meta {
+  font-size: .93em;
+  color: var(--muted);
+  display: flex;
+  justify-content: center;
+  gap: .8em;
+  flex-wrap: wrap;
+}
+
+.wys-toc { margin: .4em 0 .9em; }
+.wys-toc-item {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-size: .93em;
+  padding: 2px 0;
+  color: var(--paper-ink);
+}
+.wys-toc-dots { flex: 1; border-bottom: 1px dotted color-mix(in srgb, var(--paper-ink) 28%, transparent); transform: translateY(-2px); }
+
+.wys-block-include,
+.wys-block-bib {
+  font-family: var(--mono);
+  font-size: 8.4pt;
+  color: var(--muted);
+  border-top: 1px dashed color-mix(in srgb, var(--paper-ink) 20%, transparent);
+  border-bottom: 1px dashed color-mix(in srgb, var(--paper-ink) 20%, transparent);
+  padding: 4px 2px;
+}
+.wys-include-line,
+.wys-bib-line {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.wys-include-icon { color: var(--accent); }
+.wys-include-line code { font-family: var(--mono); font-size: 8.6pt; }
+.wys-include-resolved { color: var(--faint); font-size: 8pt; }
+.wys-include-missing { color: var(--danger); font-size: 8pt; }
+.wys-open-file {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  line-height: 1.5;
+  padding: 0 6px;
+  color: var(--accent);
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  border-radius: 3px;
+  opacity: 0;
+  transition: opacity .12s;
+}
+.wys-block-include:hover .wys-open-file,
+.wys-open-file:focus-visible { opacity: 1; }
+.wys-bib-line b { font-family: var(--sans); font-size: 9pt; font-weight: 600; color: var(--paper-ink); }
+.wys-bib-line small { margin-left: auto; color: var(--faint); }
+
+.wys-block-divider { margin: .9em 0; }
+.wys-divider {
+  border-top: 1px dashed color-mix(in srgb, var(--paper-ink) 22%, transparent);
+  text-align: center;
+  height: 1px;
+}
+.wys-divider span {
+  position: relative;
+  top: -.68em;
+  font-family: var(--mono);
+  font-size: 7.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  background: var(--paper);
+  padding: 0 8px;
+}
+.wys-visual-note { font-size: .92em; color: var(--muted); font-style: italic; text-align: center; }
+
+/* ---------- preamble & notices ---------- */
+
+.wys-preamble {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: -18px 0 26px;
+  padding: 7px 10px;
+  border-bottom: 1px dashed color-mix(in srgb, var(--paper-ink) 20%, transparent);
+}
+.wys-preamble-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.wys-preamble-text b { font-size: .82em; font-weight: 600; color: var(--muted); }
+.wys-preamble-text small { font-size: .72em; color: var(--faint); font-family: var(--mono); }
+.wys-preamble-btn { margin-left: auto; flex: none; font-size: 8.5pt; height: 24px; }
+
+.wys-notice {
+  max-width: 420px;
+  margin: 60px auto;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  background: var(--panel-raised);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 22px 24px;
+  line-height: 1.7;
+}
+.wys-empty {
+  text-align: center;
+  color: var(--muted);
+  font-size: .95em;
+  padding: 22px 0 8px;
+}
+.wys-empty b { display: block; color: var(--paper-ink); margin-bottom: 4px; }
+.wys-empty span { display: block; margin-bottom: 18px; font-size: .85em; }
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 860px) {
+  .wys-doc.page-body { margin: 12px 10px 40px; padding: 30px 26px 40px; }
+  .wys-doc > .wys-block,
+  .wys-container > .wys-block { margin-left: -6px; margin-right: -6px; padding-left: 6px; padding-right: 6px; }
+}
+@media (max-width: 620px) {
+  .editor-head .editor-mode button { padding: 0 7px; font-size: 10px; }
+  .wys-doc.page-body { padding: 24px 18px 34px; font-size: 10.2pt; }
+  .wys-preamble { flex-wrap: wrap; }
+  .wys-preamble-btn { margin-left: 0; }
+  .wys-eq-number { right: 0; }
+}

@@ -277,7 +277,11 @@ await page.waitForSelector('#compile-install:not([hidden])', { timeout: 15000 })
 console.log('install workflow offered');
 await page.click('#compile-install');
 await page.waitForSelector('#pdf-stage:not([hidden])', { timeout: 30000 });
-await page.waitForTimeout(600);
+// Wait for the mocked workflow poll and PDF download, not merely the compile dialog.
+await page.waitForFunction(() => {
+  const s = window.__qelemchi?.state;
+  return !!(s?.pdfBlob && s?.pdfSource === 'actions' && !s?.compile?.busy);
+}, { timeout: 30000 });
 const compile = await page.evaluate(() => ({
   title: document.querySelector('#compile-title')?.textContent,
   step3: document.querySelector('#compile-step')?.textContent,

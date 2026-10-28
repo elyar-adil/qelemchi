@@ -133,7 +133,8 @@ async function main() {
     'vendor/foldgutter.css',
     'vendor/show-hint.css',
     'src/styles/05-codemirror.css',
-    'src/styles/06-wysiwyg.css'
+    'src/styles/06-wysiwyg.css',
+    'src/styles/07-ui-refresh.css'
   ];
   const styles = [];
   for (const rel of styleOrder) styles.push(`/* ${rel} */\n${await read(rel)}`);

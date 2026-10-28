@@ -819,3 +819,28 @@ select:focus-visible, textarea:focus-visible {
   .connect-security { margin: 18px -18px -18px; padding: 11px 18px; }
   .banner-demo { min-height: 32px; padding: 5px 9px; font-size: 10px; }
 }
+
+
+.onboarding-close {
+  position: absolute;
+  top: 11px;
+  right: 12px;
+  z-index: 4;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--line-soft);
+  background: var(--panel-raised);
+  color: var(--muted);
+}
+.onboarding-close:hover {
+  background: var(--panel-sunken);
+  color: var(--ink);
+  border-color: var(--line);
+}
+.onboarding-close svg { width: 17px; height: 17px; }
+.connect-card { position: relative; }
+.connect-tabs { padding-right: 55px; }
+@media (max-width: 720px) {
+  .onboarding-close { top: 9px; right: 9px; width: 30px; height: 30px; }
+  .connect-tabs { padding-right: 51px; }
+}

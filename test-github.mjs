@@ -82,7 +82,7 @@ const PDF = Buffer.from([
   '%%EOF'
 ].join('\n'));
 
-const browser = await chromium.launch({ channel: 'msedge' });
+const browser = await chromium.launch(process.env.QELEMCHI_BROWSER_CHANNEL ? { channel: process.env.QELEMCHI_BROWSER_CHANNEL } : {});
 const context = await browser.newContext({ viewport: { width: 1440, height: 920 } });
 const page = await context.newPage();
 const errors = [];
@@ -280,5 +280,9 @@ console.log('commit count:', commits.length, 'head:', model.head);
 
 console.log('\nERRORS:');
 console.log(errors.length ? errors.join('\n') : 'none');
+if (errors.length) {
+  console.error(`Browser test failed with ${errors.length} error(s).`);
+  process.exitCode = 1;
+}
 await page.close();
 await browser.close();

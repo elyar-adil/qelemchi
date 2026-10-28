@@ -8,10 +8,11 @@
 import { readFile, writeFile, stat, mkdir, copyFile, rm } from 'node:fs/promises';
 import { readdirSync } from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 import { createHash } from 'node:crypto';
 
-const ROOT = path.dirname(new URL(import.meta.url).pathname);
+const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const outFile = path.join(ROOT, 'index.html');
 
 const read = (rel) => readFile(path.join(ROOT, rel), 'utf8');

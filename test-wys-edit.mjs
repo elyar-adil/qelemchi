@@ -2,7 +2,7 @@
 import { chromium } from 'playwright';
 
 const PAGE_URL = process.env.QELEMCHI_URL || 'http://127.0.0.1:4173/index.html';
-const browser = await chromium.launch({ channel: 'msedge' });
+const browser = await chromium.launch(process.env.QELEMCHI_BROWSER_CHANNEL ? { channel: process.env.QELEMCHI_BROWSER_CHANNEL } : {});
 const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
 const page = await context.newPage();
 const errors = [];
@@ -89,4 +89,8 @@ const finalText = await page.evaluate(() => window.__qelemchi.state.files.get('s
 console.log('text persisted:', finalText.includes('编辑测试XYZ') && finalText.includes('新段落ABC'));
 console.log('original first line preserved:', finalText.startsWith(before.split('\n')[0]));
 console.log('errors:', errors);
+if (errors.length) {
+  console.error(`Browser test failed with ${errors.length} error(s).`);
+  process.exitCode = 1;
+}
 await browser.close();

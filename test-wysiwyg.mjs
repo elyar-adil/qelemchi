@@ -2,7 +2,7 @@
 import { chromium } from 'playwright';
 
 const PAGE_URL = process.env.QELEMCHI_URL || 'http://127.0.0.1:4173/index.html';
-const browser = await chromium.launch({ channel: 'msedge' });
+const browser = await chromium.launch(process.env.QELEMCHI_BROWSER_CHANNEL ? { channel: process.env.QELEMCHI_BROWSER_CHANNEL } : {});
 const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
 const page = await context.newPage();
 const errors = [];
@@ -50,4 +50,8 @@ for (const file of ['main.tex', 'sections/method.tex', 'sections/results.tex', '
   if (file !== 'main.tex') await page.locator('#wysiwyg').screenshot({ path: `/tmp/wys-${file.split('/')[1]}.png` });
 }
 console.log('errors:', errors);
+if (errors.length) {
+  console.error(`Browser test failed with ${errors.length} error(s).`);
+  process.exitCode = 1;
+}
 await browser.close();

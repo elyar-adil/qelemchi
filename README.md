@@ -2,6 +2,8 @@
 
 Qelemchi（维吾尔语「执笔人」，词根 *qelem* + *-chi*）是一个单 HTML 文件的 LaTeX 论文写作工作台：像 Overleaf 一样在浏览器里编辑和编译，但以 GitHub 仓库作为唯一存储层，没有后端、没有中间服务器。
 
+**在线体验：** [Qelemchi on GitHub Pages](https://elyar-adil.github.io/qelemchi/)
+
 交付物是根目录的 `index.html`（约 5.5 MB）。`src/` 是可维护的拆分源码，`node build.mjs` 把它们拼回单文件。
 
 ## 功能
@@ -49,33 +51,26 @@ https://testingcf.jsdelivr.net/gh/elyar-adil/qelemchi@v1/assets/tex/
 
 源码与 PDF 不会上传；请求只发往上述静态资源域名。
 
-## 构建与测试
+## 构建、测试与部署
+
+需要 Node.js 20 或更高版本：
 
 ```sh
-node build.mjs                 # 生成 index.html 与 tex-assets/
-node test-wysiwyg.mjs          # 所见即所得渲染
-node test-wys-edit.mjs         # 编辑往返、回车分段、源码跳转
-node test-local-compile.mjs    # 冷/热缓存编译（默认用本地资源）
-QELEMCHI_TEST_URL=http://127.0.0.1:4173/index.html node test-local-compile.mjs  # 走真实 CDN
-QELEMCHI_TEST_URL=http://127.0.0.1:4173/index.html QELEMCHI_FALLBACK=1 node test-local-compile.mjs  # 端点回退
+npm ci
+npm test                  # 构建单文件并执行静态检查
+npm run serve             # http://127.0.0.1:4173/index.html
 ```
 
-测试需要 Playwright 与已安装的 Microsoft Edge：`chromium.launch({ channel: 'msedge' })`。
+浏览器端到端测试使用 Playwright 自带的 Chromium。先在一个终端启动静态服务器，再在另一个终端执行：
 
-## 目录
-
+```sh
+npx playwright install chromium
+npm run test:browser
 ```
-src/template/      HTML 骨架与脚本占位符
-src/styles/        样式（含所见即所得纸张样式）
-src/js/tex/        TeXPreview：LaTeX 子集解析与结构模型
-src/js/app/        编辑器、GitHub API、编译、PDF.js、设置等
-src/templates/     CVPR / NeurIPS 模板
-assets/tex/        SwiftLaTeX 引擎、LaTeX format、texmf 归档
-assets/pdfjs/      PDF.js 3.11.174 与 CJK CMap
-vendor/            CodeMirror 5、MathJax 3
-tex-assets/        build.mjs 生成的本地校验包（含 manifest.json，不提交）
 
-```
+也可以设置 `QELEMCHI_BROWSER_CHANNEL=msedge`，改用本机 Microsoft Edge。端到端测试覆盖启动、示例项目、文件编辑、版本历史、GitHub API 模拟、所见即所得编辑及本地 TeX 冷/热缓存编译。
+
+推送到 `main` 后，GitHub Actions 会自动重建、运行测试并发布 GitHub Pages。页面只发布生成后的 `index.html`；源码、TeX 大型资源包和测试文件不会被复制到站点产物中。
 
 ## 许可与归属
 

@@ -18,7 +18,7 @@ if (!process.env.QELEMCHI_TEST_URL) {
 }
 
 const PAGE_URL = process.env.QELEMCHI_TEST_URL || 'http://127.0.0.1:4173/index.test.html';
-const browser = await chromium.launch({ channel: 'msedge' });
+const browser = await chromium.launch(process.env.QELEMCHI_BROWSER_CHANNEL ? { channel: process.env.QELEMCHI_BROWSER_CHANNEL } : {});
 const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
 if (process.env.QELEMCHI_FALLBACK) {
   // Force the last jsDelivr endpoint to prove the fallback loop works.
@@ -96,5 +96,9 @@ await page.waitForTimeout(600);
 const warm = await compile();
 console.log('warm:', JSON.stringify(warm));
 console.log('errors:', errors);
+if (errors.length) {
+  console.error(`Browser test failed with ${errors.length} error(s).`);
+  process.exitCode = 1;
+}
 await page.screenshot({ path: '/tmp/qelemchi-local-pdf.png', fullPage: false });
 await browser.close();

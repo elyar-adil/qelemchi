@@ -23,7 +23,7 @@ python3 -m http.server 4173
 # http://127.0.0.1:4173/index.html
 ```
 
-选择「示例项目」即可试用；选择「连接 GitHub」后粘贴一个 fine-grained PAT，仓库只需要 **Contents: Read and write**（如需用 GitHub Actions 编译，再加 **Actions: Read and write**）。
+打开后会直接进入可编辑的中文示例论文，无需先经过介绍页。需要多端同步时，在右上角账户菜单或左侧存储卡片中选择「连接 GitHub」，再粘贴一个 fine-grained PAT；仓库只需要 **Contents: Read and write**（如需用 GitHub Actions 编译，再加 **Actions: Read and write**）。
 
 ### 令牌安全
 

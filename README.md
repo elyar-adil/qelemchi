@@ -70,7 +70,7 @@ npm run test:browser
 
 也可以设置 `QELEMCHI_BROWSER_CHANNEL=msedge`，改用本机 Microsoft Edge。端到端测试覆盖启动、示例项目、文件编辑、版本历史、GitHub API 模拟、所见即所得编辑及本地 TeX 冷/热缓存编译。
 
-推送到 `main` 后，GitHub Actions 会自动重建、运行测试并发布 GitHub Pages。页面只发布生成后的 `index.html`；源码、TeX 大型资源包和测试文件不会被复制到站点产物中。
+首次部署前，需要在仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**（GitHub 的 Pages 设置不能仅靠默认的 `GITHUB_TOKEN` 自动开启）。完成这一次设置后，推送到 `main` 会自动重建、运行测试并发布 GitHub Pages。页面只发布生成后的 `index.html`；源码、TeX 大型资源包和测试文件不会被复制到站点产物中。
 
 ## 许可与归属
 

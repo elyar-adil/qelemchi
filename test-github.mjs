@@ -278,10 +278,26 @@ console.log('install workflow offered');
 await page.click('#compile-install');
 await page.waitForSelector('#pdf-stage:not([hidden])', { timeout: 30000 });
 // Wait for the mocked workflow poll and PDF download, not merely the compile dialog.
-await page.waitForFunction(() => {
-  const s = window.__qelemchi?.state;
-  return !!(s?.pdfBlob && s?.pdfSource === 'actions' && !s?.compile?.busy);
-}, { timeout: 30000 });
+// Use repeated Runtime evaluations instead of waitForFunction: this app's strict
+// CSP intentionally blocks eval-based predicate injection.
+const compileDeadline = Date.now() + 30000;
+let compileState = null;
+while (Date.now() < compileDeadline) {
+  compileState = await page.evaluate(() => {
+    const s = window.__qelemchi?.state;
+    return {
+      ready: !!(s?.pdfBlob && s?.pdfSource === 'actions' && !s?.compile?.busy),
+      source: s?.pdfSource,
+      size: s?.pdfBlob?.size || 0,
+      busy: !!s?.compile?.busy
+    };
+  });
+  if (compileState.ready) break;
+  await page.waitForTimeout(250);
+}
+if (!compileState?.ready) throw new Error(`mocked compile did not finish: ${JSON.stringify(compileState)}`);
+if (runPolls < 1) throw new Error('compile test finished without polling the workflow status');
+if (!compileState.size) throw new Error('compile test returned an empty PDF');
 const compile = await page.evaluate(() => ({
   title: document.querySelector('#compile-title')?.textContent,
   step3: document.querySelector('#compile-step')?.textContent,

@@ -211,7 +211,8 @@ await page.fill('#token-input', TOKEN);
 await page.fill('#repo-input', `${OWNER}/${REPO}`);
 await page.click('#connect-submit');
 await page.waitForSelector('#onboarding[hidden]', { state: 'attached', timeout: 20000 });
-await page.waitForSelector('#pages .page:not(.measure-page)', { timeout: 20000 });
+await page.waitForSelector('#editor .CodeMirror', { timeout: 20000 });
+await page.waitForFunction(() => window.__qelemchi?.state?.mode === 'github' && window.__qelemchi?.state?.repo?.full === 'ada/paper-2026', { timeout: 20000 });
 await page.waitForTimeout(600);
 
 const connected = await page.evaluate(() => ({
@@ -220,7 +221,7 @@ const connected = await page.evaluate(() => ({
   files: [...window.__qelemchi.state.files.keys()],
   main: window.__qelemchi.state.mainPath,
   connected: window.__qelemchi.state.connected,
-  pages: document.querySelectorAll('#pages .page:not(.measure-page)').length,
+  editorReady: !!document.querySelector('#editor .CodeMirror'),
   title: document.querySelector('#project-title')?.textContent
 }));
 console.log('connected:', connected);

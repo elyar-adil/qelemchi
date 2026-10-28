@@ -87,7 +87,19 @@ const context = await browser.newContext({ viewport: { width: 1440, height: 920 
 const page = await context.newPage();
 const errors = [];
 page.on('pageerror', (e) => errors.push(`pageerror: ${e.message}`));
-page.on('console', (msg) => { if (msg.type() === 'error') errors.push(`console: ${msg.text()}`); });
+page.on('console', (msg) => {
+  if (msg.type() !== 'error') return;
+  // Missing workflow is an intentional 404 in this test; check response URLs below.
+  if (/Failed to load resource:.*404/.test(msg.text())) return;
+  errors.push(`console: ${msg.text()}`);
+});
+page.on('response', (response) => {
+  if (response.status() < 400) return;
+  const url = new URL(response.url());
+  const expectedMissingWorkflow = response.status() === 404
+    && url.pathname === `/repos/${OWNER}/${REPO}/actions/workflows/qelemchi.yml`;
+  if (!expectedMissingWorkflow) errors.push(`http ${response.status()}: ${response.url()}`);
+});
 
 await context.route('https://api.github.com/**', async (route) => {
   const req = route.request();

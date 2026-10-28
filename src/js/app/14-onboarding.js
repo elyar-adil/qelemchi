@@ -460,6 +460,15 @@ function initOnboardingEvents() {
   if (onboardingBound) return;
   onboardingBound = true;
 
+  const section = $('#onboarding');
+  const close = $('#onboarding-close');
+  if (close) close.addEventListener('click', () => {
+    if (!onboardingBusy) hideOnboarding();
+  });
+  if (section) section.addEventListener('click', (event) => {
+    if (event.target === section && !onboardingBusy) hideOnboarding();
+  });
+
   document.querySelectorAll('[data-connect-tab]').forEach((tab) => {
     tab.addEventListener('click', () => switchConnectTab(tab.dataset.connectTab));
   });
@@ -514,7 +523,7 @@ function initOnboardingEvents() {
       if (!section || section.hidden) return;
       const modalRoot = $('#modal-root');
       if (modalRoot && modalRoot.querySelector('.modal-backdrop')) return;
-      // Escape does not dismiss onboarding: the editor needs a project or demo first.
+      hideOnboarding();
     }
   });
 }

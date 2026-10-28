@@ -218,6 +218,8 @@ await context.route('https://api.github.com/**', async (route) => {
 
 await page.goto(PAGE_URL, { waitUntil: 'domcontentloaded' });
 await page.waitForSelector('#boot', { state: 'detached' });
+// First launch now opens the editor directly; explicitly open the connection dialog for this test.
+await page.evaluate(() => window.__qelemchi.showOnboarding());
 await page.click('[data-connect-tab="github"]');
 await page.fill('#token-input', TOKEN);
 await page.fill('#repo-input', `${OWNER}/${REPO}`);

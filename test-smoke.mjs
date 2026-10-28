@@ -18,15 +18,17 @@ await page.waitForSelector('#boot', { state: 'detached', timeout: 15000 });
 console.log('boot gone');
 
 const onboardingVisible = await page.locator('#onboarding:not([hidden])').count();
-console.log('onboarding visible:', onboardingVisible);
-if (onboardingVisible) {
-  await page.click('[data-connect-tab="demo"]');
-  await page.click('#demo-start');
-  await page.waitForSelector('#onboarding[hidden]', { state: 'attached', timeout: 10000 });
-}
+console.log('onboarding visible on first launch:', onboardingVisible);
+if (onboardingVisible) throw new Error('A fresh launch should open directly into the writing workspace.');
 
 await page.waitForSelector('#editor .CodeMirror', { timeout: 30000 });
-await page.waitForTimeout(1200);
+await page.waitForTimeout(250);
+
+// GitHub connection should be a dismissible utility dialog, not a landing page.
+await page.evaluate(() => window.__qelemchi.showOnboarding());
+await page.waitForSelector('#onboarding:not([hidden])', { timeout: 3000 });
+await page.keyboard.press('Escape');
+await page.waitForSelector('#onboarding[hidden]', { timeout: 3000 });
 
 const info = await page.evaluate(() => ({
   pages: window.__qelemchi.state.pdfPages || 0,

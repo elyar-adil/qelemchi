@@ -14,6 +14,7 @@ assert.ok(info.size > 1_000_000, 'generated index.html looks unexpectedly small'
 assert.match(html, /^<!doctype html>/i, 'HTML document must have a doctype');
 assert.match(html, /<title>Qelemchi/, 'page title should identify the app');
 assert.match(html, /Content-Security-Policy/, 'CSP must remain present');
+assert.match(html, /rel="icon"[^>]+data:image\/svg\+xml/, 'embedded favicon should avoid /favicon.ico 404');
 assert.match(html, /https:\/\/api\.github\.com/, 'GitHub API must be permitted by CSP');
 assert.match(html, /fastly\.jsdelivr\.net/, 'TeX asset CDN configuration is missing');
 assert.match(html, /window\.__qelemchi/, 'app test/debug API is missing');

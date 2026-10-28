@@ -754,3 +754,68 @@ select:focus-visible, textarea:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .onboarding *, .connect-card, .btn, .icon-btn { transition: none !important; }
 }
+
+
+/* Editor-first interaction: connection is a utility dialog, not a landing page. */
+.onboarding {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, .38);
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+}
+.onboarding-top,
+.onboarding-copy,
+.onboarding-note,
+.onboarding-footer {
+  display: none !important;
+}
+.onboarding-grid {
+  display: block;
+  width: min(540px, 100%);
+  margin: auto;
+  padding: 0;
+}
+.onboarding-aside {
+  width: 100%;
+  max-width: none;
+}
+.connect-card {
+  max-height: calc(100dvh - 48px);
+  overflow: auto;
+  border-color: color-mix(in srgb, var(--line-strong) 60%, transparent);
+  box-shadow: 0 28px 90px rgba(15, 23, 42, .24);
+}
+.connect-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: var(--panel-raised);
+}
+.connect-panel { padding: 24px 26px 22px; }
+.connect-intro h2 { font-size: 21px; }
+.connect-intro p { margin-bottom: 18px; }
+.connect-security {
+  position: sticky;
+  bottom: 0;
+  background: var(--panel-raised);
+}
+.banner-demo {
+  min-height: 34px;
+  padding: 5px 16px;
+  gap: 8px;
+  font-size: 11px;
+}
+.banner-demo .banner-kicker { font-size: 9px; }
+.banner-demo .text-btn { font-size: 11px; }
+
+@media (max-width: 720px) {
+  .onboarding { padding: 12px; }
+  .onboarding-grid { width: 100%; padding: 0; }
+  .connect-card { max-height: calc(100dvh - 24px); border-radius: 13px; }
+  .connect-panel { padding: 21px 18px 18px; }
+  .connect-security { margin: 18px -18px -18px; padding: 11px 18px; }
+  .banner-demo { min-height: 32px; padding: 5px 9px; font-size: 10px; }
+}

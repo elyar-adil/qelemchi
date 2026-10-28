@@ -502,7 +502,8 @@ async function init() {
       toast({ type: 'success', title: '已恢复上次的仓库', desc: state.repo ? state.repo.full : '' });
     }
   } else if (!restored) {
-    showOnboarding();
+    // First launch starts in the editable local demo. GitHub connection is optional
+    // and can be opened from the toolbar or storage panel whenever the user needs it.
   }
 
   window.__qelemchi = {
